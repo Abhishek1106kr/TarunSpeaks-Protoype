@@ -9,13 +9,15 @@ description: Use when composing new TarunSpeaks UI — the component kit, compos
 
 | Component | Use |
 |---|---|
-| `blocks/PageIntro` | Inner-page hero: crumbs, eyebrow, h1, lead, actions, optional aside photo or figures |
-| `ui/SectionHeader` | Section opener (eyebrow, h2, lead, optional right-aligned action) |
+| `blocks/PageIntro` | Inner-page opener: breadcrumb, kicker, serif h1, lead, actions, optional captioned photo |
+| `ui/SectionHeader` | Section opener (optional kicker, serif h2, lead, optional right-aligned action) — leave the kicker off when the heading is self-explanatory |
 | `ui/Button` | `primary` (one per view), `secondary`, `quiet` (underlined text), `inverse` (on blue) |
 | `ui/Photo` | All local images, by registry name (`lib/images.ts`); `tone="mono"` by default |
-| `blocks/StatGrid` + `ui/Counter` | Proof figures on a hairline grid |
-| `blocks/ProgramCard`, `blocks/CaseStudyCard` | Summary cards with category or format chip |
-| `blocks/ClientSectors` | Client names by sector (text, no logos) |
+| `blocks/StatGrid` | Figures as evidence: serif numerals, plain labels, a source line. Static (no counters) |
+| `blocks/ProgramTable` | The eight programs as an index: problem, audience, duration. Works on dark and `.on-paper` |
+| `blocks/CaseStudyCard` | Editorial entry (photo, client line, serif headline, scale); typographic when no unique photo exists |
+| `blocks/ClientSectors` + `ClientEcosystem` | 59 client logos with industry filters, optical sizing, names on hover/focus or via "Show organisation names" |
+| `home/Objectives` | "What do you need to achieve?" router — goal → page, plus a pre-filled enquiry |
 | `blocks/FaqList` | `<details>` accordion |
 | `blocks/Quote` | Verbatim testimonial |
 | `blocks/EnquiryCta` | Closing blue band; tailor `title`/`body`/CTAs per page |
@@ -24,7 +26,7 @@ description: Use when composing new TarunSpeaks UI — the component kit, compos
 ## Composition patterns that create rhythm
 
 Vary the device from section to section. Don't stack card grids.
-- **Hairline grid** (`gap-px bg-line` + `bg-canvas` cells): Train/Consult/Empower, capability areas, consulting modes.
+- **Numbered editorial entries** (serif italic numeral + title + facts list): offers, consulting modes.
 - **Ruled list** (`border-t` + `border-b` rows): challenges table, keynotes, modules, recognitions.
 - **Photo + list split**: speaking teaser, recognition.
 - **Numbered steps with blue tick**: delivery process.
@@ -32,4 +34,4 @@ Vary the device from section to section. Don't stack card grids.
 
 ## Look
 
-Black canvas, restrained blue, editorial left-aligned headings, square-ish corners (0.3rem buttons, no pill shapes), grayscale photography with blue chips, and big numerals for proof. A radial blue "stage light" is allowed only behind page intros and the hero portrait.
+An editorial business publication: black canvas, news-serif headlines, ruled lists instead of boxes, documentary black-and-white photography with honest captions, a paper-toned index section, one flat blue invitation band. Square-ish corners (0.3rem). No glows, gradients, chips, glass or decorative motion. Vary composition section to section (12-column grid; sticky left headings, full-width spreads, ruled registers).

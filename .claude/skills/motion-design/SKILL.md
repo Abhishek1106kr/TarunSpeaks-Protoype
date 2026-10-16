@@ -11,9 +11,9 @@ Motion explains hierarchy or progress. If it only decorates, remove it.
 
 | Need | Use | Where |
 |---|---|---|
-| Hero/page-intro entrance | CSS `.enter` / `.enter-mask` with `--enter-delay` | starts at first paint, no hydration wait (LCP-safe) |
-| Reveal on scroll | `data-reveal` (`""`, `"fade"`, `"image"`) + `--reveal-delay` | `RevealObserver` sets `data-shown`; CSS does the transition |
-| Counters, menu, journey marker, insight filter | Motion for React (`framer-motion` package) | small client components only |
+| Hero/page-intro entrance | CSS `.enter` with `--enter-delay` | starts at first paint, no hydration wait (LCP-safe) |
+| Image reveal (a few key photos only) | `data-reveal="image"` | `RevealObserver` sets `data-shown`; CSS does the clip. Plain `data-reveal` is inert — text never fades in on scroll |
+| Menu, journey marker, logo-filter change, insight filter | Motion for React (`framer-motion` package) | small client components only |
 | Scroll-linked progress | `useScroll` + `useSpring` | journey line — linked, never pinned |
 
 GSAP, ScrollTrigger and Lenis were removed: nothing on the site needs a timeline engine, and smooth-scroll libraries hijack scrolling. Re-adding one needs a written reason.
