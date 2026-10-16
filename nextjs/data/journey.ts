@@ -1,66 +1,70 @@
-import type { ImageName } from './images.generated'
+import type { PhotoName } from '../lib/images'
 
 export type JourneyStep = {
-  number: string
   phase: string
+  marker: string
   title: string
   body: string
-  noteLabel: string
-  note: string
-  image: ImageName
+  proof: string
+  image: PhotoName
   imageAlt: string
 }
 
-// Drawn from "From IT Engineer to Digital Marketing Mentor" and the homepage on tarunmakhija.in.
+// Verified against tarunmakhija.in/journey-from-it-engineering-to-digital-marketing/ and the company profile.
+// Only two dates are published (TCS in 2015, Big Mouth in 2016); later chapters are deliberately undated.
 export const journey: JourneyStep[] = [
   {
-    number: '01',
     phase: 'Engineering',
-    title: 'It started in IT',
-    body: 'Tarun earned a degree in IT engineering and worked with L&T Infotech, Tech Mahindra and Zensar Technologies before joining Tata Consultancy Services (TCS) in 2015.',
-    noteLabel: 'The turn',
-    note: 'He excelled in technology — but his passion for marketing, branding and education led him to take a bold leap.',
+    marker: '2015',
+    title: 'An IT engineer first',
+    body: 'Tarun earned a degree in IT engineering and began his career in technology. He excelled there — but his passion for marketing, branding and education led him to take a bold leap.',
+    proof: 'L&T Infotech, Tech Mahindra and Zensar Technologies, then Tata Consultancy Services from 2015.',
     image: 'tarun-google',
     imageAlt: 'Tarun Makhija at the Google office in Mumbai',
   },
   {
-    number: '02',
-    phase: 'Entrepreneurship',
-    title: 'Big Mouth Digital & Media',
-    body: 'In November 2016, Tarun co-founded Big Mouth Digital & Media, a branding and digital marketing agency based in Mumbai, working with more than 150 clients across the globe in over 15 industries.',
-    noteLabel: 'The work',
-    note: '750+ campaigns delivered on digital platforms, helping businesses scale through performance marketing and social media strategy.',
+    phase: 'Digital marketing',
+    marker: '2016',
+    title: 'Co-founding Big Mouth Digital & Media',
+    body: 'In 2016 he co-founded Big Mouth Digital & Media, a branding and digital marketing agency in Mumbai, serving 270+ brands across 15+ industries.',
+    proof: '750+ digital marketing campaigns executed — practitioner experience, not theory.',
     image: 'consultation-table',
     imageAlt: 'Tarun Makhija in a strategy session with clients',
   },
   {
-    number: '03',
-    phase: 'Education',
-    title: 'Finding the true calling',
-    body: 'Along the way, Tarun discovered his true calling — mentoring and educating individuals on digital growth strategies, across corporate and academic institutions.',
-    noteLabel: 'The impact',
-    note: '25,000+ individuals trained, 1,600+ sessions delivered and 100+ keynote sessions.',
-    image: 'stage-keynote',
-    imageAlt: 'Tarun Makhija speaking to a full auditorium',
+    phase: 'Training',
+    marker: 'Calling',
+    title: 'Teaching what worked',
+    body: 'Running the agency, he discovered his true calling: mentoring and educating people on digital growth, across corporate and academic institutions.',
+    proof: '100+ keynote sessions on digital marketing, entrepreneurship and business strategy.',
+    image: 'about-stage',
+    imageAlt: 'Tarun Makhija presenting on stage to a large audience',
   },
   {
-    number: '04',
-    phase: 'Mission',
-    title: 'A bigger purpose',
-    body: 'For Tarun, success is about impact, not just numbers. This vision fuels his pursuit of educating, mentoring and empowering individuals worldwide.',
-    noteLabel: 'The mission',
-    note: 'Empower 1 million individuals by December 1, 2029 — and help 1 billion people make money by doing what they love.',
-    image: 'community-meetup',
-    imageAlt: 'Tarun Makhija with participants after a session',
+    phase: 'TarunSpeaks',
+    marker: 'Company',
+    title: 'Train. Consult. Empower.',
+    body: 'TarunSpeaks became a corporate training and consulting company, with Tarun as Chief Educator & Founder — running multi-city programs for organisations like Motilal Oswal, HDFC Bank and Sansaar by D’Decor.',
+    proof: '29,000+ individuals trained across 2,300+ sessions and 300+ brands.',
+    image: 'sansaar-stage',
+    imageAlt: 'Tarun Makhija addressing a Sansaar by D’Decor audience',
+  },
+  {
+    phase: 'AI capability',
+    marker: 'Now',
+    title: 'From awareness to adoption',
+    body: 'Today the work extends into AI: multi-month AI training, AI-powered sales and presentation programs, and consulting on AI tools, agent deployment and generative AI implementation.',
+    proof: 'Nawany Group, NewTech Insurance Brokers, Godrej Properties and Double Tap Digital.',
+    image: 'nawany-workshop',
+    imageAlt: 'Tarun Makhija leading an AI training session',
   },
 ]
 
+// tarunmakhija.in journey page
 export const recognitions = [
-  { title: 'Featured on Times Square, New York', detail: 'By Topmate, as one of the Top 10 Global Creators', year: '2023' },
   { title: 'BW Marketing 30 Under 30', detail: 'Recognised as a top marketing professional under 30', year: '2023' },
+  { title: 'Featured on Times Square, New York', detail: 'By Topmate, as one of the Top 10 Global Creators', year: '2023' },
   { title: 'Unacademy Top 50 Educators in India', detail: 'Ranked 38th on the list' },
   { title: 'Top 50 Upcoming Podcasters in India', detail: 'Host of the BE LIMITLESS podcast', year: '2021' },
   { title: 'Captain of the Year (Top 3)', detail: 'Recognised as a top mentor', year: '2021' },
 ]
-
-export const careerHistory = ['L&T Infotech', 'Tech Mahindra', 'Zensar Technologies', 'Tata Consultancy Services']

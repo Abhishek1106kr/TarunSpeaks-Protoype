@@ -1,14 +1,7 @@
 import type { ReactNode } from 'react'
 
-type Tone = 'accent' | 'accent-ink' | 'light' | 'muted'
-
-const tones: Record<Tone, string> = {
-  accent: 'text-accent',
-  'accent-ink': 'text-accent-ink',
-  light: 'text-light',
-  muted: 'text-muted',
-}
-
-export function Eyebrow({ children, tone = 'accent', lined = true, className = '' }: { children: ReactNode; tone?: Tone; lined?: boolean; className?: string }) {
-  return <p className={`eyebrow ${lined ? 'eyebrow--lined' : ''} ${tones[tone]} ${className}`}>{children}</p>
+// Section kicker: a short blue rule and a sentence-case label. Use it where a heading needs context,
+// not as a reflex above every heading.
+export function Eyebrow({ children, className = '' }: { children: ReactNode; className?: string }) {
+  return <p className={`kicker ${className}`}>{children}</p>
 }

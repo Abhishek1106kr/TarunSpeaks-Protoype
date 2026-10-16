@@ -10,16 +10,14 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
   }, [error])
 
   return (
-    <section className="pt-36 pb-16 sm:pt-44 lg:pb-24">
-      <div className="container-x flex flex-col items-center text-center">
-        <Eyebrow className="mb-8">Something went wrong</Eyebrow>
-        <h1 className="display-xl max-w-5xl">Let’s try that <em>again.</em></h1>
-        <p className="mt-8 max-w-2xl text-[1.1rem] leading-relaxed text-muted">
-          An unexpected error occurred while loading this page.
-        </p>
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <Button type="button" onClick={reset} icon>Try again</Button>
-          <Button to="/" variant="outline">Back to home</Button>
+    <section className="pt-40 pb-24">
+      <div className="container-x">
+        <Eyebrow className="mb-6">Something went wrong</Eyebrow>
+        <h1 className="t-h1 max-w-3xl">Let’s try that again.</h1>
+        <p className="t-lead mt-6 max-w-2xl">An unexpected error occurred while loading this page.</p>
+        <div className="mt-10 flex flex-wrap gap-3">
+          <Button type="button" onClick={reset} arrow>Try again</Button>
+          <Button to="/" variant="secondary">Back to home</Button>
         </div>
       </div>
     </section>

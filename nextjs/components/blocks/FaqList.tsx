@@ -1,52 +1,18 @@
-'use client'
-
-import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
 import { Plus } from 'lucide-react'
-import { faqs } from '../../data/faq'
 
-export function FaqList() {
-  const [open, setOpen] = useState<number | null>(0)
-
+// Native <details> accordion: keyboard and screen-reader support for free, works without JS.
+export function FaqList({ items }: { items: { question: string; answer: string }[] }) {
   return (
-    <div data-reveal-group className="space-y-3">
-      {faqs.map((faq, index) => {
-        const isOpen = open === index
-        const id = `faq-${index}`
-        return (
-          <div key={faq.question} className="rounded-2xl bg-secondary">
-            <h3>
-              <button
-                type="button"
-                id={`${id}-button`}
-                aria-expanded={isOpen}
-                aria-controls={`${id}-panel`}
-                onClick={() => setOpen(isOpen ? null : index)}
-                className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left font-sans text-[1.02rem] font-medium tracking-normal"
-              >
-                {faq.question}
-                <Plus size={20} aria-hidden="true" className={`shrink-0 transition-transform duration-500 ease-editorial ${isOpen ? 'rotate-45' : ''}`} />
-              </button>
-            </h3>
-            <AnimatePresence initial={false}>
-              {isOpen && (
-                <motion.div
-                  id={`${id}-panel`}
-                  role="region"
-                  aria-labelledby={`${id}-button`}
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                  className="overflow-hidden"
-                >
-                  <p className="px-6 pb-6 leading-relaxed text-ink/80">{faq.answer}</p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        )
-      })}
+    <div className="border-t border-line">
+      {items.map((item) => (
+        <details key={item.question} className="group border-b border-line">
+          <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 py-5 font-display text-[1.12rem] font-semibold tracking-[-0.01em] transition-colors hover:text-brand-text [&::-webkit-details-marker]:hidden">
+            {item.question}
+            <Plus aria-hidden="true" size={20} className="shrink-0 text-brand-text transition-transform duration-300 group-open:rotate-45" />
+          </summary>
+          <p className="t-body max-w-3xl pb-6">{item.answer}</p>
+        </details>
+      ))}
     </div>
   )
 }

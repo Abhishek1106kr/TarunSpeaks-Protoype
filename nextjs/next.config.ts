@@ -1,14 +1,13 @@
 import type { NextConfig } from 'next'
 
-// URLs from the previous site, kept alive as permanent redirects so existing
-// links and search results still land somewhere useful. Mirrors the client-side
-// redirect map from the Vite app (src/App.tsx), upgraded to real 308s for SEO.
+// URLs from the previous sites (tarunmakhija.in and the Vite app), kept alive as permanent redirects so
+// existing links and search results land on the closest current page. /corporate-training is a real page again.
 const legacyRedirects: [string, string][] = [
-  ['/digital-marketing-consultant', '/services#consultation'],
-  ['/digitial-marketing-consultant', '/services#consultation'],
-  ['/corporate-training', '/services#training'],
-  ['/training', '/services#training'],
+  ['/digital-marketing-consultant', '/consulting'],
+  ['/digitial-marketing-consultant', '/consulting'],
+  ['/training', '/corporate-training'],
   ['/public-speaking', '/speaking'],
+  ['/journey-from-it-engineering-to-digital-marketing', '/about'],
   ['/blog', '/insights'],
   ['/blogs', '/insights'],
 ]
@@ -25,6 +24,19 @@ const nextConfig: NextConfig = {
       destination,
       permanent: true,
     }))
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+        ],
+      },
+    ]
   },
 }
 

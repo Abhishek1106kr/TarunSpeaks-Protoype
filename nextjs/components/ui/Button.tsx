@@ -1,49 +1,52 @@
 import type { ReactNode } from 'react'
 import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
 
-type Variant = 'accent' | 'coral' | 'light' | 'dark' | 'outline'
+type Variant = 'primary' | 'secondary' | 'quiet' | 'inverse'
+type Size = 'md' | 'lg'
 
-type Common = { children: ReactNode; variant?: Variant; icon?: boolean; className?: string }
+// `track` marks a conversion CTA: AnalyticsListener reports clicks as primary_cta_clicked with `track` as the location.
+type Common = { children: ReactNode; variant?: Variant; size?: Size; arrow?: boolean; className?: string; track?: string }
 type ButtonProps = Common & (
-  | { to: string; href?: never; type?: never; onClick?: () => void }
-  | { href: string; to?: never; type?: never; onClick?: never }
-  | { type: 'button' | 'submit'; to?: never; href?: never; onClick?: () => void }
+  | { to: string; href?: never; type?: never; onClick?: () => void; disabled?: never }
+  | { href: string; to?: never; type?: never; onClick?: never; disabled?: never }
+  | { type: 'button' | 'submit'; to?: never; href?: never; onClick?: () => void; disabled?: boolean }
 )
 
+// Primary = the one action per view (blue fill). Secondary = outlined. Quiet = text with arrow.
 const variants: Record<Variant, string> = {
-  accent: 'bg-accent text-light hover:bg-accent-ink',
-  coral: 'bg-highlight text-ink hover:bg-[#ff7f50]',
-  light: 'bg-light text-ink hover:bg-secondary',
-  dark: 'bg-dark text-light hover:bg-accent-ink',
-  outline: 'border border-line text-ink hover:border-ink',
+  primary: 'bg-brand text-fg hover:bg-brand-bright shadow-[inset_0_1px_0_rgb(255_255_255/0.12)]',
+  secondary: 'border border-line text-fg hover:border-fg-2 hover:bg-surface',
+  quiet: 'text-fg underline decoration-brand-bright decoration-2 underline-offset-[0.4em] hover:text-brand-text',
+  // For blue surfaces, where a blue fill would disappear.
+  inverse: 'bg-fg text-canvas hover:bg-white',
 }
 
-const iconVariants: Record<Variant, string> = {
-  accent: 'bg-light text-ink',
-  coral: 'bg-dark text-light',
-  light: 'bg-accent text-light',
-  dark: 'bg-light text-ink',
-  outline: 'bg-dark text-light',
+const sizes: Record<Size, string> = {
+  md: 'min-h-11 px-5 text-[0.92rem]',
+  lg: 'min-h-13 px-6 text-[0.98rem]',
 }
 
-export function Button({ children, variant = 'accent', icon = false, className = '', ...target }: ButtonProps) {
-  const classes = `group inline-flex min-h-12 items-center justify-center gap-3 rounded-full text-[0.94rem] font-medium tracking-tight transition-colors duration-300 ${icon ? 'py-1.5 pr-1.5 pl-6' : 'px-6 py-3'} ${variants[variant]} ${className}`
+export function Button({ children, variant = 'primary', size = 'md', arrow = false, className = '', track, ...target }: ButtonProps) {
+  const tracking = track ? { 'data-track': 'primary_cta_clicked', 'data-track-location': track } : {}
+  const classes = `group inline-flex items-center justify-center gap-2.5 font-semibold tracking-[-0.005em] transition-[background-color,border-color,color] duration-200 disabled:cursor-not-allowed disabled:opacity-60 ${variant === 'quiet' ? 'min-h-11' : `rounded-[0.3rem] ${sizes[size]}`} ${variants[variant]} ${className}`
+  const external = 'href' in target && target.href?.startsWith('http')
+  const Icon = external ? ArrowUpRight : ArrowRight
   const content = (
     <>
       <span>{children}</span>
-      {icon && (
-        <span aria-hidden="true" className={`grid size-9 place-items-center rounded-full transition-transform duration-500 ease-editorial group-hover:rotate-45 ${iconVariants[variant]}`}>
-          <ArrowUpRight size={17} strokeWidth={1.75} />
-        </span>
-      )}
+      {arrow && <Icon aria-hidden="true" size={17} strokeWidth={2} className="transition-transform duration-300 ease-editorial group-hover:translate-x-0.5" />}
     </>
   )
 
-  if ('to' in target && target.to) return <Link href={target.to} onClick={target.onClick} className={classes}>{content}</Link>
+  if ('to' in target && target.to) return <Link href={target.to} onClick={target.onClick} className={classes} {...tracking}>{content}</Link>
   if ('href' in target && target.href) {
-    const external = target.href.startsWith('http')
-    return <a href={target.href} className={classes} {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}>{content}</a>
+    return (
+      <a href={target.href} className={classes} {...tracking} {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}>
+        {content}
+        {external && <span className="sr-only"> (opens in a new tab)</span>}
+      </a>
+    )
   }
-  return <button type={target.type} onClick={target.onClick} className={classes}>{content}</button>
+  return <button type={target.type} onClick={target.onClick} disabled={target.disabled} className={classes} {...tracking}>{content}</button>
 }

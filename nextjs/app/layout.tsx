@@ -1,58 +1,72 @@
-import type { Metadata } from 'next'
-import { Cormorant_Garamond, Inter } from 'next/font/google'
-import { ClientShell } from '../components/layout/ClientShell'
+import type { Metadata, Viewport } from 'next'
+import { Archivo, Newsreader } from 'next/font/google'
+import { Chatbot } from '../components/layout/Chatbot'
+import { Footer } from '../components/layout/Footer'
+import { Navbar } from '../components/layout/Navbar'
+import { AnalyticsListener } from '../components/motion/AnalyticsListener'
+import { RevealObserver } from '../components/motion/RevealObserver'
 import { JsonLd } from '../components/seo/JsonLd'
-import { personJsonLd, siteUrl, websiteJsonLd } from '../lib/seo'
+import { organizationJsonLd, personJsonLd, siteUrl, websiteJsonLd } from '../lib/seo'
 import './globals.css'
 
-const cormorant = Cormorant_Garamond({
+// Headlines: Newsreader, a news serif with an optical-size axis (large sizes get the display cut automatically).
+const newsreader = Newsreader({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
+  weight: 'variable',
   style: ['normal', 'italic'],
-  variable: '--font-cormorant',
+  axes: ['opsz'],
+  variable: '--font-newsreader',
   display: 'swap',
 })
 
-const inter = Inter({
+// Text and UI: Archivo. Its width axis also carries the company profile's heavy italic signature line.
+const archivo = Archivo({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-inter',
+  weight: 'variable',
+  style: ['normal', 'italic'],
+  axes: ['wdth'],
+  variable: '--font-archivo',
   display: 'swap',
 })
 
-const title = 'Tarun Makhija — Digital Marketing Consultant, Corporate Trainer & Public Speaker'
-const description = 'Tarun Makhija is a digital marketing consultant, corporate trainer, public speaker and mentor who has trained 25,000+ individuals and worked with 297+ brands.'
+const title = 'TarunSpeaks — Corporate Training, Consulting & AI Capability Building'
+const description = 'TarunSpeaks is a corporate training and consulting company. Practical programs in AI, sales, marketing, personal branding and leadership — 29,000+ individuals trained across 300+ brands.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: title, template: '%s — Tarun Makhija' },
+  title: { default: title, template: '%s — TarunSpeaks' },
   description,
+  applicationName: 'TarunSpeaks',
   alternates: { canonical: '/' },
-  openGraph: {
-    title,
-    description: 'Digital marketing, personal branding and content creation — consultation, corporate training and keynotes.',
-    type: 'website',
-    url: siteUrl,
-    images: [{ url: '/images/stage-keynote-1600.webp' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title,
-    description: 'Digital marketing, personal branding and content creation — consultation, corporate training and keynotes.',
-    images: ['/images/stage-keynote-1600.webp'],
-  },
+  openGraph: { title, description, type: 'website', url: '/', siteName: 'TarunSpeaks', locale: 'en_IN' },
+  twitter: { card: 'summary_large_image', title, description },
   icons: { icon: '/favicon.svg' },
 }
 
-export const viewport = { themeColor: '#0B1F3A' }
+export const viewport: Viewport = { themeColor: '#080B10', colorScheme: 'dark' }
+
+// Marks the document before first paint so scroll reveals only hide content when JS is running.
+const jsFlag = "document.documentElement.classList.add('js')"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+    <html lang="en" className={`${newsreader.variable} ${archivo.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: jsFlag }} />
+      </head>
       <body>
+        <JsonLd data={organizationJsonLd} />
         <JsonLd data={personJsonLd} />
         <JsonLd data={websiteJsonLd} />
-        <ClientShell>{children}</ClientShell>
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand focus:px-5 focus:py-3 focus:font-semibold">
+          Skip to content
+        </a>
+        <Navbar />
+        <main id="main" tabIndex={-1} className="outline-none">{children}</main>
+        <Footer />
+        <Chatbot />
+        <RevealObserver />
+        <AnalyticsListener />
       </body>
     </html>
   )

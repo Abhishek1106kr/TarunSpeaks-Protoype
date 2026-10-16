@@ -4,10 +4,12 @@ import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { lockScroll } from '../../animation/smoothScroll'
-import { navLinks } from '../../data/site'
+import { navLinks } from '../../data/company'
 import { Button } from '../ui/Button'
+import { Logo } from './Logo'
 import { MobileMenu } from './MobileMenu'
+
+const isActive = (pathname: string, to: string) => pathname === to || pathname.startsWith(`${to}/`)
 
 export function Navbar() {
   const pathname = usePathname()
@@ -20,18 +22,18 @@ export function Navbar() {
   const toggleRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => setScrolled(window.scrollY > 16)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // While the mobile menu is open: lock page scroll, keep focus inside the header, close on Escape.
+  // While the mobile menu is open: lock page scroll, trap focus in the header, close on Escape.
   useEffect(() => {
     if (!open) return
     const header = headerRef.current!
     const focusables = () => [...header.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')].filter((element) => element.offsetParent !== null)
-    lockScroll(true)
+    document.documentElement.style.overflow = 'hidden'
     header.querySelector<HTMLElement>('#mobile-menu a')?.focus()
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -49,58 +51,56 @@ export function Navbar() {
     }
     document.addEventListener('keydown', onKeyDown)
     return () => {
-      lockScroll(false)
+      document.documentElement.style.overflow = ''
       document.removeEventListener('keydown', onKeyDown)
     }
   }, [open])
 
-  const overHero = pathname === '/' && !scrolled && !open
-  const solid = scrolled && !open
-
   return (
     <header
       ref={headerRef}
-      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,color,box-shadow] duration-500 ${open || overHero ? 'on-dark text-light' : 'text-ink'} ${solid ? 'bg-bg/85 shadow-[0_1px_0_var(--color-line)] backdrop-blur-xl' : ''}`}
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ${scrolled || open ? 'border-b border-line-soft bg-canvas/90 backdrop-blur-md' : 'border-b border-transparent'}`}
     >
-      <div className="container-x flex h-20 items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr]">
-        <nav aria-label="Main" className="hidden items-center gap-8 lg:flex">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.to
-            return (
-              <Link
-                key={link.to}
-                href={link.to}
-                aria-current={isActive ? 'page' : undefined}
-                className={`relative py-2 text-[0.95rem] after:absolute after:inset-x-0 after:bottom-1 after:h-px after:origin-left after:bg-current after:transition-transform after:duration-500 hover:after:scale-x-100 ${isActive ? 'after:scale-x-100' : 'after:scale-x-0'}`}
-              >
-                {link.label}
-              </Link>
-            )
-          })}
+      <div className="container-x flex h-[4.5rem] items-center justify-between gap-6">
+        <Logo />
+
+        <nav aria-label="Main" className="hidden nav:block">
+          <ul className="flex items-center gap-7">
+            {navLinks.map((link) => {
+              const active = isActive(pathname, link.to)
+              return (
+                <li key={link.to}>
+                  <Link
+                    href={link.to}
+                    aria-current={active ? 'page' : undefined}
+                    className={`relative inline-flex min-h-11 items-center text-[0.9rem] font-medium transition-colors hover:text-fg after:absolute after:inset-x-0 after:bottom-2 after:h-0.5 after:bg-brand-bright after:transition-transform after:duration-300 ${active ? 'text-fg after:scale-x-100' : 'text-fg-2 after:scale-x-0 hover:after:scale-x-100'} after:origin-left`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
         </nav>
 
-        <Link href="/" aria-label="Tarun Makhija — home" className="font-serif text-[1.65rem] leading-none font-semibold tracking-tight lg:text-[1.85rem]">
-          Tarun Makhija
-        </Link>
-
-        <div className="hidden justify-self-end lg:block">
-          <Button to="/contact" variant={overHero ? 'coral' : 'accent'}>Let’s Connect</Button>
+        <div className="flex items-center gap-2">
+          {/* Visibility lives on a wrapper: `hidden` on the Button itself loses to its own `inline-flex`. */}
+          <div className="hidden sm:block"><Button to="/contact" track="header">Talk to TarunSpeaks</Button></div>
+          <button
+            ref={toggleRef}
+            type="button"
+            className="-mr-2 grid size-11 place-items-center nav:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            onClick={() => setOpen(!open)}
+          >
+            <span aria-hidden="true" className="relative block h-3 w-6">
+              <span className={`absolute left-0 h-0.5 w-full bg-current transition-all duration-300 ${open ? 'top-[5px] rotate-45' : 'top-0'}`} />
+              <span className={`absolute left-0 h-0.5 w-full bg-current transition-all duration-300 ${open ? 'top-[5px] -rotate-45' : 'top-2.5'}`} />
+            </span>
+          </button>
         </div>
-
-        <button
-          ref={toggleRef}
-          type="button"
-          className="-mr-2 grid size-11 place-items-center lg:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          onClick={() => setOpen(!open)}
-        >
-          <span aria-hidden="true" className="relative block h-3 w-6">
-            <span className={`absolute left-0 h-px w-full bg-current transition-all duration-500 ${open ? 'top-1.5 rotate-45' : 'top-0'}`} />
-            <span className={`absolute left-0 h-px w-full bg-current transition-all duration-500 ${open ? 'top-1.5 -rotate-45' : 'top-3'}`} />
-          </span>
-        </button>
       </div>
 
       <AnimatePresence>{open && <MobileMenu onNavigate={() => setOpen(false)} />}</AnimatePresence>
