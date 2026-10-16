@@ -53,14 +53,11 @@ export function Footer() {
         <div className="flex flex-col items-start gap-6">
           <Logo />
           <p className="t-body max-w-xs">{company.about}</p>
-          <p className="t-signature text-[1.6rem] text-fg">
-            Train<span className="text-brand-bright">.</span> Consult<span className="text-brand-bright">.</span> Empower<span className="text-brand-bright">.</span>
-          </p>
         </div>
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-[1fr_1fr_1.35fr_0.9fr]">
           {columns.map((column) => (
             <nav key={column.title} aria-label={`Footer — ${column.title}`}>
-              <h2 className="t-label mb-3 font-sans text-fg-3">{column.title}</h2>
+              <h2 className="mb-3 font-sans text-[0.9rem] font-semibold tracking-normal text-fg">{column.title}</h2>
               <ul className="text-[0.93rem]">
                 {column.links.map((link) => <li key={link.label}><FooterAnchor link={link} /></li>)}
               </ul>

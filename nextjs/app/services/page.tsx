@@ -25,7 +25,7 @@ const services: { id: string; label: string; title: string; body: string; points
     href: '/corporate-training',
     cta: 'Explore Corporate Programs',
     image: 'motilal-room',
-    alt: 'A corporate training session in progress',
+    alt: 'A training session for entrepreneurs in the Motilal Oswal network',
   },
   {
     id: 'consultation',
@@ -36,7 +36,7 @@ const services: { id: string; label: string; title: string; body: string; points
     href: '/consulting',
     cta: 'Request a Consultation',
     image: 'nawany-team',
-    alt: 'Tarun Makhija with a client leadership team',
+    alt: 'Tarun Makhija with Nawany Group leaders',
   },
   {
     id: 'speaking',
@@ -69,27 +69,24 @@ export default function Page() {
       <PageIntro
         crumbs={[{ name: 'Home', path: '/' }, { name: 'Services', path: '/services' }]}
         eyebrow="Services"
-        title={<>Train<span className="text-brand-bright">.</span> Consult<span className="text-brand-bright">.</span> Empower<span className="text-brand-bright">.</span></>}
+        title="Train. Consult. Empower."
         lead={<p>Everything TarunSpeaks offers, in one place. Organisations usually start with training; many add advisory and implementation support as the work moves into the business.</p>}
       />
-      <div className="container-x py-12 lg:py-20">
+      <div className="container-x py-12 lg:py-16">
         <ol>
           {services.map((service, index) => (
-            <li key={service.id} id={service.id} className="scroll-mt-24 border-b border-line py-12 first:pt-4 lg:py-16">
-              <article aria-labelledby={`${service.id}-title`} className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-12">
-                <div>
-                  <p className="t-signature text-[clamp(2.4rem,4vw,3.4rem)] text-fg">{service.label}<span className="text-brand-bright">.</span></p>
-                  <p className="nums mt-3 text-[0.85rem] text-fg-3">{String(index + 1).padStart(2, '0')} / {String(services.length).padStart(2, '0')}</p>
-                </div>
-                <div>
-                  <h2 id={`${service.id}-title`} data-reveal className="t-h2 text-[clamp(1.6rem,2.6vw,2.2rem)]">{service.title}</h2>
-                  <p data-reveal className="t-body mt-4">{service.body}</p>
-                  <ul className="mt-6 space-y-2.5">
-                    {service.points.map((point) => <li key={point} className="flex gap-3"><span aria-hidden="true" className="mt-2 size-1.5 shrink-0 bg-brand-bright" />{point}</li>)}
+            <li key={service.id} id={service.id} className="scroll-mt-24 border-b border-line py-12 lg:py-16">
+              <article aria-labelledby={`${service.id}-title`} className="grid gap-8 lg:grid-cols-12 lg:gap-10">
+                <p className="font-serif text-[clamp(2rem,3.4vw,2.8rem)] leading-none text-brand-text italic lg:col-span-3">{service.label}</p>
+                <div className="lg:col-span-5">
+                  <h2 id={`${service.id}-title`} className="t-h2">{service.title}</h2>
+                  <p className="t-body mt-4">{service.body}</p>
+                  <ul className="mt-6 space-y-2">
+                    {service.points.map((point) => <li key={point} className="flex gap-3"><span aria-hidden="true" className="mt-[0.75em] h-px w-3 shrink-0 bg-brand-bright" />{point}</li>)}
                   </ul>
-                  <Link href={service.href} className="link-arrow mt-8">{service.cta}<ArrowRight aria-hidden="true" size={16} /></Link>
+                  <Link href={service.href} className="link-arrow mt-7">{service.cta}<ArrowRight aria-hidden="true" size={16} /></Link>
                 </div>
-                <div data-reveal="image" className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden lg:col-span-4">
                   <Photo name={service.image} alt={service.alt} loading={index === 0 ? 'eager' : 'lazy'} sizes="(min-width: 1024px) 28vw, 92vw" className="size-full object-cover" />
                 </div>
               </article>

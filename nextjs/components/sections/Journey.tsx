@@ -53,7 +53,7 @@ export function Journey({ headingLevel = 'h2' }: { headingLevel?: 'h2' | 'h3' })
                   aria-current={index === active ? 'step' : undefined}
                   className={`inline-flex min-h-11 items-center gap-2 px-3 text-[0.85rem] font-medium whitespace-nowrap transition-colors ${index === active ? 'text-fg' : 'text-fg-3 hover:text-fg-2'}`}
                 >
-                  <span aria-hidden="true" className={`size-1.5 transition-colors ${index <= active ? 'bg-brand-bright' : 'bg-line'}`} />
+                  <span aria-hidden="true" className={`size-1.5 rounded-full transition-colors ${index <= active ? 'bg-brand-bright' : 'bg-line'}`} />
                   {step.phase}
                 </a>
               </li>
@@ -81,7 +81,7 @@ export function Journey({ headingLevel = 'h2' }: { headingLevel?: 'h2' | 'h3' })
                     <AnimatePresence mode="wait" initial={false}>
                       <motion.p
                         key={current.marker}
-                        className="t-signature text-[clamp(3.5rem,6vw,5.5rem)] text-fg"
+                        className="font-serif text-[clamp(3.5rem,6vw,5.5rem)] leading-none tracking-[-0.03em] text-fg"
                         initial={reduceMotion ? false : { y: '100%' }}
                         animate={{ y: 0 }}
                         exit={reduceMotion ? { opacity: 0 } : { y: '-100%' }}
@@ -118,18 +118,15 @@ export function Journey({ headingLevel = 'h2' }: { headingLevel?: 'h2' | 'h3' })
                 >
                   <span
                     aria-hidden="true"
-                    className={`absolute top-1.5 -left-9 size-3 border-2 transition-colors duration-300 sm:-left-12 sm:size-[0.9rem] lg:top-auto ${index <= active ? 'border-brand-bright bg-brand-bright' : 'border-line bg-canvas'}`}
+                    className={`absolute top-1.5 -left-9 size-3 rounded-full border-2 transition-colors duration-300 sm:-left-12 sm:size-[0.9rem] lg:top-auto ${index <= active ? 'border-brand-bright bg-brand-bright' : 'border-line bg-canvas'}`}
                   />
                   <div className="mb-7 aspect-[16/10] overflow-hidden bg-surface lg:hidden" data-reveal="image">
                     <Photo name={step.image} alt={step.imageAlt} sizes="92vw" className="size-full object-cover" />
                   </div>
-                  <p className="flex flex-wrap items-center gap-3">
-                    <span className="chip">{step.phase}</span>
-                    <span className="t-label text-fg-3">{step.marker}</span>
-                  </p>
-                  <StepHeading data-reveal className="t-h2 mt-5 max-w-xl text-[clamp(1.7rem,2.8vw,2.5rem)]">{step.title}</StepHeading>
-                  <p data-reveal className="t-body mt-5 max-w-xl text-[1.04rem]">{step.body}</p>
-                  <p data-reveal className="mt-6 max-w-xl border-l-2 border-brand-bright pl-4 text-[0.98rem] leading-relaxed text-fg">{step.proof}</p>
+                  <p className="text-[0.95rem] font-semibold text-brand-text">{step.phase} <span className="font-normal text-fg-3">· {step.marker}</span></p>
+                  <StepHeading className="mt-4 max-w-xl font-serif text-[clamp(1.8rem,2.8vw,2.5rem)] leading-[1.08] font-normal tracking-[-0.02em]">{step.title}</StepHeading>
+                  <p className="t-body mt-5 max-w-xl">{step.body}</p>
+                  <p className="mt-6 max-w-xl border-l-2 border-brand-bright pl-4 text-[1rem] leading-relaxed text-fg">{step.proof}</p>
                 </li>
               ))}
             </ol>

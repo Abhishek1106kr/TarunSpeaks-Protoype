@@ -42,7 +42,7 @@ export function ClientEcosystem() {
 
   return (
     <div>
-      <div className="flex flex-col gap-5 border-y border-line py-4 lg:flex-row lg:items-center lg:justify-between">
+      <div className="border-y border-line py-4">
         <div role="group" aria-label="Filter clients by industry" data-allow-overflow className="-mx-[var(--gutter)] flex snap-x gap-2 overflow-x-auto px-[var(--gutter)] [scrollbar-width:none] lg:mx-0 lg:flex-wrap lg:px-0">
           {([{ id: 'all', label: 'All industries', count: clients.length }, ...sectors.map((sector) => ({ ...sector, count: clients.filter((client) => client.sector === sector.id).length }))] as { id: Filter; label: string; count: number }[]).map((option) => {
             const active = filter === option.id
@@ -60,24 +60,26 @@ export function ClientEcosystem() {
             )
           })}
         </div>
-        <button
-          type="button"
-          aria-pressed={showNames}
-          onClick={() => setShowNames((current) => !current)}
-          className="inline-flex min-h-11 shrink-0 items-center gap-2 self-start text-[0.9rem] text-fg-2 hover:text-fg lg:self-auto"
-        >
-          <span aria-hidden="true" className={`grid size-4 place-items-center rounded-[3px] border ${showNames ? 'border-brand-bright bg-brand-bright' : 'border-fg-3'}`}>
-            {showNames && <span className="size-1.5 bg-fg" />}
-          </span>
-          Show organisation names
-        </button>
       </div>
 
       <div className="mt-10 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
         <h3 className="font-serif text-[1.6rem] font-normal tracking-[-0.015em]">{activeLabel}</h3>
-        <p aria-live="polite" className="t-meta">
-          Showing {visible.length} of {clients.length} named organisations · <span className="inline-flex items-center gap-1.5"><span aria-hidden="true" className="size-1.5 rounded-full bg-brand-bright" />case study available</span>
-        </p>
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-1">
+          <p aria-live="polite" className="t-meta">
+            Showing {visible.length} of {clients.length} named organisations · <span className="inline-flex items-center gap-1.5"><span aria-hidden="true" className="size-1.5 rounded-full bg-brand-bright" />case study available</span>
+          </p>
+          <button
+            type="button"
+            aria-pressed={showNames}
+            onClick={() => setShowNames((current) => !current)}
+            className="inline-flex min-h-11 shrink-0 items-center gap-2 text-[0.9rem] text-fg-2 hover:text-fg"
+          >
+            <span aria-hidden="true" className={`grid size-4 place-items-center rounded-[3px] border ${showNames ? 'border-brand-bright bg-brand-bright' : 'border-fg-3'}`}>
+              {showNames && <span className="size-1.5 bg-fg" />}
+            </span>
+            Show organisation names
+          </button>
+        </div>
       </div>
 
       <AnimatePresence mode="wait" initial={false}>
@@ -99,12 +101,9 @@ export function ClientEcosystem() {
                     ? <Image src={client.logo.src} alt={client.name} width={size.width} height={size.height} sizes={`${size.width}px`} className="opacity-85 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" style={{ width: size.width, height: size.height }} />
                     : <span className="font-serif text-[1.15rem] text-fg">{client.name}<span className="sr-only"> (logo not available)</span></span>}
                 </span>
-                <span
-                  aria-hidden="true"
-                  className={`flex min-h-10 items-start justify-center gap-1.5 text-center text-[0.8rem] leading-snug transition-opacity duration-200 ${showNames ? 'text-fg-2 opacity-100' : 'text-fg-2 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100'}`}
-                >
+                <span aria-hidden="true" className="flex min-h-10 items-start justify-center gap-1.5 text-center text-[0.8rem] leading-snug text-fg-2">
                   {prominent && <span className="mt-[0.4em] size-1.5 shrink-0 rounded-full bg-brand-bright" />}
-                  {client.name}
+                  <span className={`transition-opacity duration-200 ${showNames ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100'}`}>{client.name}</span>
                 </span>
               </>
             )
