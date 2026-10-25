@@ -13,8 +13,8 @@ import { consultationProcess, consultingAreas, engagementModes } from '../../dat
 import { breadcrumbJsonLd, pageMetadata } from '../../lib/seo'
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Consulting & AI Implementation',
-  description: 'Advisory and implementation support from TarunSpeaks: branding and digital marketing, business growth, personal branding for CXOs, and AI tools, agent deployment and generative AI implementation.',
+  title: 'Consulting & AI Adoption Support',
+  description: 'Advisory and AI adoption support from TarunSpeaks: branding and digital marketing, business growth, personal branding for CXOs, and AI tools, agent rollout and generative AI planning.',
   path: '/consulting',
 })
 
@@ -28,7 +28,7 @@ export default function Page() {
         crumbs={[{ name: 'Home', path: '/' }, { name: 'Consulting', path: '/consulting' }]}
         eyebrow="For founders and business leaders"
         title="From learning to organisational execution."
-        lead={<p>Training builds the skill. Advisory sets the direction. Implementation support changes how the work gets done. We are clear about which one you are buying — and often combine them.</p>}
+        lead={<p>Training builds the skill. Advisory sets the direction. Adoption support helps the work change. We are clear about which one you are buying, and often combine them.</p>}
         actions={<><Button to="/contact?interest=consulting" size="lg" arrow track="consulting-intro">Request a Consultation</Button><Button to="#areas" variant="quiet">Consulting areas</Button></>}
         aside={
           <figure>
@@ -43,7 +43,7 @@ export default function Page() {
       <section aria-labelledby="modes-title" className="section-y">
         <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4">
-            <div className="lg:sticky lg:top-28"><SectionHeader id="modes-title" title="Three different jobs" lead="Each starts from a different question. Here is how we tell them apart — with an engagement that shows each in practice." /></div>
+            <div className="lg:sticky lg:top-28"><SectionHeader id="modes-title" title="Three different jobs" lead="Each starts from a different question. Here is how we tell them apart, with an engagement that shows each in practice." /></div>
           </div>
           <ol className="lg:col-span-8">
             {engagementModes.map((mode, index) => (
@@ -114,7 +114,7 @@ export default function Page() {
 
       <EnquiryCta
         title="Tell us where you are with AI."
-        body="Exploring, rolling out tools, or trying to make adoption stick? Share what success would look like and we’ll recommend whether training, advisory or implementation support fits."
+        body="Exploring, rolling out tools, or trying to make adoption stick? Share what success would look like and we’ll recommend whether training, advisory or adoption support fits."
         primary={{ label: 'Request a Consultation', to: '/contact?interest=consulting' }}
       />
     </>

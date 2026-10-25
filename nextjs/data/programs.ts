@@ -24,7 +24,7 @@ export const programs: Program[] = [
     slug: 'ai-tools-for-productivity-and-marketing',
     title: 'AI Tools for Productivity & Marketing',
     category: 'AI capability',
-    audience: 'Cross-functional teams — Sales, Marketing, HR and Finance',
+    audience: 'Cross-functional teams: Sales, Marketing, HR and Finance',
     problem: 'Teams have access to AI tools but are not yet using them to save time, spark ideas or automate routine work.',
     summary: 'Empowering teams with hands-on AI skills to save time, spark creativity, and automate tasks.',
     duration: '6–18 hours',

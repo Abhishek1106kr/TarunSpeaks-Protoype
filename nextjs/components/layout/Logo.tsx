@@ -6,7 +6,7 @@ import Link from 'next/link'
 // prints it on its black slides. Pass tone="brand" on light surfaces to show the original blue.
 export function Logo({ className = '', tone = 'light' }: { className?: string; tone?: 'light' | 'brand' }) {
   return (
-    <Link href="/" aria-label="TarunSpeaks — home" className={`group inline-flex min-h-11 items-center ${className}`}>
+    <Link href="/" aria-label="TarunSpeaks home" className={`group inline-flex min-h-11 items-center ${className}`}>
       <Image
         src="/images/brand/tarunspeaks-logo.webp"
         alt="TarunSpeaks"

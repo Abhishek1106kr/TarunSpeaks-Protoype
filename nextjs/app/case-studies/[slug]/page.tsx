@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps<'/case-studies/[slu
   const study = caseStudyBySlug(slug)
   if (!study) return {}
   return pageMetadata({
-    title: `${study.client} — Case Study`,
+    title: `${study.client}: Case Study`,
     description: `${study.objective} ${study.format.join(' · ')}.`,
     path: `/case-studies/${study.slug}`,
     image: study.images[0] ? photos[study.images[0].name].src : undefined,
@@ -173,7 +173,7 @@ export default async function Page({ params }: PageProps<'/case-studies/[slug]'>
             )}
             <div className="border-t-2 border-brand-bright pt-6">
               <p className="font-serif text-[1.5rem] leading-snug">Facing a similar challenge?</p>
-              <p className="t-body mt-2">Tell us about your teams and goals — we’ll share how we’d approach it for you.</p>
+              <p className="t-body mt-2">Tell us about your teams and goals. We’ll share how we’d approach it for you.</p>
               <div className="mt-5"><Button to={`/contact?case=${study.slug}&interest=${study.track === 'AI training & consultation' ? 'ai' : 'training'}`} arrow track={`case-study:${study.slug}`}>Discuss a similar challenge</Button></div>
             </div>
           </aside>

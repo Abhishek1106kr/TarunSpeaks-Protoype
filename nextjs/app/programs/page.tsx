@@ -13,7 +13,7 @@ import { absoluteUrl, breadcrumbJsonLd, pageMetadata } from '../../lib/seo'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Programs',
-  description: 'Eight flagship corporate programs in AI tools, AI for sales, leadership, personal branding, marketing, client relationships and communication — modular, 3 to 30 hours.',
+  description: 'Eight flagship corporate programs in AI tools, AI for sales, leadership, personal branding, marketing, client relationships and communication. Modular, 3 to 30 hours.',
   path: '/programs',
 })
 
@@ -45,7 +45,7 @@ export default function Page() {
         crumbs={[{ name: 'Home', path: '/' }, { name: 'Programs', path: '/programs' }]}
         eyebrow="Flagship programs"
         title="Eight programs, each built around a problem your teams actually have."
-        lead={<p>{deliveryTerms.note} Duration ranges from {deliveryTerms.duration}, {deliveryTerms.basis} — a workshop, a masterclass or a full learning journey.</p>}
+        lead={<p>{deliveryTerms.note} Duration ranges from {deliveryTerms.duration}, {deliveryTerms.basis}: a workshop, a masterclass or a full learning journey.</p>}
         actions={<><Button to="/contact?interest=training" size="lg" arrow track="programs-intro">Discuss a program</Button><Button to="#topics" variant="quiet">Every topic we train on</Button></>}
       />
 
@@ -138,7 +138,7 @@ export default function Page() {
 
       <EnquiryCta
         title="Not sure which program fits?"
-        body="Tell us the team, the roles and the outcome you need. We’ll recommend a program — or design custom modules — and a format that fits your calendar."
+        body="Tell us the team, the roles and the outcome you need. We’ll recommend a program, or design custom modules, and a format that fits your calendar."
         primary={{ label: 'Discuss Your Requirements', to: '/contact?interest=training' }}
       />
     </>

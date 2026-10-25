@@ -13,19 +13,19 @@ export const deliverySteps = [
   {
     title: 'Design',
     body: 'Modules are matched to real work: department-specific AI use cases, your sales motion, your brand story.',
-    proof: 'Hands-on exercises for Sales, Marketing, Finance, HR and Operations — Nawany Group.',
+    proof: 'Hands-on exercises for Sales, Marketing, Finance, HR and Operations. Nawany Group.',
     href: '/case-studies/nawany-group',
   },
   {
     title: 'Deliver',
-    body: 'Practical, demo-led sessions with live reviews, role-play and real scenarios — in one room or across many cities.',
-    proof: '200+ LinkedIn profiles optimised in-session — Motilal Oswal.',
+    body: 'Practical, demo-led sessions with live reviews, role-play and real scenarios, in one room or across many cities.',
+    proof: '200+ LinkedIn profiles optimised in-session. Motilal Oswal.',
     href: '/case-studies/motilal-oswal',
   },
   {
     title: 'Sustain',
     body: 'The work continues after the session: adoption plans, structured challenges and review cycles.',
-    proof: 'A personalised AI adoption plan for each participant — Nawany Group.',
+    proof: 'A personalised AI adoption plan for each participant. Nawany Group.',
     href: '/case-studies/nawany-group',
   },
 ]
@@ -38,7 +38,7 @@ export function Delivery() {
           id="delivery-title"
           eyebrow="How the work runs"
           title="From the session to the way people work"
-          lead={<>Training is where most engagements start. What makes it stick is the design before and the follow-through after. Formats: {deliveryTerms.formats.join(', ').toLowerCase()} — {deliveryTerms.duration}.</>}
+          lead={<>Training is where most engagements start. What makes it stick is the design before and the follow-through after. Formats: {deliveryTerms.formats.join(', ').toLowerCase()}, {deliveryTerms.duration}.</>}
         />
         <ol className="relative mt-16 grid gap-12 md:grid-cols-2 xl:grid-cols-4 xl:gap-10">
           {/* The connecting line (desktop): one rule the four steps hang from. */}

@@ -15,7 +15,7 @@ export const company = {
   // profile p.4 and tarunmakhija.in journey page
   vision: 'Help 1 billion people make money by doing what they love',
   // profile p.66
-  closing: 'Let’s build a digital-first, confident, high-performing workforce — together.',
+  closing: 'Let’s build a digital-first, confident, high-performing workforce, together.',
   phone: { label: '+91 97702 23646', href: 'tel:+919770223646' },
   email: { label: 'teamtarunspeaks@gmail.com', href: 'mailto:teamtarunspeaks@gmail.com' },
 }
@@ -24,19 +24,21 @@ export const company = {
 export const founderCredentials = [
   'Chief Educator & Founder, TarunSpeaks',
   'Co-founded Big Mouth Digital & Media',
-  'BW Marketing 30 Under 30 — 2023',
+  'BW Marketing 30 Under 30, 2023',
 ]
 
 export type Stat = { value: number; suffix?: string; label: string; source: string }
 
 // profile pp.2, 6–8. These supersede the older 25,000+ / 1,600+ / 297+ figures on tarunmakhija.in.
 export const proofStats: Stat[] = [
-  { value: 29000, suffix: '+', label: 'Individuals trained', source: 'profile p.6' },
-  { value: 2300, suffix: '+', label: 'Training sessions conducted', source: 'profile p.7' },
+  { value: 30000, suffix: '+', label: 'Individuals trained', source: 'confirmed by project owner, Oct 2026 (supersedes profile p.6)' },
+  { value: 2700, suffix: '+', label: 'Training sessions conducted', source: 'confirmed by project owner, Oct 2026 (supersedes profile p.7)' },
   { value: 300, suffix: '+', label: 'Brands trained & consulted', source: 'profile p.8' },
   { value: 15, suffix: '+', label: 'Industries', source: 'profile p.8' },
   { value: 10, suffix: '+', label: 'Years of experience', source: 'profile p.2' },
 ]
+
+export const proofSummary = `${proofStats[0].value.toLocaleString('en-IN')}${proofStats[0].suffix} individuals trained across ${proofStats[1].value.toLocaleString('en-IN')}${proofStats[1].suffix} sessions and ${proofStats[2].value.toLocaleString('en-IN')}${proofStats[2].suffix} brands.`
 
 // tarunmakhija.in journey page: "Conducted 100+ keynote sessions on digital marketing, entrepreneurship, and business strategy."
 export const keynoteStat: Stat = { value: 100, suffix: '+', label: 'Keynote sessions', source: 'tarunmakhija.in' }

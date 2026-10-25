@@ -17,7 +17,7 @@ export function Objectives() {
     <section aria-labelledby="objectives-title" className="section-y border-t border-line-soft">
       <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-4">
-          <SectionHeader id="objectives-title" eyebrow="Start with your objective" title="What do you need to achieve?" lead="Pick the closest match. You’ll see the relevant programs and evidence — or go straight to a conversation." />
+          <SectionHeader id="objectives-title" eyebrow="Start with your objective" title="What do you need to achieve?" lead="Pick the closest match. You’ll see the relevant programs and evidence, or go straight to a conversation." />
         </div>
         <ul className="lg:col-span-8">
           {objectives.map((objective) => (

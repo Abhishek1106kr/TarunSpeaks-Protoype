@@ -29,30 +29,35 @@ export default function Page() {
 
       <section aria-labelledby="contact-title" className="pt-[4.5rem]">
         <div className="container-x grid gap-14 pt-12 pb-20 sm:pt-16 lg:grid-cols-12 lg:gap-10 lg:pb-28">
-          <div className="lg:col-span-4">
-            <Eyebrow className="enter mb-6">Contact</Eyebrow>
-            <h1 id="contact-title" className="t-h1 enter" style={{ '--enter-delay': '0.06s' } as React.CSSProperties}>Discuss your requirements.</h1>
-            <p className="t-lead enter mt-6" style={{ '--enter-delay': '0.14s' } as React.CSSProperties}>Request a consultation call or send an enquiry. Tell us about your team, the capability you want to build and any timelines.</p>
+          <div className="contents lg:block lg:col-span-4">
+            <div className="order-1 lg:order-none">
+              <Eyebrow className="enter mb-6">Contact</Eyebrow>
+              <h1 id="contact-title" className="t-h1 enter" style={{ '--enter-delay': '0.06s' } as React.CSSProperties}>Discuss your requirements.</h1>
+              <p className="t-lead enter mt-6" style={{ '--enter-delay': '0.14s' } as React.CSSProperties}>Request a consultation call or send an enquiry. Tell us about your team, the capability you want to build and any timelines.</p>
+            </div>
 
-            <h2 className="mt-12 font-sans text-[0.95rem] font-semibold tracking-normal">Prefer to reach us directly?</h2>
-            <dl className="mt-3 border-t border-line">
-              <div className="border-b border-line py-4">
-                <dt className="text-[0.9rem] text-fg-3">Email</dt>
-                <dd><a href={company.email.href} className="text-[1.08rem] break-all underline decoration-line underline-offset-4 hover:decoration-brand-bright">{company.email.label}</a></dd>
-              </div>
-              <div className="border-b border-line py-4">
-                <dt className="text-[0.9rem] text-fg-3">Phone</dt>
-                <dd><a href={company.phone.href} className="text-[1.08rem] underline decoration-line underline-offset-4 hover:decoration-brand-bright">{company.phone.label}</a></dd>
-              </div>
-            </dl>
-            <ul className="mt-6 flex flex-wrap gap-x-5 text-[0.95rem] text-fg-2">
-              {socials.map((social) => (
-                <li key={social.label}><a href={social.href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center hover:text-fg">{social.label}<span className="sr-only"> (opens in a new tab)</span></a></li>
-              ))}
-            </ul>
+            <div className="order-3 mt-12 lg:order-none">
+              <h2 className="font-sans text-[0.95rem] font-semibold tracking-normal">Prefer to reach us directly?</h2>
+              <dl className="mt-3 border-t border-line">
+                <div className="border-b border-line py-4">
+                  <dt className="text-[0.9rem] text-fg-3">Email</dt>
+                  <dd><a href={company.email.href} className="text-[1.08rem] break-all underline decoration-line underline-offset-4 hover:decoration-brand-bright">{company.email.label}</a></dd>
+                </div>
+                <div className="border-b border-line py-4">
+                  <dt className="text-[0.9rem] text-fg-3">Phone</dt>
+                  <dd><a href={company.phone.href} className="text-[1.08rem] underline decoration-line underline-offset-4 hover:decoration-brand-bright">{company.phone.label}</a></dd>
+                </div>
+              </dl>
+              <ul className="mt-6 flex flex-wrap gap-x-5 text-[0.95rem] text-fg-2">
+                {socials.map((social) => (
+                  <li key={social.label}><a href={social.href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center hover:text-fg">{social.label}<span className="sr-only"> (opens in a new tab)</span></a></li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          <div className="enter border-t-2 border-brand-bright pt-8 lg:col-span-7 lg:col-start-6" style={{ '--enter-delay': '0.18s' } as React.CSSProperties}>
+          <div className="enter order-2 border-t-2 border-brand-bright pt-8 lg:order-none lg:col-span-7 lg:col-start-6" style={{ '--enter-delay': '0.18s' } as React.CSSProperties}>
+            <p className="t-meta mb-3">Requesting a consultation books a callback; it does not confirm an appointment.</p>
             <p className="t-meta mb-8">Fields are required unless marked optional.</p>
             <Suspense fallback={<div className="min-h-[40rem]" />}>
               <EnquiryForm />

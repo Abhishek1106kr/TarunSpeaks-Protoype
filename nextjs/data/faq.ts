@@ -10,7 +10,7 @@ export const faqs = [
   },
   {
     question: 'How long are your programs?',
-    answer: 'All training programs are modular and customisable. Duration ranges from 3 to 30 hours based on depth, team size and format — a workshop, a masterclass or a full learning journey. Our documented engagements range from a 2-day intensive to 3-month programs.',
+    answer: 'All training programs are modular and customisable. Duration ranges from 3 to 30 hours based on depth, team size and format: a workshop, a masterclass or a full learning journey. Our documented engagements range from a 2-day intensive to 3-month programs.',
   },
   {
     question: 'Can a program be designed for our roles and industry?',
@@ -18,7 +18,7 @@ export const faqs = [
   },
   {
     question: 'Which AI tools do your AI programs cover?',
-    answer: 'Our AI programs cover tools including ChatGPT, Copilot and Gemini; Jasper, Canva AI and Notion AI for content; Gamma for presentations; and Zapier, Formula Bot and Reclaim.ai for automation — applied to department-specific use cases in Sales, Marketing, HR and Finance.',
+    answer: 'Our AI programs cover tools including ChatGPT, Copilot and Gemini; Jasper, Canva AI and Notion AI for content; Gamma for presentations; and Zapier, Formula Bot and Reclaim.ai for automation, applied to department-specific use cases in Sales, Marketing, HR and Finance.',
   },
   {
     question: 'What happens after the training?',

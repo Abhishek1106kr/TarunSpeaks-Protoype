@@ -6,6 +6,7 @@ import { Navbar } from '../components/layout/Navbar'
 import { AnalyticsListener } from '../components/motion/AnalyticsListener'
 import { RevealObserver } from '../components/motion/RevealObserver'
 import { JsonLd } from '../components/seo/JsonLd'
+import { proofStats } from '../data/company'
 import { organizationJsonLd, personJsonLd, siteUrl, websiteJsonLd } from '../lib/seo'
 import './globals.css'
 
@@ -29,12 +30,12 @@ const archivo = Archivo({
   display: 'swap',
 })
 
-const title = 'TarunSpeaks — Corporate Training, Consulting & AI Capability Building'
-const description = 'TarunSpeaks is a corporate training and consulting company. Practical programs in AI, sales, marketing, personal branding and leadership — 29,000+ individuals trained across 300+ brands.'
+const title = 'TarunSpeaks: Corporate Training, Consulting & AI Capability Building'
+const description = `TarunSpeaks is a corporate training and consulting company. Practical programs in AI, sales, marketing, personal branding and leadership, with ${proofStats[0].value.toLocaleString('en-IN')}${proofStats[0].suffix} individuals trained across ${proofStats[2].value.toLocaleString('en-IN')}${proofStats[2].suffix} brands.`
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: title, template: '%s — TarunSpeaks' },
+  title: { default: title, template: '%s | TarunSpeaks' },
   description,
   applicationName: 'TarunSpeaks',
   alternates: { canonical: '/' },

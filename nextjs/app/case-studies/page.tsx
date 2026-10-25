@@ -11,13 +11,13 @@ import { breadcrumbJsonLd, pageMetadata } from '../../lib/seo'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Case Studies',
-  description: 'Engagements with Nawany Group, Godrej Properties, NewTech Insurance Brokers, Sansaar by D’Decor, Motilal Oswal, HDFC Bank, Bentley Systems and more — what was delivered and what was reported.',
+  description: 'Engagements with Nawany Group, Godrej Properties, NewTech Insurance Brokers, Sansaar by D’Decor, Motilal Oswal, HDFC Bank, Bentley Systems and more. What was delivered and what was reported.',
   path: '/case-studies',
 })
 
 const tracks: { track: CaseStudyTrack; title: string; lead: string; feature: string }[] = [
   { track: 'AI training & consultation', title: 'AI training & consultation', lead: 'Multi-month AI programs, AI-powered sales and presentation training, and hands-on AI for creative teams.', feature: 'nawany-group' },
-  { track: 'Capability building', title: 'Capability building across brands', lead: 'Sales, personal branding, digital transformation and career readiness — from single cohorts to 42-city rollouts.', feature: 'sansaar-by-ddecor' },
+  { track: 'Capability building', title: 'Capability building across brands', lead: 'Sales, personal branding, digital transformation and career readiness, from single cohorts to 42-city rollouts.', feature: 'sansaar-by-ddecor' },
 ]
 
 export default function Page() {

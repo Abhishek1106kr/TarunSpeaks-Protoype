@@ -9,7 +9,7 @@ const milestones = [
   { when: '2015', what: 'Joins Tata Consultancy Services after roles at L&T Infotech, Tech Mahindra and Zensar' },
   { when: '2016', what: 'Co-founds Big Mouth Digital & Media, a Mumbai branding and digital marketing agency' },
   { when: '2023', what: 'BW Marketing 30 Under 30' },
-  { when: 'Today', what: 'Chief Educator & Founder, TarunSpeaks — 100+ keynote sessions delivered' },
+  { when: 'Today', what: 'Chief Educator & Founder, TarunSpeaks, 100+ keynote sessions delivered' },
 ]
 
 export function Founder() {
@@ -24,10 +24,10 @@ export function Founder() {
         </figure>
         <div className="flex flex-col justify-center lg:col-span-6 lg:col-start-7">
           <Eyebrow className="mb-6">The practitioner behind the work</Eyebrow>
-          <h2 id="founder-title" className="t-h2">An engineer who built a marketing agency — then made teaching it his work.</h2>
+          <h2 id="founder-title" className="t-h2">An engineer who built a marketing agency, then made teaching it his work.</h2>
           <div className="t-body mt-6 max-w-xl space-y-4">
             <p>Tarun Makhija began in IT engineering. In 2016 he co-founded Big Mouth Digital &amp; Media, running digital marketing for 270+ brands across 15+ industries and more than 750 campaigns.</p>
-            <p>Along the way he found his calling in mentoring and educating people on digital growth. TarunSpeaks programs draw on that practitioner experience — and he still delivers them himself.</p>
+            <p>Along the way he found his calling in mentoring and educating people on digital growth. TarunSpeaks programs draw on that practitioner experience, and he still delivers them himself.</p>
           </div>
           <ol className="mt-9 border-t border-line">
             {milestones.map((milestone) => (

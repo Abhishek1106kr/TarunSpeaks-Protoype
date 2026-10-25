@@ -7,7 +7,7 @@ import { SectionHeader } from '../ui/SectionHeader'
 const offers = [
   {
     title: 'Corporate training programs',
-    body: 'Practical programs in AI tools, AI for sales, leadership, personal branding, marketing, client relationships and communication — built around your roles and real scenarios.',
+    body: 'Practical programs in AI tools, AI for sales, leadership, personal branding, marketing, client relationships and communication, built around your roles and real scenarios.',
     facts: [
       ['For', 'CHROs and L&D leaders building a capability across a team or function'],
       ['Format', 'Workshop, masterclass or full learning journey · 3–30 hours'],
@@ -17,8 +17,8 @@ const offers = [
     cta: 'Explore Corporate Programs',
   },
   {
-    title: 'Advisory & AI implementation',
-    body: 'Consulting on branding, digital marketing, campaigns and business growth — and hands-on support deploying AI tools and agents, and implementing generative and agentic AI.',
+    title: 'Advisory & AI adoption support',
+    body: 'Consulting on branding, digital marketing, campaigns and business growth, plus support rolling out AI tools and agents and planning generative and agentic AI adoption.',
     facts: [
       ['For', 'Founders and leadership teams setting direction or rolling out AI'],
       ['Format', 'Scoped consulting engagement, often alongside training'],
@@ -29,7 +29,7 @@ const offers = [
   },
   {
     title: 'Keynotes & leadership sessions',
-    body: 'Keynotes and masterclasses for offsites, conferences and institutions — on personal branding, digital growth, entrepreneurship, storytelling and the future of work.',
+    body: 'Keynotes and masterclasses for offsites, conferences and institutions, on personal branding, digital growth, entrepreneurship, storytelling and the future of work.',
     facts: [
       ['For', 'Event organisers and leaders briefing a large audience'],
       ['Format', 'Keynote, masterclass or hands-on workshop'],

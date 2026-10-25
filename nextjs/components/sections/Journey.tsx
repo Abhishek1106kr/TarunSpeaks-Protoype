@@ -40,7 +40,7 @@ export function Journey({ headingLevel = 'h2' }: { headingLevel?: 'h2' | 'h3' })
     <section aria-labelledby="journey-title" className="section-y relative overflow-clip">
       <div className="container-x">
         {Heading === 'h2'
-          ? <SectionHeader id="journey-title" eyebrow="The journey behind the company" title={<>From IT engineer to building <span className="text-brand-text">capability</span> at scale</>} lead="TarunSpeaks grew out of a practitioner’s path. Each chapter added something buyers rely on today: systems thinking, marketing results, teaching craft, delivery at scale — and now AI." />
+          ? <SectionHeader id="journey-title" eyebrow="The journey behind the company" title={<>From IT engineer to building <span className="text-brand-text">capability</span> at scale</>} lead="TarunSpeaks grew out of a practitioner’s path. Each chapter added something buyers rely on today: systems thinking, marketing results, teaching craft, delivery at scale, and now AI." />
           : <Heading id="journey-title" className="t-h2">The journey</Heading>}
 
         {/* Phase index: anchors for keyboard and touch users, and a live indicator of where you are. */}

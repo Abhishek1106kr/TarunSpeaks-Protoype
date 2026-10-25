@@ -18,6 +18,10 @@ playwright-report
 blob-report
 playwright/.cache
 
+# QA screenshots and internal review notes (not for the public repo)
+qa-output/
+feedback/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

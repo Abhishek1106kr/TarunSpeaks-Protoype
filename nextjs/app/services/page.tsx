@@ -10,7 +10,7 @@ import { breadcrumbJsonLd, pageMetadata } from '../../lib/seo'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Services',
-  description: 'Everything TarunSpeaks offers: corporate training programs, consulting and AI implementation, keynotes and speaking, and one-on-one career consultation.',
+  description: 'Everything TarunSpeaks offers: corporate training programs, consulting and AI adoption support, keynotes and speaking, and one-on-one career consultation.',
   path: '/services',
 })
 
@@ -30,9 +30,9 @@ const services: { id: string; label: string; title: string; body: string; points
   {
     id: 'consultation',
     label: 'Consult',
-    title: 'Consulting & AI implementation',
-    body: 'Advisory on branding, digital marketing, campaigns, business growth and personal branding for CXOs — and hands-on support with AI tools, agents and generative AI.',
-    points: ['Branding & digital marketing', 'AI tools / agent deployment', 'Gen AI & agentic AI implementation'],
+    title: 'Consulting & AI adoption support',
+    body: 'Advisory on branding, digital marketing, campaigns, business growth and personal branding for CXOs, plus support rolling out AI tools, agents and generative AI workflows.',
+    points: ['Branding & digital marketing', 'AI tools / agent rollout', 'Gen AI & agentic AI planning'],
     href: '/consulting',
     cta: 'Request a Consultation',
     image: 'nawany-team',
@@ -42,7 +42,7 @@ const services: { id: string; label: string; title: string; body: string; points
     id: 'speaking',
     label: 'Empower',
     title: 'Keynotes & speaking',
-    body: 'Keynotes, masterclasses and workshops for corporate and institutional audiences — 100+ keynote sessions delivered.',
+    body: 'Keynotes, masterclasses and workshops for corporate and institutional audiences, with 100+ keynote sessions delivered.',
     points: ['Personal branding & LinkedIn growth', 'The future of work: AI & digital skills', 'Entrepreneurship & business growth'],
     href: '/speaking',
     cta: 'Explore Keynotes',
@@ -53,7 +53,7 @@ const services: { id: string; label: string; title: string; body: string; points
     id: 'career',
     label: 'For individuals',
     title: 'Career consultation',
-    body: 'Personal, 1 on 1 consultations for people navigating their professional path — and one-on-one mentorship for aspiring marketers and entrepreneurs through Topmate.',
+    body: 'Personal, 1 on 1 consultations for people navigating their professional path, plus one-on-one mentorship for aspiring marketers and entrepreneurs through Topmate.',
     points: ['1 on 1 consultation', 'Career guidance', 'Mentorship on Topmate'],
     href: '/contact?interest=career',
     cta: 'Book a 1 on 1 consultation',
@@ -70,7 +70,7 @@ export default function Page() {
         crumbs={[{ name: 'Home', path: '/' }, { name: 'Services', path: '/services' }]}
         eyebrow="Services"
         title="Train. Consult. Empower."
-        lead={<p>Everything TarunSpeaks offers, in one place. Organisations usually start with training; many add advisory and implementation support as the work moves into the business.</p>}
+        lead={<p>Everything TarunSpeaks offers, in one place. Organisations usually start with training; many add advisory and adoption support as the work moves into the business.</p>}
       />
       <div className="container-x py-12 lg:py-16">
         <ol>

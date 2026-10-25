@@ -11,7 +11,7 @@ type EnquiryCtaProps = {
 // full-bleed colour on the page — with the action and the direct contact details side by side.
 export function EnquiryCta({
   title = 'Tell us what your teams need to do differently.',
-  body = 'Share the capability you want to build, who it is for and your timelines. We’ll come back with a recommended format — a workshop, a masterclass or a full learning journey.',
+  body = 'Share the capability you want to build, who it is for and your timelines. We’ll come back with a recommended format: a workshop, a masterclass or a full learning journey.',
   primary = { label: 'Talk to TarunSpeaks', to: '/contact' },
 }: EnquiryCtaProps) {
   return (

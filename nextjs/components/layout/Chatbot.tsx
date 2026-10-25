@@ -6,16 +6,16 @@ import { MessageCircle, Send, X } from 'lucide-react'
 
 type Message = { from: 'bot' | 'user'; text: string }
 
-const greeting: Message = { from: 'bot', text: 'Hi — I can point you to the right part of TarunSpeaks: AI training, corporate programs, consulting, keynotes or case studies. What are you looking for?' }
+const greeting: Message = { from: 'bot', text: 'Hi. I can point you to the right part of TarunSpeaks: AI training, corporate programs, consulting, keynotes or case studies. What are you looking for?' }
 
 // Keyword answers. Every fact comes from data/ (company profile and tarunmakhija.in) — keep them in sync.
 const answer = (question: string) => {
   const text = question.toLowerCase()
-  if (/\b(ai|chatgpt|copilot|gen ?ai|agent)/.test(text)) return 'Our AI programs range from AI Tools for Productivity & Marketing (6–18 hours) to AI training for sales teams (3–15 hours) and multi-month engagements like the 3-month AI training for Nawany Group. See Consulting for AI tools and agent deployment.'
-  if (text.includes('case') || text.includes('result') || text.includes('client')) return 'Case Studies covers engagements with Nawany Group, Godrej Properties, NewTech Insurance Brokers, Sansaar by D’Decor, Motilal Oswal, HDFC Bank and more — each with what was delivered and what was reported.'
-  if (text.includes('consult')) return 'We consult on branding & digital marketing, business growth, campaign-led advertising, personal branding for CXOs and founders, and AI tools, agents and implementation. The Consulting page explains each area.'
+  if (/\b(ai|chatgpt|copilot|gen ?ai|agent)/.test(text)) return 'Our AI programs range from AI Tools for Productivity & Marketing (6–18 hours) to AI training for sales teams (3–15 hours) and multi-month engagements like the 3-month AI training for Nawany Group. See Consulting for AI tools and adoption support.'
+  if (text.includes('case') || text.includes('result') || text.includes('client')) return 'Case Studies covers engagements with Nawany Group, Godrej Properties, NewTech Insurance Brokers, Sansaar by D’Decor, Motilal Oswal, HDFC Bank and more. Each includes what was delivered and what was reported.'
+  if (text.includes('consult')) return 'We consult on branding & digital marketing, business growth, campaign-led advertising, personal branding for CXOs and founders, and AI tools, agents and adoption support. The Consulting page explains each area.'
   if (text.includes('speak') || text.includes('event') || text.includes('keynote')) return 'Tarun has delivered 100+ keynote sessions on digital marketing, entrepreneurship and business strategy. The Speaking page lists keynote topics and how to book.'
-  if (text.includes('train') || text.includes('team') || text.includes('program') || text.includes('workshop')) return 'All programs are modular and customisable, from 3 to 30 hours — as a workshop, masterclass or full learning journey. Browse the eight flagship programs on the Programs page.'
+  if (text.includes('train') || text.includes('team') || text.includes('program') || text.includes('workshop')) return 'All programs are modular and customisable, from 3 to 30 hours, as a workshop, masterclass or full learning journey. Browse the eight flagship programs on the Programs page.'
   if (text.includes('book') || text.includes('contact') || text.includes('price') || text.includes('cost') || text.includes('call')) return 'Pricing depends on scope, so the best next step is a short conversation: use the Contact page, email teamtarunspeaks@gmail.com or call +91 97702 23646.'
   return 'I can help with AI training, corporate programs, consulting, keynotes and case studies. Which would you like to explore?'
 }

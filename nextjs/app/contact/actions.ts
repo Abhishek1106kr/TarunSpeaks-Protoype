@@ -28,17 +28,17 @@ function validate(values: EnquiryFields) {
 async function deliver(values: EnquiryFields): Promise<boolean> {
   const interest = labelOf(interestOptions, values.interest)
   const request = labelOf(requestOptions, values.request)
-  const subject = `${values.request === 'consultation' ? 'Consultation request' : 'New enquiry'}: ${interest} — ${values.organisation}`
+  const subject = `${values.request === 'consultation' ? 'Consultation request' : 'New enquiry'}: ${interest}, ${values.organisation}`
   const text = [
     `Request: ${request}`,
     `Name: ${values.name}`,
     `Email: ${values.email}`,
     `Organisation: ${values.organisation}`,
-    `Role: ${values.role || '—'}`,
+    `Role: ${values.role || 'Not provided'}`,
     `Interest: ${interest}`,
-    `Phone: ${values.phone || '—'}`,
-    `Team size: ${labelOf(teamSizeOptions, values.teamSize) || '—'}`,
-    `Timeline: ${labelOf(timelineOptions, values.timeline) || '—'}`,
+    `Phone: ${values.phone || 'Not provided'}`,
+    `Team size: ${labelOf(teamSizeOptions, values.teamSize) || 'Not provided'}`,
+    `Timeline: ${labelOf(timelineOptions, values.timeline) || 'Not provided'}`,
     '',
     values.message,
   ].join('\n')

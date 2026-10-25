@@ -65,7 +65,7 @@ export const caseStudies: CaseStudy[] = [
     track: 'AI training & consultation',
     headline: 'AI-powered presentation excellence for Godrej Properties',
     objective: 'Transforming information-heavy decks into action-oriented narratives using AI design and storytelling workflows.',
-    format: ['2-day intensive training', '50+ participants', 'Junior & mid-senior level professionals — design teams'],
+    format: ['2-day intensive training', '50+ participants', 'Junior & mid-senior level professionals, design teams'],
     audience: 'Junior and mid-senior professionals in design teams',
     delivered: [
       'Strategic storytelling using the Context → Insight → Recommendation (CIR) framework',
@@ -106,7 +106,7 @@ export const caseStudies: CaseStudy[] = [
       'Structured content and outreach frameworks',
       'Hands-on reviews and iterative improvement cycles',
     ],
-    figures: [{ value: '3', label: 'Month engagement' }],
+    figures: [{ value: '3 months', label: 'Engagement length' }],
     reported: [
       'Established a sustained, 3-month capability-building engagement',
       'Stronger LinkedIn presence and thought leadership for senior sales',
@@ -154,7 +154,7 @@ export const caseStudies: CaseStudy[] = [
     track: 'Capability building',
     headline: 'Fuelling retail impact for Sansaar by D’Decor across 42 cities',
     objective: 'Equipping 4,300+ sales leaders with storytelling, sustainability, and selling with purpose.',
-    format: ['42 cities in India', '100 top-performing stores', '4,300+ trained — retail sales teams, managers & founders'],
+    format: ['42 cities in India', '100 top-performing stores', '4,300+ trained, retail sales teams, managers & founders'],
     audience: 'Retail sales teams, store managers and founders',
     delivered: [
       'Storytelling for Sales: how to sell luxury with emotion',
@@ -199,7 +199,7 @@ export const caseStudies: CaseStudy[] = [
       '3,000+ entrepreneurs & professionals trained',
       '500+ first-time LinkedIn posts',
       '200+ profiles optimised in-session',
-      'Standing ovation moments — Ahmedabad',
+      'Standing ovation moments, Ahmedabad',
       'Measurable boost in digital visibility & confidence',
     ],
     programs: ['personal-branding-and-linkedin', 'digital-client-relationships'],
@@ -214,7 +214,7 @@ export const caseStudies: CaseStudy[] = [
     client: 'HDFC Bank',
     industry: 'Banking',
     track: 'Capability building',
-    headline: 'Driving digital transformation at HDFC Bank',
+    headline: "Digital transformation training for HDFC Bank's retail business network",
     objective: 'Empowering teams to build their first digital presence and master WhatsApp marketing.',
     format: ['7-city training series', '1,500+ local & retail business owners', 'Focused on digital transformation'],
     audience: 'Local and retail business owners',
@@ -252,7 +252,7 @@ export const caseStudies: CaseStudy[] = [
       'Profile and content audits with actionable improvements',
       'Practical frameworks for consistency across platforms',
     ],
-    figures: [{ value: 'Multi', label: 'Cohort, recurring' }],
+    figures: [{ value: 'Recurring cohorts', label: 'Delivery format' }],
     reported: [
       'Executed multiple times as a repeatable personal branding program',
       'Participants gained clear personal brand direction and confidence',
@@ -272,7 +272,7 @@ export const caseStudies: CaseStudy[] = [
     track: 'Capability building',
     headline: 'Career-ready skills for future engineers',
     objective: 'A 4-day intensive engagement for M.Tech students to bridge the gap between technical expertise and professional visibility.',
-    format: ['4-day structured career readiness program', '40+ M.Tech students — core engineering', 'AI, communication, LinkedIn & resume focus'],
+    format: ['4-day structured career readiness program', '40+ M.Tech students, core engineering', 'AI, communication, LinkedIn & resume focus'],
     audience: 'M.Tech students in core engineering',
     delivered: [
       'AI & prompting frameworks for faster research',

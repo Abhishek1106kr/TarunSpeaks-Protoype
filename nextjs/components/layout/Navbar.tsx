@@ -59,8 +59,9 @@ export function Navbar() {
   return (
     <header
       ref={headerRef}
-      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ${scrolled || open ? 'border-b border-line-soft bg-canvas/90 backdrop-blur-md' : 'border-b border-transparent'}`}
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-[border-color] duration-300 ${scrolled || open ? 'border-line-soft' : 'border-transparent'}`}
     >
+      <div aria-hidden="true" className={`absolute inset-0 -z-10 transition-[background-color,backdrop-filter] duration-300 ${scrolled || open ? 'bg-canvas/90 backdrop-blur-md' : ''}`} />
       <div className="container-x flex h-[4.5rem] items-center justify-between gap-6">
         <Logo />
 
@@ -85,7 +86,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           {/* Visibility lives on a wrapper: `hidden` on the Button itself loses to its own `inline-flex`. */}
-          <div className="hidden sm:block"><Button to="/contact" track="header">Talk to TarunSpeaks</Button></div>
+          <div className="hidden sm:block"><Button to="/contact" track="header">Enquire Now</Button></div>
           <button
             ref={toggleRef}
             type="button"

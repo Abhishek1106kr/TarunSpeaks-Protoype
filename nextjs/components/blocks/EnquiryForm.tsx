@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useRef } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { AlertTriangle, Check } from 'lucide-react'
+import { motion, useReducedMotion } from 'framer-motion'
 import { submitEnquiry } from '../../app/contact/actions'
 import { type EnquiryFields, type EnquiryState, interestOptions, requestOptions, teamSizeOptions, timelineOptions } from '../../app/contact/enquiry'
 import { company } from '../../data/company'
@@ -34,13 +35,14 @@ function mailtoFor(values: EnquiryFields) {
   const lines = [`Name: ${values.name}`, `Organisation: ${values.organisation}`, `Role: ${values.role}`, `Interest: ${interest}`]
   if (values.phone) lines.push(`Phone: ${values.phone}`)
   const body = [...lines, '', values.message].join('\n')
-  const subject = `${values.request === 'consultation' ? 'Consultation request' : 'Enquiry'}: ${interest} — ${values.organisation}`
+  const subject = `${values.request === 'consultation' ? 'Consultation request' : 'Enquiry'}: ${interest}, ${values.organisation}`
   return `${company.email.href}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 }
 
 export function EnquiryForm() {
   const [state, formAction, pending] = useActionState(submitEnquiry, initialState)
   const prefill = usePrefill()
+  const reduceMotion = useReducedMotion()
   const statusRef = useRef<HTMLDivElement>(null)
   const formRef = useRef<HTMLFormElement>(null)
   const startedRef = useRef<HTMLInputElement>(null)
@@ -69,17 +71,25 @@ export function EnquiryForm() {
 
   if (state.status === 'sent') {
     return (
-      <div ref={statusRef} tabIndex={-1} role="status" className="outline-none">
+      <motion.div
+        ref={statusRef}
+        tabIndex={-1}
+        role="status"
+        className="outline-none"
+        initial={reduceMotion ? false : { opacity: 0, y: 12, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      >
         <span className="grid size-12 place-items-center rounded-full bg-brand"><Check size={22} aria-hidden="true" /></span>
-        <h2 className="t-h2 mt-8">{state.request === 'consultation' ? 'Thank you — your consultation request has been sent.' : 'Thank you — your enquiry has been sent.'}</h2>
+        <h2 className="t-h2 mt-8">{state.request === 'consultation' ? 'Thank you. Your consultation request has been sent.' : 'Thank you. Your enquiry has been sent.'}</h2>
         <h3 className="mt-8 text-[0.95rem] font-semibold">What happens next</h3>
         <ol className="mt-3 border-t border-line">
           <li className="border-b border-line py-3 text-fg-2">The TarunSpeaks team reads your message.</li>
           <li className="border-b border-line py-3 text-fg-2">They get back to you using the contact details you provided, to understand your team, goals and constraints.</li>
-          <li className="border-b border-line py-3 text-fg-2">From there, we recommend a program, custom modules or a consulting scope — and a format.</li>
+          <li className="border-b border-line py-3 text-fg-2">From there, we recommend a program, custom modules or a consulting scope, and a format.</li>
         </ol>
         <p className="t-body mt-6">For anything urgent, call <a href={company.phone.href} className="text-fg underline underline-offset-4">{company.phone.label}</a>.</p>
-      </div>
+      </motion.div>
     )
   }
 
@@ -96,8 +106,8 @@ export function EnquiryForm() {
           <p className="flex items-center gap-2 font-semibold text-fg"><AlertTriangle size={18} aria-hidden="true" className="text-warning" />Your enquiry has not been sent.</p>
           <p className="mt-2 text-[0.98rem] leading-relaxed text-fg-2">
             {state.reason === 'unconfigured'
-              ? 'Online submissions aren’t connected yet. Your details are still in the form — send them by email in one click, or call us.'
-              : 'Something went wrong while sending. Your details are still in the form — please try again, send them by email, or call us.'}
+              ? 'Online submissions aren’t connected yet. Your details are still in the form. Send them by email in one click, or call us.'
+              : 'Something went wrong while sending. Your details are still in the form. Please try again, send them by email, or call us.'}
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
             <Button href={mailtoFor(state.values)} arrow>Email this enquiry</Button>
@@ -152,7 +162,7 @@ export function EnquiryForm() {
         <details open={hasOptional} className="group sm:col-span-2">
           <summary className="inline-flex min-h-11 cursor-pointer list-none items-center gap-2 text-[0.95rem] font-semibold text-fg-2 hover:text-fg [&::-webkit-details-marker]:hidden">
             <span aria-hidden="true" className="text-brand-text transition-transform group-open:rotate-45">+</span>
-            Add optional details — phone, team size, timeline
+            Add optional details: phone, team size, timeline
           </summary>
           <div className="mt-4 grid gap-6 sm:grid-cols-3">
             <Field label="Phone" name="phone" type="tel" optional autoComplete="tel" placeholder="+91" defaultValue={values?.phone} error={errors.phone} maxLength={30} />

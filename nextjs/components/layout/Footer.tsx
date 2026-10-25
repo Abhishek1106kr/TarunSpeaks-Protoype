@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { company, socials } from '../../data/company'
+import { Button } from '../ui/Button'
 import { Logo } from './Logo'
 
 type FooterLink = { label: string; to?: string; href?: string }
@@ -53,10 +54,11 @@ export function Footer() {
         <div className="flex flex-col items-start gap-6">
           <Logo />
           <p className="t-body max-w-xs">{company.about}</p>
+          <Button to="/contact" track="footer" arrow>Enquire Now</Button>
         </div>
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-[1fr_1fr_1.35fr_0.9fr]">
           {columns.map((column) => (
-            <nav key={column.title} aria-label={`Footer — ${column.title}`}>
+            <nav key={column.title} aria-label={`Footer: ${column.title}`}>
               <h2 className="mb-3 font-sans text-[0.9rem] font-semibold tracking-normal text-fg">{column.title}</h2>
               <ul className="text-[0.93rem]">
                 {column.links.map((link) => <li key={link.label}><FooterAnchor link={link} /></li>)}

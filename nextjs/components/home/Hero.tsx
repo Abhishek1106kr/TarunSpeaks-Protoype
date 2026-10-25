@@ -18,7 +18,7 @@ export function Hero() {
             We build digital-first, confident, <em className="text-brand-text">high-performing</em> teams.
           </h1>
           <p className="t-lead enter mt-8 max-w-[34rem]" style={delay(0.15)}>
-            TarunSpeaks is a corporate training and consulting company. We work with CHROs, founders and business leaders on AI tools, sales, marketing, personal branding and leadership — and help teams put new skills to work.
+            TarunSpeaks is a corporate training and consulting company. We work with CHROs, founders and business leaders on AI tools, sales, marketing, personal branding and leadership, and help teams put new skills to work.
           </p>
           <div className="enter mt-10 flex flex-wrap items-center gap-x-7 gap-y-3" style={delay(0.22)}>
             <Button to="/contact" size="lg" arrow track="hero">Talk to TarunSpeaks</Button>
@@ -43,7 +43,7 @@ export function Hero() {
       </div>
 
       <div className="container-x pb-6">
-        <StatGrid stats={proofStats.slice(0, 4)} source="Source: TarunSpeaks company profile, 2026. Over 10 years of training and consulting." />
+        <StatGrid stats={proofStats.slice(0, 4)} source={`Source: TarunSpeaks company profile, 2026. ${proofStats[4].value}${proofStats[4].suffix} years of experience.`} />
       </div>
     </section>
   )

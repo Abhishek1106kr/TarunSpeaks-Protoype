@@ -26,7 +26,6 @@ function logoSize(client: Client, prominent: boolean) {
 export function ClientEcosystem() {
   const [filter, setFilter] = useState<Filter>('all')
   const [expanded, setExpanded] = useState(false)
-  const [showNames, setShowNames] = useState(false)
   const reduceMotion = useReducedMotion()
 
   const pool = filter === 'all' ? clients : clients.filter((client) => client.sector === filter)
@@ -64,22 +63,6 @@ export function ClientEcosystem() {
 
       <div className="mt-10 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
         <h3 className="font-serif text-[1.6rem] font-normal tracking-[-0.015em]">{activeLabel}</h3>
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-1">
-          <p aria-live="polite" className="t-meta">
-            Showing {visible.length} of {clients.length} named organisations · <span className="inline-flex items-center gap-1.5"><span aria-hidden="true" className="size-1.5 rounded-full bg-brand-bright" />case study available</span>
-          </p>
-          <button
-            type="button"
-            aria-pressed={showNames}
-            onClick={() => setShowNames((current) => !current)}
-            className="inline-flex min-h-11 shrink-0 items-center gap-2 text-[0.9rem] text-fg-2 hover:text-fg"
-          >
-            <span aria-hidden="true" className={`grid size-4 place-items-center rounded-[3px] border ${showNames ? 'border-brand-bright bg-brand-bright' : 'border-fg-3'}`}>
-              {showNames && <span className="size-1.5 bg-fg" />}
-            </span>
-            Show organisation names
-          </button>
-        </div>
       </div>
 
       <AnimatePresence mode="wait" initial={false}>
@@ -96,14 +79,14 @@ export function ClientEcosystem() {
             const size = client.logo ? logoSize(client, prominent) : null
             const body = (
               <>
-                <span className="flex h-24 items-center justify-center">
+                <span className={`flex h-32 items-center justify-center rounded-[0.3rem] border border-line bg-surface p-4 ${prominent ? 'transition-colors duration-200 ease-editorial group-hover:border-brand-bright/60 group-focus-visible:border-brand-bright/60' : ''}`}>
                   {client.logo && size
                     ? <Image src={client.logo.src} alt={client.name} width={size.width} height={size.height} sizes={`${size.width}px`} className="opacity-85 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" style={{ width: size.width, height: size.height }} />
                     : <span className="font-serif text-[1.15rem] text-fg">{client.name}<span className="sr-only"> (logo not available)</span></span>}
                 </span>
                 <span aria-hidden="true" className="flex min-h-10 items-start justify-center gap-1.5 text-center text-[0.8rem] leading-snug text-fg-2">
                   {prominent && <span className="mt-[0.4em] size-1.5 shrink-0 rounded-full bg-brand-bright" />}
-                  <span className={`transition-opacity duration-200 ${showNames ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100'}`}>{client.name}</span>
+                  <span className="opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">{client.name}</span>
                 </span>
               </>
             )
@@ -112,11 +95,12 @@ export function ClientEcosystem() {
                 key={client.name}
                 className={`${trimMobile && index >= MOBILE_INITIAL ? 'max-sm:hidden' : ''}`}
                 initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '0px 0px -10% 0px' }}
                 transition={{ duration: 0.35, delay: reduceMotion ? 0 : Math.min(index, 18) * 0.018, ease: [0.22, 1, 0.36, 1] }}
               >
                 {client.caseStudy
-                  ? <Link href={`/case-studies/${client.caseStudy}`} aria-label={`${client.name} — read the case study`} className="group block rounded-[0.3rem] focus-visible:outline-offset-[-2px]">{body}</Link>
+                  ? <Link href={`/case-studies/${client.caseStudy}`} aria-label={`${client.name}: read the case study`} className="group block rounded-[0.3rem] focus-visible:outline-offset-[-2px]">{body}</Link>
                   : <div className="group">{body}</div>}
               </motion.li>
             )

@@ -26,7 +26,7 @@ export default function Page() {
         crumbs={[{ name: 'Home', path: '/' }, { name: 'Speaking', path: '/speaking' }]}
         eyebrow="For event organisers"
         title="Keynotes with something to take back to work."
-        lead={<p>Tarun has delivered {keynoteStat.value}{keynoteStat.suffix} keynote sessions on digital marketing, entrepreneurship and business strategy — for corporate teams, business schools and industry events. Every talk is built around what the audience should do next.</p>}
+        lead={<p>Tarun has delivered {keynoteStat.value}{keynoteStat.suffix} keynote sessions on digital marketing, entrepreneurship and business strategy, for corporate teams, business schools and industry events. Every talk is built around what the audience should do next.</p>}
         actions={<><Button to="/contact?interest=keynote" size="lg" arrow track="speaking-intro">Request a speaker</Button><Button to="#keynotes" variant="quiet">Browse topics</Button></>}
         aside={
           <figure>
@@ -103,7 +103,7 @@ export default function Page() {
 
       <EnquiryCta
         title="Bring Tarun to your stage."
-        body="Share the event, the audience, the date and what you want people to leave with. We’ll suggest a topic and format — or shape one around your theme."
+        body="Share the event, the audience, the date and what you want people to leave with. We’ll suggest a topic and format, or shape one around your theme."
         primary={{ label: 'Request a speaker', to: '/contact?interest=keynote' }}
       />
     </>

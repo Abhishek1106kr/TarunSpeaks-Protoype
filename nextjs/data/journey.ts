@@ -1,4 +1,5 @@
 import type { PhotoName } from '../lib/images'
+import { proofSummary } from './company'
 
 export type JourneyStep = {
   phase: string
@@ -17,7 +18,7 @@ export const journey: JourneyStep[] = [
     phase: 'Engineering',
     marker: '2015',
     title: 'An IT engineer first',
-    body: 'Tarun earned a degree in IT engineering and began his career in technology. He excelled there — but his passion for marketing, branding and education led him to take a bold leap.',
+    body: 'Tarun earned a degree in IT engineering and began his career in technology. He excelled there, but his passion for marketing, branding and education led him to take a bold leap.',
     proof: 'L&T Infotech, Tech Mahindra and Zensar Technologies, then Tata Consultancy Services from 2015.',
     image: 'tarun-google',
     imageAlt: 'Tarun Makhija at the Google office in Mumbai',
@@ -27,7 +28,7 @@ export const journey: JourneyStep[] = [
     marker: '2016',
     title: 'Co-founding Big Mouth Digital & Media',
     body: 'In 2016 he co-founded Big Mouth Digital & Media, a branding and digital marketing agency in Mumbai, serving 270+ brands across 15+ industries.',
-    proof: '750+ digital marketing campaigns executed — practitioner experience, not theory.',
+    proof: '750+ digital marketing campaigns executed. Practitioner experience, not theory.',
     image: 'consultation-table',
     imageAlt: 'Tarun Makhija in a strategy session with clients',
   },
@@ -44,8 +45,8 @@ export const journey: JourneyStep[] = [
     phase: 'TarunSpeaks',
     marker: 'Company',
     title: 'Train. Consult. Empower.',
-    body: 'TarunSpeaks became a corporate training and consulting company, with Tarun as Chief Educator & Founder — running multi-city programs for organisations like Motilal Oswal, HDFC Bank and Sansaar by D’Decor.',
-    proof: '29,000+ individuals trained across 2,300+ sessions and 300+ brands.',
+    body: 'TarunSpeaks became a corporate training and consulting company, with Tarun as Chief Educator & Founder, running multi-city programs for organisations like Motilal Oswal, HDFC Bank and Sansaar by D’Decor.',
+    proof: proofSummary,
     image: 'sansaar-stage',
     imageAlt: 'Tarun Makhija addressing a Sansaar by D’Decor audience',
   },
@@ -53,7 +54,7 @@ export const journey: JourneyStep[] = [
     phase: 'AI capability',
     marker: 'Now',
     title: 'From awareness to adoption',
-    body: 'Today the work extends into AI: multi-month AI training, AI-powered sales and presentation programs, and consulting on AI tools, agent deployment and generative AI implementation.',
+    body: 'Today the work extends into AI: multi-month AI training, AI-powered sales and presentation programs, and consulting on AI tools, agent rollout and generative AI adoption.',
     proof: 'Nawany Group, NewTech Insurance Brokers, Godrej Properties and Double Tap Digital.',
     image: 'nawany-workshop',
     imageAlt: 'Tarun Makhija leading an AI training session',

@@ -13,7 +13,7 @@ import { breadcrumbJsonLd, pageMetadata } from '../../lib/seo'
 
 export const metadata: Metadata = pageMetadata({
   title: 'About Tarun Makhija',
-  description: 'Tarun Makhija is Chief Educator & Founder of TarunSpeaks — an IT engineer turned digital marketer, agency co-founder and corporate trainer. BW Marketing 30 Under 30 (2023).',
+  description: 'Tarun Makhija is Chief Educator & Founder of TarunSpeaks, an IT engineer turned digital marketer, agency co-founder and corporate trainer. BW Marketing 30 Under 30 (2023).',
   path: '/about',
   image: '/images/profile/founder-portrait.webp',
 })
@@ -21,8 +21,8 @@ export const metadata: Metadata = pageMetadata({
 // How we teach — the profile's own three words (p.2), each explained in plain terms.
 const principles = [
   { title: 'Relevant', body: 'Built around your roles, your industry and the work your teams actually do.' },
-  { title: 'Practical', body: 'Hands-on exercises, live reviews and real scenarios — outputs people can use the next day.' },
-  { title: 'Inspiring', body: 'Sessions with energy, so people leave wanting to act — not just with notes.' },
+  { title: 'Practical', body: 'Hands-on exercises, live reviews and real scenarios. Outputs people can use the next day.' },
+  { title: 'Inspiring', body: 'Sessions with energy, so people leave wanting to act, not just with notes.' },
 ]
 
 export default function Page() {
@@ -69,7 +69,7 @@ export default function Page() {
 
       <section aria-labelledby="principles-title" className="section-y">
         <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-5"><SectionHeader id="principles-title" eyebrow="How we teach" title="We don’t just train individuals — we transform them." lead={company.approach} /></div>
+          <div className="lg:col-span-5"><SectionHeader id="principles-title" eyebrow="How we teach" title="We don’t just train individuals. We transform them." lead={company.approach} /></div>
           <ol className="lg:col-span-6 lg:col-start-7">
             {principles.map((principle) => (
               <li key={principle.title} className="border-t border-line py-6 last:border-b">

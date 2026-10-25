@@ -18,7 +18,7 @@ export const keynotes: Keynote[] = [
     question: 'Why should clients trust you before they have met you?',
     audience: 'Sales leaders, entrepreneurs, client-facing professionals',
     takeaway: 'A clear personal brand narrative and the LinkedIn habits that make credibility visible.',
-    deliveredAt: ['Motilal Oswal — city tour for entrepreneurs', 'Reliance Entertainment — keynote for employees'],
+    deliveredAt: ['Motilal Oswal, city tour for entrepreneurs', 'Reliance Entertainment, keynote for employees'],
   },
   {
     slug: 'future-of-work',
@@ -35,7 +35,7 @@ export const keynotes: Keynote[] = [
     question: 'What is actually changing in how brands grow online?',
     audience: 'Marketing teams, business schools, industry events',
     takeaway: 'The trends worth acting on, illustrated with campaigns and platform shifts.',
-    deliveredAt: ['NMIMS, Mumbai — keynote', 'Google HQ, Mumbai — meet for Mumbai’s Top 50 digital marketing agencies'],
+    deliveredAt: ['NMIMS, Mumbai, keynote', 'Google HQ, Mumbai, meet for Mumbai’s Top 50 digital marketing agencies'],
   },
   {
     slug: 'entrepreneurship-business-growth',
@@ -43,15 +43,15 @@ export const keynotes: Keynote[] = [
     question: 'How do founders turn digital visibility into business?',
     audience: 'Founders, business owners, entrepreneurship programmes',
     takeaway: 'Storytelling, digital presence and client acquisition practices founders can apply immediately.',
-    deliveredAt: ['APCA, Mumbai — entrepreneurship & content marketing for chefs', 'Masters’ Union, Gurgaon — keynote and Marketing Hackathon judge'],
+    deliveredAt: ['APCA, Mumbai, entrepreneurship & content marketing for chefs', 'Masters’ Union, Gurgaon, keynote and Marketing Hackathon judge'],
   },
   {
     slug: 'storytelling-sales',
     title: 'Storytelling for Sales & Purpose-Driven Selling',
-    question: 'How do teams sell value — not just product?',
+    question: 'How do teams sell value, not just product?',
     audience: 'Retail and sales teams, store managers',
     takeaway: 'Story-led selling aligned with the brand’s purpose, practised on real scenarios.',
-    deliveredAt: ['Sansaar by D’Decor — 42-city retail program'],
+    deliveredAt: ['Sansaar by D’Decor, 42-city retail program'],
   },
   {
     slug: 'communication-public-speaking',
@@ -59,7 +59,7 @@ export const keynotes: Keynote[] = [
     question: 'How do you present, pitch and handle objections with clarity?',
     audience: 'Professionals at every level',
     takeaway: 'Frameworks for presentations, elevator pitches and high-stakes conversations.',
-    deliveredAt: ['Bentley Systems — interview communication through roleplay'],
+    deliveredAt: ['Bentley Systems, interview communication through roleplay'],
   },
 ]
 
@@ -79,5 +79,5 @@ export const engagements: Engagement[] = [
 export const speakingFormats = [
   { title: 'Keynote', body: 'A single session for a conference, offsite or leadership gathering.' },
   { title: 'Masterclass', body: 'A deeper, practical session with frameworks the audience applies in the room.' },
-  { title: 'Workshop', body: 'Hands-on, scenario-based work for teams — profile reviews, live exercises and role-play.' },
+  { title: 'Workshop', body: 'Hands-on, scenario-based work for teams: profile reviews, live exercises and role-play.' },
 ]

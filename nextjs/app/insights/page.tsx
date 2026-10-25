@@ -19,7 +19,7 @@ export default function Page() {
         crumbs={[{ name: 'Home', path: '/' }, { name: 'Insights', path: '/insights' }]}
         eyebrow="Insights"
         title="Read, learn, grow."
-        lead={<p>Articles on AI tools, digital marketing, personal branding and content creation — the same material Tarun teaches in the room.</p>}
+        lead={<p>Articles on AI tools, digital marketing, personal branding and content creation, the same material Tarun teaches in the room.</p>}
       />
       <section aria-labelledby="articles-title" className="section-y-sm pb-24">
         <div className="container-x">

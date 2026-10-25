@@ -29,7 +29,7 @@ const sizes: Record<Size, string> = {
 
 export function Button({ children, variant = 'primary', size = 'md', arrow = false, className = '', track, ...target }: ButtonProps) {
   const tracking = track ? { 'data-track': 'primary_cta_clicked', 'data-track-location': track } : {}
-  const classes = `group inline-flex items-center justify-center gap-2.5 font-semibold tracking-[-0.005em] transition-[background-color,border-color,color] duration-200 disabled:cursor-not-allowed disabled:opacity-60 ${variant === 'quiet' ? 'min-h-11' : `rounded-[0.3rem] ${sizes[size]}`} ${variants[variant]} ${className}`
+  const classes = `group inline-flex items-center justify-center gap-2.5 font-semibold tracking-[-0.005em] active:scale-[0.97] transition-[background-color,border-color,color,transform] duration-200 ease-editorial disabled:cursor-not-allowed disabled:opacity-60 ${variant === 'quiet' ? 'min-h-11' : `rounded-[0.3rem] ${sizes[size]}`} ${variants[variant]} ${className}`
   const external = 'href' in target && target.href?.startsWith('http')
   const Icon = external ? ArrowUpRight : ArrowRight
   const content = (

@@ -18,7 +18,7 @@ import { breadcrumbJsonLd, pageMetadata } from '../../lib/seo'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Corporate Training',
-  description: 'Corporate training for CHROs and L&D leaders: modular programs in AI, sales, leadership, personal branding and communication — delivered as workshops, masterclasses or full learning journeys.',
+  description: 'Corporate training for CHROs and L&D leaders: modular programs in AI, sales, leadership, personal branding and communication, delivered as workshops, masterclasses or full learning journeys.',
   path: '/corporate-training',
 })
 
@@ -26,7 +26,7 @@ export const metadata: Metadata = pageMetadata({
 const atScale = ['sansaar-by-ddecor', 'motilal-oswal', 'hdfc-bank', 'nawany-group'].map((slug) => caseStudyBySlug(slug)!)
 
 const formats = [
-  { title: 'Workshop', body: 'Hands-on, scenario-based sessions for a team or function — live exercises, profile reviews, role-play.' },
+  { title: 'Workshop', body: 'Hands-on, scenario-based sessions for a team or function: live exercises, profile reviews, role-play.' },
   { title: 'Masterclass', body: 'A focused session on one capability, for larger groups or leadership gatherings.' },
   { title: 'Full learning journey', body: 'A multi-session program over weeks or months, with review cycles between sessions.' },
 ]
@@ -43,7 +43,7 @@ export default function Page() {
         crumbs={[{ name: 'Home', path: '/' }, { name: 'Corporate Training', path: '/corporate-training' }]}
         eyebrow="For CHROs, L&D and business leaders"
         title="Corporate training that shows up in everyday work."
-        lead={<p>Your teams are growing — the question is whether their skills are keeping up. We design practical programs around your roles and real scenarios, and deliver them anywhere from one room to 42 cities.</p>}
+        lead={<p>Your teams are growing. The question is whether their skills are keeping up. We design practical programs around your roles and real scenarios, and deliver them anywhere from one room to 42 cities.</p>}
         actions={<><Button to="/contact?interest=training" size="lg" arrow track="training-intro">Discuss Your Requirements</Button><Button to="#programs" variant="quiet">See the programs</Button></>}
         aside={
           <figure>
@@ -87,7 +87,7 @@ export default function Page() {
 
       <section aria-labelledby="scale-title" className="section-y border-t border-line-soft">
         <div className="container-x">
-          <SectionHeader id="scale-title" eyebrow="Evidence" title="Delivered at organisational scale" lead="Multi-city tours, store networks and multi-month programs — documented in our case studies." aside={<Link href="/case-studies" className="link-arrow">View Case Studies</Link>} />
+          <SectionHeader id="scale-title" eyebrow="Evidence" title="Delivered at organisational scale" lead="Multi-city tours, store networks and multi-month programs, documented in our case studies." aside={<Link href="/case-studies" className="link-arrow">View Case Studies</Link>} />
           <div className="mt-12 overflow-x-auto" data-allow-overflow>
             <table className="w-full min-w-[40rem] border-collapse text-left">
               <caption className="sr-only">Selected training engagements by scale</caption>
