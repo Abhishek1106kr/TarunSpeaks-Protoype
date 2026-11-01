@@ -97,8 +97,8 @@ export function Navbar() {
             onClick={() => setOpen(!open)}
           >
             <span aria-hidden="true" className="relative block h-3 w-6">
-              <span className={`absolute left-0 h-0.5 w-full bg-current transition-all duration-300 ${open ? 'top-[5px] rotate-45' : 'top-0'}`} />
-              <span className={`absolute left-0 h-0.5 w-full bg-current transition-all duration-300 ${open ? 'top-[5px] -rotate-45' : 'top-2.5'}`} />
+              <span className={`absolute left-0 h-0.5 w-full bg-current transition-[top,transform] duration-300 ${open ? 'top-[5px] rotate-45' : 'top-0'}`} />
+              <span className={`absolute left-0 h-0.5 w-full bg-current transition-[top,transform] duration-300 ${open ? 'top-[5px] -rotate-45' : 'top-2.5'}`} />
             </span>
           </button>
         </div>

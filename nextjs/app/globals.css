@@ -29,6 +29,9 @@
   --color-ink-2: #3f4757;
   --color-paper-line: #d6d3ca;
 
+  --shadow-panel: 0 30px 80px -20px rgb(0 0 0 / 0.7);
+  --shadow-float: 0 14px 34px -10px rgb(0 0 0 / 0.8);
+
   --color-success: #3fbf8a;
   --color-warning: #e8b54a;
   --color-error: #ff7a7a;
@@ -46,6 +49,7 @@
     background: var(--color-canvas);
     color: var(--color-fg);
     color-scheme: dark;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     scroll-padding-top: 6rem;
@@ -57,6 +61,13 @@
     line-height: 1.6;
     min-width: 320px;
     background: var(--color-canvas);
+    /* A quiet canvas texture: the same hairline rule colour, never a glow or overlay. */
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--color-line) 20%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--color-line) 20%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+    background-position: 0 0;
+    background-repeat: repeat;
     overflow-x: clip;
   }
 
@@ -193,7 +204,17 @@
   .on-paper .link-arrow { color: var(--color-ink); text-decoration-color: var(--color-brand); }
   .on-paper .link-arrow:hover { color: var(--color-brand); }
 
-  .on-paper { background: var(--color-paper); color: var(--color-ink); color-scheme: light; }
+  .on-paper {
+    background-color: var(--color-paper);
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--color-paper-line) 35%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--color-paper-line) 35%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+    background-position: 0 0;
+    background-repeat: repeat;
+    color: var(--color-ink);
+    color-scheme: light;
+  }
 }
 
 /*
@@ -211,6 +232,27 @@
   html.js [data-reveal="image"][data-shown] img { scale: 1; }
 
   .enter { animation: enter 0.8s var(--ease-editorial) both; animation-delay: var(--enter-delay, 0s); }
+
+  .client-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: client-marquee 42s linear infinite;
+    will-change: transform;
+  }
+
+  .client-marquee-track-reverse { animation-direction: reverse; }
+
+  .client-marquee-row-shell:hover .client-marquee-track,
+  .client-marquee-row-shell:focus-within .client-marquee-track { animation-play-state: paused; }
+
+  @keyframes client-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .client-marquee-track { animation-play-state: paused; }
+  }
 }
 
 @keyframes enter {

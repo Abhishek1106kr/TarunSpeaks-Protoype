@@ -7,6 +7,7 @@ import { Eyebrow } from '../../components/ui/Eyebrow'
 import { SectionHeader } from '../../components/ui/SectionHeader'
 import { company, socials } from '../../data/company'
 import { faqs } from '../../data/faq'
+import { requestOptions } from './enquiry'
 import { breadcrumbJsonLd, pageMetadata } from '../../lib/seo'
 
 export const metadata: Metadata = pageMetadata({
@@ -21,7 +22,11 @@ const faqJsonLd = {
   mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })),
 }
 
-export default function Page() {
+export default async function Page({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+  const params = await searchParams
+  const requestParam = typeof params.request === 'string' ? params.request : undefined
+  const initialRequest = requestOptions.find((option) => option.value === requestParam)?.value
+
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }])} />
@@ -60,7 +65,7 @@ export default function Page() {
             <p className="t-meta mb-3">Requesting a consultation books a callback; it does not confirm an appointment.</p>
             <p className="t-meta mb-8">Fields are required unless marked optional.</p>
             <Suspense fallback={<div className="min-h-[40rem]" />}>
-              <EnquiryForm />
+              <EnquiryForm initialRequest={initialRequest} />
             </Suspense>
           </div>
         </div>

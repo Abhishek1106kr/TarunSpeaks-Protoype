@@ -70,6 +70,7 @@ export function Footer() {
       <div className="container-x flex flex-col gap-3 border-t border-line-soft py-6 text-[0.85rem] text-fg-3 sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} TarunSpeaks · Tarun Makhija. All rights reserved.</p>
         <ul className="flex gap-6">
+          <li><FooterAnchor link={{ label: 'Sitemap', href: '/sitemap.xml' }} /></li>
           <li><FooterAnchor link={{ label: 'Privacy Policy', href: 'https://tarunmakhija.in/privacy-policy/' }} /></li>
           <li><FooterAnchor link={{ label: 'Refund Policy', href: 'https://tarunmakhija.in/refund_policy/' }} /></li>
         </ul>

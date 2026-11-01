@@ -40,7 +40,7 @@ export default function Page() {
             <div className="container-x">
               <SectionHeader id={`track-${groupIndex}`} title={group.title} lead={group.lead} />
 
-              <article className="group relative mt-14 grid gap-8 lg:grid-cols-12 lg:gap-10">
+              <article className="group relative mt-16 grid gap-8 lg:grid-cols-12 lg:gap-10">
                 <div className="relative aspect-[3/2] overflow-hidden bg-surface lg:col-span-7">
                   {photo && <Photo name={photo.name} alt={photo.alt} loading={groupIndex === 0 ? 'eager' : 'lazy'} sizes="(min-width: 1024px) 55vw, 92vw" className="size-full object-cover transition-transform duration-700 ease-editorial group-hover:scale-[1.02]" />}
                 </div>
@@ -55,7 +55,7 @@ export default function Page() {
                 </div>
               </article>
 
-              <ul className="mt-16 border-t border-line">
+              <ul className="mt-20 border-t border-line">
                 {rest.map((study) => (
                   <li key={study.slug} className="group relative grid gap-2 border-b border-line py-7 md:grid-cols-12 md:items-baseline md:gap-8">
                     <p className="font-serif text-[1.35rem] leading-tight md:col-span-3">{study.client}</p>

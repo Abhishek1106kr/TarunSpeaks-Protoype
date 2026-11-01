@@ -15,7 +15,9 @@ import { Field, SelectField, TextareaField } from '../ui/FormField'
 const initialState: EnquiryState = { status: 'idle' }
 
 // Maps ?interest=, ?program=, ?case= and ?request= (set by CTAs across the site) to a sensible starting point.
-function usePrefill() {
+type RequestValue = (typeof requestOptions)[number]['value']
+
+function usePrefill(initialRequest?: RequestValue) {
   const params = useSearchParams()
   const program = programBySlug(params.get('program') ?? '')
   const interestParam = params.get('interest') ?? ''
@@ -26,7 +28,8 @@ function usePrefill() {
   const message = program
     ? `We’re interested in the “${program.title}” program for our team.`
     : caseSlug ? 'We have a challenge similar to one of your case studies and would like to discuss it.' : ''
-  const request = params.get('request') === 'enquiry' ? 'enquiry' : 'consultation'
+  const requestParam = params.get('request')
+  const request = initialRequest ?? requestOptions.find((option) => option.value === requestParam)?.value ?? 'consultation'
   return { interest, message, request }
 }
 
@@ -39,9 +42,9 @@ function mailtoFor(values: EnquiryFields) {
   return `${company.email.href}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 }
 
-export function EnquiryForm() {
+export function EnquiryForm({ initialRequest }: { initialRequest?: RequestValue }) {
   const [state, formAction, pending] = useActionState(submitEnquiry, initialState)
-  const prefill = usePrefill()
+  const prefill = usePrefill(initialRequest)
   const reduceMotion = useReducedMotion()
   const statusRef = useRef<HTMLDivElement>(null)
   const formRef = useRef<HTMLFormElement>(null)
@@ -129,7 +132,7 @@ export function EnquiryForm() {
           <div className="grid gap-3 sm:grid-cols-2">
             {requestOptions.map((option) => (
               <label key={option.value} className="flex cursor-pointer gap-3 rounded-[0.3rem] border border-line p-4 transition-colors hover:border-fg-3 has-[:checked]:border-brand-bright has-[:checked]:bg-brand/10 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-brand-text">
-                <input type="radio" name="request" value={option.value} defaultChecked={request === option.value} className="mt-1 size-4 accent-[#2864f0] focus-visible:outline-none" />
+                <input type="radio" name="request" value={option.value} defaultChecked={request === option.value} className="mt-1 size-4 accent-brand-bright focus-visible:outline-none" />
                 <span>
                   <span className="block font-semibold">{option.label}</span>
                   <span className="block text-[0.88rem] text-fg-3">{option.hint}</span>

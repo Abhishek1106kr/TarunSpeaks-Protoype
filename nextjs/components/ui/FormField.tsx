@@ -1,4 +1,5 @@
 import { type InputHTMLAttributes, type ReactNode, type SelectHTMLAttributes, type TextareaHTMLAttributes, useId } from 'react'
+import { AlertTriangle } from 'lucide-react'
 
 const control = 'w-full rounded-[0.3rem] border bg-canvas px-4 text-[0.98rem] text-fg transition-colors placeholder:text-fg-3 hover:border-fg-3 focus-visible:border-brand-bright aria-[invalid=true]:border-error'
 const labelClass = 'text-[0.85rem] font-semibold text-fg'
@@ -14,7 +15,7 @@ function Wrapper({ id, label, hint, error, optional, className, children }: Base
       </label>
       {hint && <p id={`${id}-hint`} className="-mt-1 text-[0.82rem] text-fg-3">{hint}</p>}
       {children}
-      {error && <p id={`${id}-error`} className="text-[0.85rem] text-error"><span aria-hidden="true">⚠ </span>{error}</p>}
+      {error && <p id={`${id}-error`} className="flex items-center gap-1.5 text-[0.85rem] text-error"><AlertTriangle size={15} aria-hidden="true" />{error}</p>}
     </div>
   )
 }

@@ -56,7 +56,7 @@ export default function Page() {
       />
 
       <section aria-labelledby="areas-title" className="section-y">
-        <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-10">
+        <div className="container-x grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4"><SectionHeader id="areas-title" title="What we train on" lead="Every program draws on six capability areas, combined to match the roles in the room and the outcome you need." /></div>
           <ol className="grid gap-x-10 sm:grid-cols-2 lg:col-span-8">
             {trainingAreas.map((area, index) => (
@@ -72,7 +72,7 @@ export default function Page() {
       <section aria-labelledby="formats-title" className="section-y border-t border-line-soft bg-canvas-2">
         <div className="container-x">
           <SectionHeader id="formats-title" title="Three formats, built to fit your calendar" lead={`${deliveryTerms.note} Duration ranges from ${deliveryTerms.duration}, ${deliveryTerms.basis}.`} />
-          <ol className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
+          <ol className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
             {formats.map((format) => (
               <li key={format.title} className="border-t border-fg-3 pt-5">
                 <h3 className="font-serif text-[1.75rem] leading-tight font-normal tracking-[-0.015em]">{format.title}</h3>
@@ -88,7 +88,7 @@ export default function Page() {
       <section aria-labelledby="scale-title" className="section-y border-t border-line-soft">
         <div className="container-x">
           <SectionHeader id="scale-title" eyebrow="Evidence" title="Delivered at organisational scale" lead="Multi-city tours, store networks and multi-month programs, documented in our case studies." aside={<Link href="/case-studies" className="link-arrow">View Case Studies</Link>} />
-          <div className="mt-12 overflow-x-auto" data-allow-overflow>
+          <div className="mt-14 overflow-x-auto" data-allow-overflow>
             <table className="w-full min-w-[40rem] border-collapse text-left">
               <caption className="sr-only">Selected training engagements by scale</caption>
               <thead>
@@ -118,13 +118,13 @@ export default function Page() {
       <section id="programs" aria-labelledby="training-programs-title" className="on-paper section-y scroll-mt-20">
         <div className="container-x">
           <SectionHeader id="training-programs-title" title="Choose a starting point" lead="Eight flagship programs. Each can be tailored, combined or extended with custom modules." />
-          <div className="mt-12"><ProgramTable /></div>
+          <div className="mt-14"><ProgramTable /></div>
           <Link href="/programs" className="link-arrow mt-10">Compare programs in detail</Link>
         </div>
       </section>
 
       <section aria-labelledby="training-faq-title" className="section-y">
-        <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-10">
+        <div className="container-x grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4"><SectionHeader id="training-faq-title" title="Planning a program" /></div>
           <div className="lg:col-span-8"><FaqList items={trainingFaqs} /></div>
         </div>

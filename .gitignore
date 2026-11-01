@@ -22,6 +22,10 @@ playwright/.cache
 qa-output/
 feedback/
 
+# Large raw media exports that sometimes land in public/ (Drive/OneDrive downloads) — never commit these
+public/*.zip
+public/drive-download*
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

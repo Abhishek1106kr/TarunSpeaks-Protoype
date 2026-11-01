@@ -51,10 +51,12 @@ export const socials = [
 ]
 
 export const navLinks = [
+  { label: 'Services', to: '/services' },
   { label: 'Programs', to: '/programs' },
   { label: 'Corporate Training', to: '/corporate-training' },
   { label: 'Consulting', to: '/consulting' },
   { label: 'Case Studies', to: '/case-studies' },
   { label: 'Speaking', to: '/speaking' },
+  { label: 'Insights', to: '/insights' },
   { label: 'About', to: '/about' },
 ]

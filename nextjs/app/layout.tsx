@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Archivo, Newsreader } from 'next/font/google'
 import { Chatbot } from '../components/layout/Chatbot'
+import { ConsultationPopup } from '../components/layout/ConsultationPopup'
 import { Footer } from '../components/layout/Footer'
 import { Navbar } from '../components/layout/Navbar'
 import { AnalyticsListener } from '../components/motion/AnalyticsListener'
@@ -66,6 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main" tabIndex={-1} className="outline-none">{children}</main>
         <Footer />
         <Chatbot />
+        <ConsultationPopup />
         <RevealObserver />
         <AnalyticsListener />
       </body>

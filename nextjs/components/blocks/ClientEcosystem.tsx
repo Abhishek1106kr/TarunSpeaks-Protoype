@@ -16,11 +16,77 @@ const MOBILE_INITIAL = 12
  * so nothing is stretched. Clients with a documented case study are drawn slightly larger.
  */
 function logoSize(client: Client, prominent: boolean) {
-  const { width, height } = client.logo!
+  const { width, height } = client.colorLogo ?? client.logo!
   const aspect = width / height
   const area = prominent ? 7600 : 5200
   const h = Math.min(prominent ? 76 : 64, Math.max(22, Math.sqrt(area / aspect)))
   return { width: Math.round(Math.min(h * aspect, prominent ? 210 : 176)), height: Math.round(Math.min(h, (prominent ? 210 : 176) / aspect)) }
+}
+
+function ClientLogo({ client, duplicate = false, listItem = false, className }: { client: Client; duplicate?: boolean; listItem?: boolean; className?: string }) {
+  const prominent = Boolean(client.caseStudy)
+  const logo = client.colorLogo ?? client.logo
+  const size = logo ? logoSize(client, prominent) : null
+  const tabIndex = duplicate ? -1 : undefined
+  const Item = listItem ? 'li' : 'div'
+  const body = (
+    <>
+      <span tabIndex={tabIndex} className={`flex h-32 items-center justify-center rounded-[0.3rem] border border-line bg-surface p-4 ${prominent ? 'transition-colors duration-200 ease-editorial group-hover:border-brand-bright/60 group-focus-visible:border-brand-bright/60' : ''}`}>
+        {logo && size
+          ? <Image tabIndex={tabIndex} src={logo.src} alt={client.name} width={size.width} height={size.height} sizes={`${size.width}px`} className="opacity-85 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" style={{ width: size.width, height: size.height }} />
+          : <span tabIndex={tabIndex} className="font-serif text-[1.15rem] text-fg">{client.name}<span className="sr-only"> (logo not available)</span></span>}
+      </span>
+      <span tabIndex={tabIndex} aria-hidden="true" className="flex min-h-10 items-start justify-center gap-1.5 text-center text-[0.8rem] leading-snug text-fg-2">
+        {prominent && <span tabIndex={tabIndex} className="mt-[0.4em] size-1.5 shrink-0 rounded-full bg-brand-bright" />}
+        <span tabIndex={tabIndex} className="opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">{client.name}</span>
+      </span>
+    </>
+  )
+
+  return (
+    <Item tabIndex={tabIndex} className={`shrink-0 ${className ?? ''}`}>
+      {client.caseStudy
+        ? <Link tabIndex={tabIndex} href={`/case-studies/${client.caseStudy}`} aria-label={`${client.name}: read the case study`} className="group block rounded-[0.3rem] focus-visible:outline-offset-[-2px]">{body}</Link>
+        : <div tabIndex={tabIndex} className="group">{body}</div>}
+    </Item>
+  )
+}
+
+function ClientLogoSequence({ clients: sequence, duplicate = false, trimMobile = false, offset = 0 }: { clients: Client[]; duplicate?: boolean; trimMobile?: boolean; offset?: number }) {
+  const Sequence = duplicate ? 'div' : 'ul'
+  return (
+    <Sequence className="client-marquee-sequence flex gap-6 pr-6" aria-hidden={duplicate || undefined} tabIndex={duplicate ? -1 : undefined}>
+      {sequence.map((client, index) => (
+        <ClientLogo key={`${client.name}-${duplicate ? 'duplicate' : 'primary'}`} client={client} duplicate={duplicate} listItem={!duplicate} className={trimMobile && offset + index >= MOBILE_INITIAL ? 'max-sm:hidden' : undefined} />
+      ))}
+    </Sequence>
+  )
+}
+
+function StaticClientGrid({ visible, reduceMotion, trimMobile }: { visible: Client[]; reduceMotion: boolean | null; trimMobile: boolean }) {
+  return (
+    <motion.ul
+      key="static-client-grid"
+      className="mt-8 grid grid-cols-2 gap-x-6 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6"
+      initial={reduceMotion ? false : { opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={reduceMotion ? { opacity: 0, transition: { duration: 0 } } : { opacity: 0, transition: { duration: 0.15 } }}
+      transition={{ duration: 0.3 }}
+    >
+      {visible.map((client, index) => (
+        <motion.li
+          key={client.name}
+          className={`${trimMobile && index >= MOBILE_INITIAL ? 'max-sm:hidden' : ''}`}
+          initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+          whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+          transition={{ duration: 0.35, delay: reduceMotion ? 0 : Math.min(index, 18) * 0.018, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <ClientLogo client={client} />
+        </motion.li>
+      ))}
+    </motion.ul>
+  )
 }
 
 export function ClientEcosystem() {
@@ -33,6 +99,10 @@ export function ClientEcosystem() {
   const activeLabel = filter === 'all' ? (expanded ? 'All industries' : 'A selection across all industries') : sectors.find((sector) => sector.id === filter)!.label
   // On small screens a long list is trimmed until the visitor asks for everything.
   const trimMobile = !expanded && visible.length > MOBILE_INITIAL
+  const showMarquee = filter === 'all' && !expanded && !reduceMotion
+  const curated = clients.filter((client) => client.curated)
+  const midpoint = Math.ceil(curated.length / 2)
+  const marqueeRows = [curated.slice(0, midpoint), curated.slice(midpoint)]
 
   const choose = (next: Filter) => {
     setFilter(next)
@@ -66,46 +136,20 @@ export function ClientEcosystem() {
       </div>
 
       <AnimatePresence mode="wait" initial={false}>
-        <motion.ul
-          key={`${filter}-${expanded}`}
-          className="mt-8 grid grid-cols-2 gap-x-6 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6"
-          initial={reduceMotion ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={reduceMotion ? { opacity: 0, transition: { duration: 0 } } : { opacity: 0, transition: { duration: 0.15 } }}
-          transition={{ duration: 0.3 }}
-        >
-          {visible.map((client, index) => {
-            const prominent = Boolean(client.caseStudy)
-            const size = client.logo ? logoSize(client, prominent) : null
-            const body = (
-              <>
-                <span className={`flex h-32 items-center justify-center rounded-[0.3rem] border border-line bg-surface p-4 ${prominent ? 'transition-colors duration-200 ease-editorial group-hover:border-brand-bright/60 group-focus-visible:border-brand-bright/60' : ''}`}>
-                  {client.logo && size
-                    ? <Image src={client.logo.src} alt={client.name} width={size.width} height={size.height} sizes={`${size.width}px`} className="opacity-85 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" style={{ width: size.width, height: size.height }} />
-                    : <span className="font-serif text-[1.15rem] text-fg">{client.name}<span className="sr-only"> (logo not available)</span></span>}
-                </span>
-                <span aria-hidden="true" className="flex min-h-10 items-start justify-center gap-1.5 text-center text-[0.8rem] leading-snug text-fg-2">
-                  {prominent && <span className="mt-[0.4em] size-1.5 shrink-0 rounded-full bg-brand-bright" />}
-                  <span className="opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">{client.name}</span>
-                </span>
-              </>
-            )
-            return (
-              <motion.li
-                key={client.name}
-                className={`${trimMobile && index >= MOBILE_INITIAL ? 'max-sm:hidden' : ''}`}
-                initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-                whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '0px 0px -10% 0px' }}
-                transition={{ duration: 0.35, delay: reduceMotion ? 0 : Math.min(index, 18) * 0.018, ease: [0.22, 1, 0.36, 1] }}
-              >
-                {client.caseStudy
-                  ? <Link href={`/case-studies/${client.caseStudy}`} aria-label={`${client.name}: read the case study`} className="group block rounded-[0.3rem] focus-visible:outline-offset-[-2px]">{body}</Link>
-                  : <div className="group">{body}</div>}
-              </motion.li>
-            )
-          })}
-        </motion.ul>
+        {showMarquee ? (
+          <div key="client-marquee" className="client-marquee mt-10" aria-label="Selected clients">
+            {marqueeRows.map((row, rowIndex) => (
+              <div key={rowIndex} className="client-marquee-row-shell overflow-hidden">
+                <div className={`client-marquee-track ${rowIndex === 1 ? 'client-marquee-track-reverse' : ''}`}>
+                  <ClientLogoSequence clients={row} trimMobile offset={rowIndex * midpoint} />
+                  <ClientLogoSequence clients={row} duplicate trimMobile offset={rowIndex * midpoint} />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <StaticClientGrid visible={visible} reduceMotion={reduceMotion} trimMobile={trimMobile} />
+        )}
       </AnimatePresence>
 
       {(filter === 'all' || trimMobile) && (
@@ -116,7 +160,7 @@ export function ClientEcosystem() {
             </button>
           )}
           {filter !== 'all' && trimMobile && (
-            <button type="button" onClick={() => setExpanded(true)} className="link-arrow sm:hidden">View all {visible.length} in this industry</button>
+            <button type="button" onClick={() => setExpanded(true)} className="link-arrow whitespace-nowrap sm:hidden">View all {visible.length} in this industry</button>
           )}
           <p className="t-meta">Named organisations are a selection; the overall figure is 300+ brands across 15+ industries.</p>
         </div>

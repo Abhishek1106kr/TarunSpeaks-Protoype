@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { company, navLinks } from '../../data/company'
 
 const ease = [0.22, 1, 0.36, 1] as const
-const links = [...navLinks, { label: 'Insights', to: '/insights' }, { label: 'Contact', to: '/contact' }]
+const links = [...navLinks, { label: 'Contact', to: '/contact' }]
 
 export function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
   const reduceMotion = useReducedMotion()
@@ -36,10 +36,9 @@ export function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
                   href={link.to}
                   onClick={onNavigate}
                   aria-current={active ? 'page' : undefined}
-                  className={`flex min-h-14 items-center justify-between font-display text-[1.45rem] font-semibold tracking-[-0.02em] ${active ? 'text-brand-text' : 'text-fg'}`}
+                  className={`flex min-h-14 items-center font-display text-[1.45rem] font-semibold tracking-[-0.02em] ${active ? 'text-brand-text' : 'text-fg'}`}
                 >
                   {link.label}
-                  <span aria-hidden="true" className="text-fg-3">→</span>
                 </Link>
               </motion.li>
             )

@@ -20,10 +20,17 @@ export const profileImages = {
   'sansaar-stage': { src: '/images/profile/sansaar-stage.webp', width: 800, height: 533, page: 36 },
   'motilal-stage': { src: '/images/profile/motilal-stage.webp', width: 600, height: 800, page: 40 },
   'motilal-room': { src: '/images/profile/motilal-room.webp', width: 800, height: 597, page: 41 },
+  // Real Motilal Oswal Kochi session photos supplied directly by the project owner; not PDF extracts.
+  'motilal-kochi-room': { src: '/images/profile/motilal-kochi-room.webp', width: 800, height: 600 },
+  'motilal-kochi-stage': { src: '/images/profile/motilal-kochi-stage.webp', width: 800, height: 1067 },
   // pages 44 and 48 (HDFC Bank and Project Sophos) — neutral caption only
   'session-full-hall': { src: '/images/profile/session-full-hall.webp', width: 600, height: 800, page: 44 },
   // pages 45 and 49 (HDFC Bank and Project Sophos) — neutral caption only
   'session-hands-raised': { src: '/images/profile/session-hands-raised.webp', width: 800, height: 533, page: 45 },
+  // Real HDFC Bank Business Growth Partnership Meet photos supplied directly by the project owner; not PDF extracts.
+  'hdfc-partnership-meet-wide': { src: '/images/profile/hdfc-partnership-meet-wide.webp', width: 800, height: 533 },
+  'hdfc-partnership-meet-speaking': { src: '/images/profile/hdfc-partnership-meet-speaking.webp', width: 800, height: 533 },
+  'hdfc-partnership-meet-gesture': { src: '/images/profile/hdfc-partnership-meet-gesture.webp', width: 800, height: 533 },
   'sophos-speaker': { src: '/images/profile/sophos-speaker.webp', width: 451, height: 800, page: 46 },
   'bentley-session': { src: '/images/profile/bentley-session.webp', width: 800, height: 600, page: 50 },
   'bentley-team': { src: '/images/profile/bentley-team.webp', width: 599, height: 800, page: 52 },

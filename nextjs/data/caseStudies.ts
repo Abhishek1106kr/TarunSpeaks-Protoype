@@ -206,6 +206,8 @@ export const caseStudies: CaseStudy[] = [
     images: [
       { name: 'motilal-stage', alt: 'Tarun Makhija on the Motilal Oswal stage' },
       { name: 'motilal-room', alt: 'A Motilal Oswal training session in progress' },
+      { name: 'motilal-kochi-room', alt: 'Tarun Makhija speaking with participants at the Motilal Oswal Kochi session' },
+      { name: 'motilal-kochi-stage', alt: 'Tarun Makhija presenting on stage at the Motilal Oswal Kochi session' },
     ],
     pages: '38–41',
   },
@@ -234,7 +236,11 @@ export const caseStudies: CaseStudy[] = [
       'Foundation set for long-term brand-led communication',
     ],
     programs: ['modern-marketing-strategies'],
-    images: [],
+    images: [
+      { name: 'hdfc-partnership-meet-wide', alt: "Tarun Makhija addressing HDFC Bank's Business Growth Partnership Meet 2026" },
+      { name: 'hdfc-partnership-meet-speaking', alt: "Tarun Makhija speaking with a microphone to HDFC Bank Business Growth Partnership Meet participants" },
+      { name: 'hdfc-partnership-meet-gesture', alt: "Tarun Makhija gesturing while addressing HDFC Bank's Business Growth Partnership Meet 2026" },
+    ],
     pages: '42–45',
   },
   {

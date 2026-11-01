@@ -10,6 +10,7 @@ import { FeaturedCase } from '../components/home/FeaturedCase'
 import { Founder } from '../components/home/Founder'
 import { Hero } from '../components/home/Hero'
 import { Objectives } from '../components/home/Objectives'
+import { TrustStrip } from '../components/home/TrustStrip'
 import { WhatWeDo } from '../components/home/WhatWeDo'
 import { SectionHeader } from '../components/ui/SectionHeader'
 import { faqs } from '../data/faq'
@@ -26,10 +27,12 @@ const homeFaqs = ['Who are the programs designed for?', 'Can a program be design
   .map((question) => faqs.find((faq) => faq.question === question)!)
 
 export default function Page() {
-  const quote = testimonials.find((testimonial) => testimonial.name === 'Ram Raju')!
+  const quotes = ['Shivani Sahay', 'Shailesh Benedict', 'Ram Raju']
+    .map((name) => testimonials.find((testimonial) => testimonial.name === name)!)
   return (
     <>
       <Hero />
+      <TrustStrip />
       <Objectives />
       <WhatWeDo />
 
@@ -41,7 +44,7 @@ export default function Page() {
             title="Eight programs, each built around a specific problem"
             lead={`${deliveryTerms.note} ${deliveryTerms.duration}, as a workshop, masterclass or full learning journey.`}
           />
-          <div className="mt-14"><ProgramTable /></div>
+          <div className="mt-16"><ProgramTable /></div>
           <Link href="/programs" className="link-arrow mt-10">Compare programs in detail</Link>
         </div>
       </section>
@@ -52,19 +55,23 @@ export default function Page() {
       <Founder />
 
       <section aria-labelledby="voice-title" className="section-y">
-        <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-10">
+        <div className="container-x">
           <h2 id="voice-title" className="sr-only">In participants’ words</h2>
-          <div className="lg:col-span-8"><Quote testimonial={quote} size="lg" /></div>
-          <div className="flex flex-col justify-end border-t border-line pt-6 lg:col-span-3 lg:col-start-10 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
+          <div className="grid gap-14 lg:grid-cols-3 lg:gap-10">
+            {quotes.map((testimonial) => <Quote key={testimonial.name} testimonial={testimonial} size="lg" />)}
+          </div>
+          <div className="mt-16 border-t border-line pt-8 lg:mt-20 lg:grid lg:grid-cols-12 lg:gap-10">
+            <div className="lg:col-span-4 lg:col-start-9">
             <p className="font-serif text-[1.35rem] leading-snug">Planning a conference or offsite?</p>
             <p className="t-body mt-2">100+ keynote sessions on personal branding, digital growth, entrepreneurship and the future of work.</p>
             <Link href="/speaking" className="link-arrow mt-4">Explore Keynotes</Link>
+            </div>
           </div>
         </div>
       </section>
 
       <section aria-labelledby="faq-title" className="section-y border-t border-line-soft">
-        <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-10">
+        <div className="container-x grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4"><SectionHeader id="faq-title" eyebrow="Questions buyers ask" title="Before you get in touch" /></div>
           <div className="lg:col-span-8"><FaqList items={homeFaqs} /></div>
         </div>

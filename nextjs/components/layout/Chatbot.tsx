@@ -60,7 +60,7 @@ export function Chatbot() {
         {open && (
           <motion.section
             aria-label="TarunSpeaks assistant"
-            className="absolute right-0 bottom-[4.25rem] flex h-[min(30rem,70svh)] w-[min(22rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-[var(--radius-card)] border border-line bg-surface shadow-[0_30px_80px_-20px_rgb(0_0_0/0.7)]"
+            className="absolute right-0 bottom-[4.25rem] flex h-[min(30rem,70svh)] w-[min(22rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-[var(--radius-card)] border border-line bg-surface shadow-panel"
             initial={reduceMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 12 }}
@@ -109,7 +109,7 @@ export function Chatbot() {
         aria-expanded={open}
         aria-label={open ? 'Close assistant chat' : 'Open assistant chat'}
         onClick={() => setOpen((current) => !current)}
-        className="grid size-13 place-items-center rounded-full border border-line bg-surface text-fg shadow-[0_14px_34px_-10px_rgb(0_0_0/0.8)] transition-colors hover:border-brand-bright hover:bg-brand"
+        className="grid size-13 place-items-center rounded-full border border-line bg-surface text-fg shadow-float transition-colors hover:border-brand-bright hover:bg-brand"
       >
         {open ? <X size={20} aria-hidden="true" /> : <MessageCircle size={21} aria-hidden="true" />}
       </button>
