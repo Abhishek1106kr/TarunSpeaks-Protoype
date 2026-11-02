@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { Eyebrow } from '../ui/Eyebrow'
-import { Photo } from '../ui/Photo'
+import { FounderMedia } from './FounderMedia'
 
 // Tarun as the practitioner behind the work: one real portrait, a short verified narrative, and the
 // milestones that explain why buyers can trust the method. The full journey lives on /about.
@@ -18,7 +18,7 @@ export function Founder() {
       <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-10">
         <figure className="lg:col-span-5">
           <div data-reveal="image" className="relative mx-auto aspect-[4/5] max-w-md overflow-hidden bg-black lg:max-w-none">
-            <Photo name="founder-portrait" alt="Portrait of Tarun Makhija" tone="color" sizes="(min-width: 1024px) 36vw, 90vw" className="size-full object-cover object-top" />
+            <FounderMedia />
           </div>
           <figcaption className="t-meta mt-3">Tarun Makhija, Chief Educator &amp; Founder.</figcaption>
         </figure>

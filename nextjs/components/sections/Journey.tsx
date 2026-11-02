@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring } from 'framer-motion'
 import { journey } from '../../data/journey'
+import { useMotionAllowed } from '../../lib/useMotionAllowed'
 import { Photo } from '../ui/Photo'
 import { SectionHeader } from '../ui/SectionHeader'
 
@@ -19,6 +20,7 @@ export function Journey({ headingLevel = 'h2' }: { headingLevel?: 'h2' | 'h3' })
   const [active, setActive] = useState(0)
   const listRef = useRef<HTMLOListElement>(null)
   const reduceMotion = useReducedMotion()
+  const motionAllowed = useMotionAllowed()
   const { scrollYProgress } = useScroll({ target: listRef, offset: ['start 65%', 'end 55%'] })
   const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 30, restDelta: 0.001 })
 
@@ -105,7 +107,7 @@ export function Journey({ headingLevel = 'h2' }: { headingLevel?: 'h2' | 'h3' })
             <motion.span
               aria-hidden="true"
               className="absolute top-2 bottom-2 left-[0.3rem] w-px origin-top bg-brand-bright sm:left-[0.55rem]"
-              style={{ scaleY: reduceMotion ? 1 : progress }}
+              style={{ scaleY: motionAllowed ? progress : 1 }}
             />
 
             <ol ref={listRef} className="flex flex-col gap-16 lg:gap-0">
@@ -123,7 +125,7 @@ export function Journey({ headingLevel = 'h2' }: { headingLevel?: 'h2' | 'h3' })
                   <div className="mb-7 aspect-[16/10] overflow-hidden bg-surface lg:hidden" data-reveal="image">
                     <Photo name={step.image} alt={step.imageAlt} sizes="92vw" className="size-full object-cover" />
                   </div>
-                  <p className="text-[0.95rem] font-semibold text-brand-text">{step.phase} <span className="font-normal text-fg-3">· {step.marker}</span></p>
+                  <p className="text-[0.95rem] font-semibold text-brand-text">{step.phase}, <span className="font-normal text-fg-3">{step.marker}</span></p>
                   <StepHeading className="mt-4 max-w-xl font-serif text-[clamp(1.8rem,2.8vw,2.5rem)] leading-[1.08] font-normal tracking-[-0.02em]">{step.title}</StepHeading>
                   <p className="t-body mt-5 max-w-xl">{step.body}</p>
                   <p className="mt-6 max-w-xl border-l-2 border-brand-bright pl-4 text-[1rem] leading-relaxed text-fg">{step.proof}</p>

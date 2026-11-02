@@ -77,7 +77,7 @@ export default async function Page({ params }: PageProps<'/case-studies/[slug]'>
           </nav>
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-8">
-              <Eyebrow className="enter mb-6">{study.client} · {study.industry}{study.location ? ` · ${study.location}` : ''}</Eyebrow>
+              <Eyebrow className="enter mb-6">{study.client}, {study.industry}{study.location ? `, ${study.location}` : ''}</Eyebrow>
               <h1 className="t-h1 enter" style={{ '--enter-delay': '0.06s' } as React.CSSProperties}>{study.headline}</h1>
             </div>
           </div>
@@ -108,7 +108,7 @@ export default async function Page({ params }: PageProps<'/case-studies/[slug]'>
               <p className="t-lead mt-5 max-w-2xl">{study.objective}</p>
               <dl className="mt-8 border-t border-line">
                 <div className="grid gap-1 border-b border-line py-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-6">
-                  <dt className="text-fg-3">Format</dt><dd>{study.format.join(' · ')}</dd>
+                  <dt className="text-fg-3">Format</dt><dd>{study.format.join(', ')}</dd>
                 </div>
                 <div className="grid gap-1 border-b border-line py-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-6">
                   <dt className="text-fg-3">Who took part</dt><dd>{study.audience}</dd>
@@ -194,7 +194,7 @@ export default async function Page({ params }: PageProps<'/case-studies/[slug]'>
                   <h3 className="text-[1.08rem] font-semibold md:col-span-5">
                     <Link href={`/case-studies/${other.slug}`} className="decoration-brand-bright decoration-2 underline-offset-4 after:absolute after:inset-0 group-hover:underline">{other.headline}</Link>
                   </h3>
-                  <p className="text-[0.95rem] text-fg-2 md:col-span-4">{other.format.slice(0, 2).join(' · ')}</p>
+                  <p className="text-[0.95rem] text-fg-2 md:col-span-4">{other.format.slice(0, 2).join(', ')}</p>
                 </li>
               ))}
             </ul>

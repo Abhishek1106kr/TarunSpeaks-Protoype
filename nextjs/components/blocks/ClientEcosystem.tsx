@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { type Client, clients, type SectorId, sectors } from '../../data/clients'
+import { useMotionAllowed } from '../../lib/useMotionAllowed'
 
 type Filter = SectorId | 'all'
 
@@ -26,18 +27,18 @@ function logoSize(client: Client, prominent: boolean) {
 function ClientLogo({ client, duplicate = false, listItem = false, className }: { client: Client; duplicate?: boolean; listItem?: boolean; className?: string }) {
   const prominent = Boolean(client.caseStudy)
   const logo = client.colorLogo ?? client.logo
+  const monochrome = !client.colorLogo
   const size = logo ? logoSize(client, prominent) : null
   const tabIndex = duplicate ? -1 : undefined
   const Item = listItem ? 'li' : 'div'
   const body = (
     <>
-      <span tabIndex={tabIndex} className={`flex h-32 items-center justify-center rounded-[0.3rem] border border-line bg-surface p-4 ${prominent ? 'transition-colors duration-200 ease-editorial group-hover:border-brand-bright/60 group-focus-visible:border-brand-bright/60' : ''}`}>
+      <span tabIndex={tabIndex} className={`flex h-32 items-center justify-center rounded-[0.3rem] border border-line bg-logo-tile p-4 ${prominent ? 'transition-colors duration-200 ease-editorial group-hover:border-brand-bright/60 group-focus-visible:border-brand-bright/60' : ''}`}>
         {logo && size
-          ? <Image tabIndex={tabIndex} src={logo.src} alt={client.name} width={size.width} height={size.height} sizes={`${size.width}px`} className="opacity-85 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" style={{ width: size.width, height: size.height }} />
+          ? <Image tabIndex={tabIndex} src={logo.src} alt={client.name} width={size.width} height={size.height} sizes={`${size.width}px`} className={monochrome ? 'brightness-0' : undefined} style={{ width: size.width, height: size.height }} />
           : <span tabIndex={tabIndex} className="font-serif text-[1.15rem] text-fg">{client.name}<span className="sr-only"> (logo not available)</span></span>}
       </span>
-      <span tabIndex={tabIndex} aria-hidden="true" className="flex min-h-10 items-start justify-center gap-1.5 text-center text-[0.8rem] leading-snug text-fg-2">
-        {prominent && <span tabIndex={tabIndex} className="mt-[0.4em] size-1.5 shrink-0 rounded-full bg-brand-bright" />}
+      <span tabIndex={tabIndex} aria-hidden="true" className="flex min-h-10 items-start justify-center text-center text-[0.8rem] leading-snug text-fg-2">
         <span tabIndex={tabIndex} className="opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">{client.name}</span>
       </span>
     </>
@@ -93,13 +94,14 @@ export function ClientEcosystem() {
   const [filter, setFilter] = useState<Filter>('all')
   const [expanded, setExpanded] = useState(false)
   const reduceMotion = useReducedMotion()
+  const motionAllowed = useMotionAllowed()
 
   const pool = filter === 'all' ? clients : clients.filter((client) => client.sector === filter)
   const visible = filter === 'all' && !expanded ? pool.filter((client) => client.curated) : pool
   const activeLabel = filter === 'all' ? (expanded ? 'All industries' : 'A selection across all industries') : sectors.find((sector) => sector.id === filter)!.label
   // On small screens a long list is trimmed until the visitor asks for everything.
   const trimMobile = !expanded && visible.length > MOBILE_INITIAL
-  const showMarquee = filter === 'all' && !expanded && !reduceMotion
+  const showMarquee = filter === 'all' && !expanded && motionAllowed
   const curated = clients.filter((client) => client.curated)
   const midpoint = Math.ceil(curated.length / 2)
   const marqueeRows = [curated.slice(0, midpoint), curated.slice(midpoint)]

@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { navLinks } from '../../data/company'
@@ -20,6 +21,10 @@ export function Navbar() {
   const setOpen = (value: boolean) => setMenuPath(value ? pathname : null)
   const headerRef = useRef<HTMLElement>(null)
   const toggleRef = useRef<HTMLButtonElement>(null)
+  const programsRef = useRef<HTMLLIElement>(null)
+  const programsTriggerRef = useRef<HTMLButtonElement>(null)
+  const [programsOpen, setProgramsOpen] = useState(false)
+  const reduceMotion = useReducedMotion()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16)
@@ -27,6 +32,24 @@ export function Navbar() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useEffect(() => {
+    if (!programsOpen) return
+    const onPointerDown = (event: PointerEvent) => {
+      if (!programsRef.current?.contains(event.target as Node)) setProgramsOpen(false)
+    }
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return
+      setProgramsOpen(false)
+      programsTriggerRef.current?.focus()
+    }
+    document.addEventListener('pointerdown', onPointerDown)
+    document.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown)
+      document.removeEventListener('keydown', onKeyDown)
+    }
+  }, [programsOpen])
 
   // While the mobile menu is open: lock page scroll, trap focus in the header, close on Escape.
   useEffect(() => {
@@ -68,7 +91,49 @@ export function Navbar() {
         <nav aria-label="Main" className="hidden nav:block">
           <ul className="flex items-center gap-7">
             {navLinks.map((link) => {
-              const active = isActive(pathname, link.to)
+              const active = isActive(pathname, link.to) || Boolean(link.children?.some((child) => isActive(pathname, child.to)))
+              if (link.children) {
+                const panelId = 'programs-nav-menu'
+                return (
+                  <li key={link.to} ref={programsRef} className="relative">
+                    <button
+                      ref={programsTriggerRef}
+                      type="button"
+                      aria-haspopup="menu"
+                      aria-expanded={programsOpen}
+                      aria-controls={panelId}
+                      className={`relative inline-flex min-h-11 items-center gap-1 text-[0.9rem] font-medium transition-colors hover:text-fg after:absolute after:inset-x-0 after:bottom-2 after:h-0.5 after:bg-brand-bright after:transition-transform after:duration-300 ${active ? 'text-fg after:scale-x-100' : 'text-fg-2 after:scale-x-0 hover:after:scale-x-100'} after:origin-left`}
+                      onClick={() => setProgramsOpen((value) => !value)}
+                    >
+                      {link.label}
+                      <ChevronDown aria-hidden="true" size={15} className={`transition-transform duration-200 ease-editorial ${programsOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    <AnimatePresence>
+                      {programsOpen && (
+                        <motion.div
+                          id={panelId}
+                          role="menu"
+                          aria-label="Programs"
+                          initial={reduceMotion ? false : { opacity: 0, y: -4 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -4 }}
+                          transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                          className="absolute left-1/2 top-full z-10 mt-2 w-64 -translate-x-1/2 rounded-[var(--radius-card)] border border-line bg-surface p-2 shadow-panel"
+                        >
+                          {link.children.map((child) => (
+                            <Link key={child.to} href={child.to} role="menuitem" onClick={() => setProgramsOpen(false)} className="block rounded-[0.25rem] px-3 py-2.5 text-[0.9rem] font-medium text-fg-2 transition-colors hover:bg-fg/5 hover:text-fg">
+                              {child.label}
+                            </Link>
+                          ))}
+                          <Link href={link.to} role="menuitem" onClick={() => setProgramsOpen(false)} className="mt-1 block border-t border-line px-3 pt-2.5 text-[0.82rem] font-medium text-brand-text transition-colors hover:text-fg">
+                            All Programs
+                          </Link>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </li>
+                )
+              }
               return (
                 <li key={link.to}>
                   <Link
@@ -97,8 +162,8 @@ export function Navbar() {
             onClick={() => setOpen(!open)}
           >
             <span aria-hidden="true" className="relative block h-3 w-6">
-              <span className={`absolute left-0 h-0.5 w-full bg-current transition-[top,transform] duration-300 ${open ? 'top-[5px] rotate-45' : 'top-0'}`} />
-              <span className={`absolute left-0 h-0.5 w-full bg-current transition-[top,transform] duration-300 ${open ? 'top-[5px] -rotate-45' : 'top-2.5'}`} />
+              <span className={`absolute left-0 top-0 h-0.5 w-full bg-current transition-transform duration-300 ${open ? 'translate-y-[5px] rotate-45' : ''}`} />
+              <span className={`absolute left-0 top-2.5 h-0.5 w-full bg-current transition-transform duration-300 ${open ? '-translate-y-[5px] -rotate-45' : ''}`} />
             </span>
           </button>
         </div>
@@ -106,5 +171,6 @@ export function Navbar() {
 
       <AnimatePresence>{open && <MobileMenu onNavigate={() => setOpen(false)} />}</AnimatePresence>
     </header>
+
   )
 }

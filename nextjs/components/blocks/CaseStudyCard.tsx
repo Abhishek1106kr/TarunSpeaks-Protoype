@@ -25,13 +25,13 @@ export function CaseStudyCard({ study, headingLevel = 'h3', priority = false }: 
               <span className="mt-2 text-fg-2">{lead.label}</span>
             </div>}
       </div>
-      <p className="t-meta mt-5">{study.client} · {study.industry}</p>
+      <p className="text-[0.9rem] leading-[1.45] text-fg-3 mt-5">{study.client}, {study.industry}</p>
       <Heading className="mt-2 font-serif text-[1.55rem] leading-[1.15] font-normal tracking-[-0.015em] text-fg">
         <Link href={`/case-studies/${study.slug}`} className="decoration-brand-bright decoration-2 underline-offset-4 after:absolute after:inset-0 group-hover:underline">
           {study.headline}
         </Link>
       </Heading>
-      <p className="mt-3 text-[0.95rem] text-fg-2">{study.format.slice(0, 2).join(' · ')}</p>
+      <p className="mt-3 text-[0.95rem] text-fg-2">{study.format.slice(0, 2).join(', ')}</p>
     </article>
   )
 }

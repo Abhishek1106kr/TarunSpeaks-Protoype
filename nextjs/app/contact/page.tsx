@@ -46,7 +46,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ [
               <dl className="mt-3 border-t border-line">
                 <div className="border-b border-line py-4">
                   <dt className="text-[0.9rem] text-fg-3">Email</dt>
-                  <dd><a href={company.email.href} className="text-[1.08rem] break-all underline decoration-line underline-offset-4 hover:decoration-brand-bright">{company.email.label}</a></dd>
+                  <dd><a href={company.email.href} className="text-[1.08rem] whitespace-nowrap underline decoration-line underline-offset-4 hover:decoration-brand-bright">{company.email.label}</a></dd>
                 </div>
                 <div className="border-b border-line py-4">
                   <dt className="text-[0.9rem] text-fg-3">Phone</dt>

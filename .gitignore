@@ -21,6 +21,7 @@ playwright/.cache
 # QA screenshots and internal review notes (not for the public repo)
 qa-output/
 feedback/
+.hallmark/
 
 # Large raw media exports that sometimes land in public/ (Drive/OneDrive downloads) — never commit these
 public/*.zip

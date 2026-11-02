@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from 'next'
 import { Archivo, Newsreader } from 'next/font/google'
-import { Chatbot } from '../components/layout/Chatbot'
 import { ConsultationPopup } from '../components/layout/ConsultationPopup'
+import { EmailCaptureWidget } from '../components/layout/EmailCaptureWidget'
 import { Footer } from '../components/layout/Footer'
 import { Navbar } from '../components/layout/Navbar'
+import { GridSpotlight } from '../components/home/GridSpotlight'
 import { AnalyticsListener } from '../components/motion/AnalyticsListener'
 import { RevealObserver } from '../components/motion/RevealObserver'
 import { JsonLd } from '../components/seo/JsonLd'
@@ -66,8 +67,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main id="main" tabIndex={-1} className="outline-none">{children}</main>
         <Footer />
-        <Chatbot />
+        <EmailCaptureWidget />
         <ConsultationPopup />
+        <GridSpotlight />
         <RevealObserver />
         <AnalyticsListener />
       </body>

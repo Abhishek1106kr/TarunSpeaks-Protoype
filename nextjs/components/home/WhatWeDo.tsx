@@ -10,7 +10,7 @@ const offers = [
     body: 'Practical programs in AI tools, AI for sales, leadership, personal branding, marketing, client relationships and communication, built around your roles and real scenarios.',
     facts: [
       ['For', 'CHROs and L&D leaders building a capability across a team or function'],
-      ['Format', 'Workshop, masterclass or full learning journey · 3–30 hours'],
+      ['Format', 'Workshop, masterclass or full learning journey, 3–30 hours'],
       ['Evidence', '4,300+ trained across 42 cities for Sansaar by D’Decor'],
     ],
     href: '/corporate-training',

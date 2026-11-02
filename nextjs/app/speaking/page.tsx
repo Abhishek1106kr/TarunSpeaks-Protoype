@@ -53,7 +53,7 @@ export default function Page() {
                   <div><dt className="text-fg-3">Audience</dt><dd className="mt-0.5">{keynote.audience}</dd></div>
                   <div><dt className="text-fg-3">Takeaway</dt><dd className="mt-0.5 text-fg-2">{keynote.takeaway}</dd></div>
                   {keynote.deliveredAt.length > 0 && (
-                    <div><dt className="text-fg-3">Delivered for</dt><dd className="mt-0.5 text-fg-2">{keynote.deliveredAt.join(' · ')}</dd></div>
+                    <div><dt className="text-fg-3">Delivered for</dt><dd className="mt-0.5 text-fg-2">{keynote.deliveredAt.join(', ')}</dd></div>
                   )}
                 </dl>
               </li>

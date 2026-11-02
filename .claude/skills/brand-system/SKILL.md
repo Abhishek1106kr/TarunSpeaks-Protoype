@@ -53,7 +53,7 @@ The company profile **reuses some photographs across different clients' pages** 
 
 ## Client logos
 
-59 approved organisations in `nextjs/data/clients.ts` (names and groupings exactly as supplied). Every logo is cropped from the profile's "Our Clients" pages (pp.9–12): render the page at 4×, detect logo boxes (luminance > 45, dilate, connected components), map boxes to names in reading order, convert luminance to alpha (white mark, transparent background), trim, cap at 380×132, WebP q86. Marks on those pages that aren't on the approved list (e.g. "WLDD", an "iiT" mark) are not used. Full-colour originals for 12 clients exist in the site export, but the monochrome set is used for consistency on the black canvas.
+59 approved organisations in `nextjs/data/clients.ts` (names and groupings exactly as supplied). Every logo is cropped from the profile's "Our Clients" pages (pp.9–12): render the page at 4×, detect logo boxes (luminance > 45, dilate, connected components), map boxes to names in reading order, convert luminance to alpha (white mark, transparent background), trim, cap at 380×132, WebP q86. Marks on those pages that aren't on the approved list (e.g. "WLDD", an "iiT" mark) are not used. Logos with a checked official source use `colorLogo` from `public/images/clients-color/`; the rest render the profile asset as a black mark. All logos sit on white tiles; compare any new logo side by side with the profile asset before adding it.
 
 ## Photography
 

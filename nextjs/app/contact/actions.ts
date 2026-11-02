@@ -1,6 +1,6 @@
 'use server'
 
-import { type EnquiryFields, type EnquiryState, interestOptions, requestOptions, teamSizeOptions, timelineOptions } from './enquiry'
+import { type EnquiryFields, type EnquiryState, interestOptions, type LeadEmailFields, type LeadEmailState, requestOptions, teamSizeOptions, timelineOptions } from './enquiry'
 
 const limits: Record<keyof EnquiryFields, number> = { request: 20, name: 100, email: 200, organisation: 150, role: 100, interest: 40, message: 3000, phone: 30, teamSize: 20, timeline: 20 }
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
@@ -25,30 +25,38 @@ function validate(values: EnquiryFields) {
 
 // Delivery channels, configured via server-only environment variables (see .env.example).
 // Returns false when no channel is configured; throws when a configured channel fails.
-async function deliver(values: EnquiryFields): Promise<boolean> {
-  const interest = labelOf(interestOptions, values.interest)
-  const request = labelOf(requestOptions, values.request)
-  const subject = `${values.request === 'consultation' ? 'Consultation request' : 'New enquiry'}: ${interest}, ${values.organisation}`
-  const text = [
-    `Request: ${request}`,
-    `Name: ${values.name}`,
-    `Email: ${values.email}`,
-    `Organisation: ${values.organisation}`,
-    `Role: ${values.role || 'Not provided'}`,
-    `Interest: ${interest}`,
-    `Phone: ${values.phone || 'Not provided'}`,
-    `Team size: ${labelOf(teamSizeOptions, values.teamSize) || 'Not provided'}`,
-    `Timeline: ${labelOf(timelineOptions, values.timeline) || 'Not provided'}`,
-    '',
-    values.message,
-  ].join('\n')
+async function deliver(values: EnquiryFields | LeadEmailFields): Promise<boolean> {
+  const isEnquiry = 'organisation' in values
+  const email = values.email
+  const subject = isEnquiry ? `${values.request === 'consultation' ? 'Consultation request' : 'New enquiry'}: ${labelOf(interestOptions, values.interest)}, ${values.organisation}` : 'New email lead from floating email capture'
+  const text = isEnquiry
+    ? [
+        `Request: ${labelOf(requestOptions, values.request)}`,
+        `Name: ${values.name}`,
+        `Email: ${email}`,
+        `Organisation: ${values.organisation}`,
+        `Role: ${values.role || 'Not provided'}`,
+        `Interest: ${labelOf(interestOptions, values.interest)}`,
+        `Phone: ${values.phone || 'Not provided'}`,
+        `Team size: ${labelOf(teamSizeOptions, values.teamSize) || 'Not provided'}`,
+        `Timeline: ${labelOf(timelineOptions, values.timeline) || 'Not provided'}`,
+        '',
+        values.message,
+      ].join('\n')
+    : [`Email: ${email}`, 'Source: Floating email-capture widget', `Submitted at: ${new Date().toISOString()}`].join('\n')
 
   const webhook = process.env.CONTACT_WEBHOOK_URL
   if (webhook) {
     const response = await fetch(webhook, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ subject, text, ...values, interestLabel: interest, requestLabel: request, submittedAt: new Date().toISOString() }),
+      body: JSON.stringify({
+        subject,
+        text,
+        ...values,
+        ...(isEnquiry ? { interestLabel: labelOf(interestOptions, values.interest), requestLabel: labelOf(requestOptions, values.request) } : {}),
+        submittedAt: new Date().toISOString(),
+      }),
       signal: AbortSignal.timeout(10_000),
     })
     if (!response.ok) throw new Error(`Webhook responded ${response.status}`)
@@ -60,7 +68,7 @@ async function deliver(values: EnquiryFields): Promise<boolean> {
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from, to: to.split(','), reply_to: values.email, subject, text }),
+      body: JSON.stringify({ from, to: to.split(','), reply_to: email, subject, text }),
       signal: AbortSignal.timeout(10_000),
     })
     if (!response.ok) throw new Error(`Resend responded ${response.status}`)
@@ -68,6 +76,24 @@ async function deliver(values: EnquiryFields): Promise<boolean> {
   }
 
   return false
+}
+
+export async function submitLeadEmail(_previous: LeadEmailState, formData: FormData): Promise<LeadEmailState> {
+  const values: LeadEmailFields = { email: String(formData.get('email') ?? '').trim().slice(0, 200) }
+  if (!values.email) return { status: 'invalid', error: 'Please enter your email address.', values }
+  if (!emailPattern.test(values.email)) return { status: 'invalid', error: 'Please enter a valid email address, like name@company.com.', values }
+
+  const honeypot = String(formData.get('company_website') ?? '')
+  const startedAt = Number(formData.get('started_at') ?? 0)
+  if (honeypot || (startedAt && Date.now() - startedAt < MIN_FILL_MS)) return { status: 'sent' }
+
+  try {
+    const delivered = await deliver(values)
+    return delivered ? { status: 'sent' } : { status: 'not-sent', reason: 'unconfigured', values }
+  } catch (error) {
+    console.error('Lead email delivery failed', error)
+    return { status: 'not-sent', reason: 'failed', values }
+  }
 }
 
 export async function submitEnquiry(_previous: EnquiryState, formData: FormData): Promise<EnquiryState> {

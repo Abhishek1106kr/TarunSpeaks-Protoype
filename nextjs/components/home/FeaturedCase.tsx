@@ -22,7 +22,7 @@ export function FeaturedCase() {
             </div>
           </figure>
           <div className="flex flex-col lg:col-span-5">
-            <p className="t-meta">{lead.client} · {lead.industry}</p>
+            <p className="text-[0.9rem] leading-[1.45] text-fg-3">{lead.client}, {lead.industry}</p>
             <h2 id="featured-case-title" className="t-h2 mt-3">{lead.headline}</h2>
             <dl className="mt-8 grid grid-cols-3 border-y border-line">
               {lead.figures.map((figure, index) => (
@@ -47,7 +47,7 @@ export function FeaturedCase() {
               <h3 className="mt-2 font-serif text-[1.45rem] leading-[1.18] font-normal tracking-[-0.012em]">
                 <Link href={`/case-studies/${study.slug}`} className="decoration-brand-bright decoration-2 underline-offset-4 after:absolute after:inset-0 group-hover:underline">{study.headline}</Link>
               </h3>
-              <p className="mt-3 text-[0.95rem] text-fg-2">{study.format.join(' · ')}</p>
+              <p className="mt-3 text-[0.95rem] text-fg-2">{study.format.join(', ')}</p>
             </article>
           ))}
         </div>

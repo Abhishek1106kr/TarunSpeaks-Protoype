@@ -36,7 +36,7 @@ const columns: { title: string; links: FooterLink[] }[] = [
 ]
 
 function FooterAnchor({ link }: { link: FooterLink }) {
-  const className = 'inline-flex min-h-10 items-center break-all text-fg-2 transition-colors hover:text-fg'
+  const className = 'inline-flex min-h-10 items-center whitespace-nowrap text-fg-2 transition-colors hover:text-fg'
   if (link.to) return <Link href={link.to} className={className}>{link.label}</Link>
   const external = link.href!.startsWith('http')
   return (
@@ -50,13 +50,13 @@ function FooterAnchor({ link }: { link: FooterLink }) {
 export function Footer() {
   return (
     <footer className="border-t border-line bg-canvas-2">
-      <div className="container-x grid gap-14 py-16 lg:grid-cols-[minmax(0,22rem)_1fr] lg:gap-20">
+      <div className="container-x grid gap-14 py-16 xl:grid-cols-[minmax(0,22rem)_1fr] xl:gap-20">
         <div className="flex flex-col items-start gap-6">
           <Logo />
           <p className="t-body max-w-xs">{company.about}</p>
           <Button to="/contact" track="footer" arrow>Enquire Now</Button>
         </div>
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-[1fr_1fr_1.35fr_0.9fr]">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 xl:grid-cols-[1fr_1fr_1.35fr_0.9fr]">
           {columns.map((column) => (
             <nav key={column.title} aria-label={`Footer: ${column.title}`}>
               <h2 className="mb-3 font-sans text-[0.9rem] font-semibold tracking-normal text-fg">{column.title}</h2>

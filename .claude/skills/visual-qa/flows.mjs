@@ -80,6 +80,8 @@ const browser = await chromium.launch()
   await toggle.click()
   const nav = page.getByRole('navigation', { name: 'Mobile' })
   await nav.waitFor()
+  await nav.getByRole('button', { name: 'Programs' }).click()
+  await nav.getByRole('link', { name: 'All Programs' }).waitFor()
   check('Mobile menu lists primary pages', (await nav.getByRole('link').count()) >= 8)
   check('Focus moves into the menu', await page.evaluate(() => Boolean(document.activeElement?.closest('#mobile-menu'))))
   await page.keyboard.press('Escape')
@@ -109,7 +111,7 @@ const browser = await chromium.launch()
   await context.close()
 }
 
-// --- Journey, FAQ, chatbot ----------------------------------------------------------
+// --- Journey, FAQ, email capture -----------------------------------------------------
 {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })
   await page.goto(`${base}/about`, { waitUntil: 'networkidle' })
@@ -124,11 +126,11 @@ const browser = await chromium.launch()
   await faq.locator('summary').click()
   check('FAQ item expands', await faq.evaluate((element) => element.open))
 
-  await page.getByRole('button', { name: 'Open assistant chat' }).click()
-  await page.getByLabel('Ask the assistant').fill('Do you run AI training?')
-  await page.getByRole('button', { name: 'Send message' }).click()
-  const reply = await page.locator('[data-from="bot"]').last().textContent()
-  check('Chatbot answers from site facts', reply?.includes('AI') ?? false, reply?.slice(0, 50))
+  await page.getByRole('button', { name: 'Open email capture' }).click()
+  await page.getByLabel('Email address').fill('not-an-email')
+  await page.getByRole('button', { name: 'Send email' }).click()
+  await page.getByText('valid email address').waitFor()
+  check('Email widget opens and rejects malformed email', await page.getByLabel('Email address').getAttribute('aria-invalid') === 'true')
   await page.close()
 }
 

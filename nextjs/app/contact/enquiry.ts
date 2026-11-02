@@ -52,3 +52,12 @@ export type EnquiryState =
   | { status: 'sent'; request: string }
   // No delivery channel is configured, or delivery failed: nothing was sent. The UI must say so.
   | { status: 'not-sent'; reason: 'unconfigured' | 'failed'; values: EnquiryFields }
+
+export type LeadEmailFields = { email: string }
+
+export type LeadEmailState =
+  | { status: 'idle' }
+  | { status: 'invalid'; error: string; values: LeadEmailFields }
+  | { status: 'sent' }
+  // No delivery channel is configured, or delivery failed: nothing was sent. The UI must say so.
+  | { status: 'not-sent'; reason: 'unconfigured' | 'failed'; values: LeadEmailFields }

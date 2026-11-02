@@ -140,7 +140,6 @@ export function ConsultationPopup() {
           >
             <div className="flex items-start justify-between gap-6">
               <div>
-                <p className="t-meta">A useful next step</p>
                 <h2 id="consultation-popup-title" className="t-h2 mt-3">Still deciding?</h2>
               </div>
               <button type="button" aria-label="Close" onClick={close} className="grid size-11 shrink-0 place-items-center rounded-full hover:bg-fg/10">

@@ -61,7 +61,7 @@ export default function Page() {
               <li key={program.slug} id={program.slug} className="scroll-mt-28 border-t border-line py-14 first:border-t-0 first:pt-0 lg:py-20">
                 <article aria-labelledby={`${program.slug}-title`} className="grid gap-10 xl:grid-cols-[minmax(0,1fr)_15rem] xl:gap-12">
                   <div>
-                    <p className="t-meta"><span className="nums font-serif text-[1.05rem] text-brand-text">{String(index + 1).padStart(2, '0')}</span> <span className="mx-2" aria-hidden="true">·</span>{program.category}</p>
+                    <p className="t-meta"><span className="nums font-serif text-[1.05rem] text-brand-text">{String(index + 1).padStart(2, '0')}</span>, {program.category}</p>
                     <h2 id={`${program.slug}-title`} className="t-h2 mt-3">{program.title}</h2>
                     <p className="t-lead mt-4 max-w-2xl">{program.summary}</p>
 
@@ -96,7 +96,7 @@ export default function Page() {
                           {studies.map((study, studyIndex) => (
                             <span key={study.slug}>
                               {studyIndex > 0 && (studyIndex === studies.length - 1 ? ' and ' : ', ')}
-                              <Link href={`/case-studies/${study.slug}`} className="text-fg underline decoration-line underline-offset-4 hover:decoration-brand-bright">{study.client}</Link>
+                              <Link href={`/case-studies/${study.slug}`} className="whitespace-nowrap text-fg underline decoration-line underline-offset-4 hover:decoration-brand-bright">{study.client}</Link>
                             </span>
                           ))}
                         </p>

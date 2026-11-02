@@ -102,10 +102,10 @@ export default function Page() {
                 {atScale.map((study) => (
                   <tr key={study.slug} className="border-b border-line align-top">
                     <th scope="row" className="py-5 pr-6 font-serif text-[1.3rem] font-normal">
-                      <Link href={`/case-studies/${study.slug}`} className="underline decoration-line underline-offset-4 hover:decoration-brand-bright">{study.client}</Link>
+                      <Link href={`/case-studies/${study.slug}`} className="whitespace-nowrap underline decoration-line underline-offset-4 hover:decoration-brand-bright">{study.client}</Link>
                     </th>
                     <td className="py-5 pr-6 text-fg-2">{study.headline}</td>
-                    <td className="py-5 text-fg">{study.format.slice(0, 2).join(' · ')}</td>
+                    <td className="py-5 text-fg">{study.format.slice(0, 2).join(', ')}</td>
                   </tr>
                 ))}
               </tbody>

@@ -50,13 +50,23 @@ export const socials = [
   { label: 'YouTube', href: 'https://www.youtube.com/@tarunmakhija01' },
 ]
 
-export const navLinks = [
-  { label: 'Services', to: '/services' },
-  { label: 'Programs', to: '/programs' },
-  { label: 'Corporate Training', to: '/corporate-training' },
-  { label: 'Consulting', to: '/consulting' },
+export type NavLink = {
+  label: string
+  to: string
+  children?: { label: string; to: string }[]
+}
+
+export const navLinks: NavLink[] = [
+  {
+    label: 'Programs',
+    to: '/programs',
+    children: [
+      { label: 'Corporate Training', to: '/corporate-training' },
+      { label: 'Consulting', to: '/consulting' },
+      { label: 'Speaking', to: '/speaking' },
+    ],
+  },
   { label: 'Case Studies', to: '/case-studies' },
-  { label: 'Speaking', to: '/speaking' },
   { label: 'Insights', to: '/insights' },
   { label: 'About', to: '/about' },
 ]

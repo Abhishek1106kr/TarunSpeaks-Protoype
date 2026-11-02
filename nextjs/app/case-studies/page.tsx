@@ -45,12 +45,12 @@ export default function Page() {
                   {photo && <Photo name={photo.name} alt={photo.alt} loading={groupIndex === 0 ? 'eager' : 'lazy'} sizes="(min-width: 1024px) 55vw, 92vw" className="size-full object-cover transition-transform duration-700 ease-editorial group-hover:scale-[1.02]" />}
                 </div>
                 <div className="flex flex-col justify-end lg:col-span-5">
-                  <p className="t-meta">{feature.client} · {feature.industry}</p>
+                  <p className="text-[0.9rem] leading-[1.45] text-fg-3">{feature.client}, {feature.industry}</p>
                   <h3 className="mt-3 font-serif text-[clamp(1.8rem,2.8vw,2.5rem)] leading-[1.1] font-normal tracking-[-0.02em]">
                     <Link href={`/case-studies/${feature.slug}`} className="decoration-brand-bright decoration-2 underline-offset-4 after:absolute after:inset-0 group-hover:underline">{feature.headline}</Link>
                   </h3>
                   <p className="t-body mt-4">{feature.objective}</p>
-                  <p className="mt-5 text-[0.95rem] text-fg">{feature.format.join(' · ')}</p>
+                  <p className="mt-5 text-[0.95rem] text-fg">{feature.format.join(', ')}</p>
                   <span className="link-arrow mt-6">Read the case study<ArrowRight aria-hidden="true" size={16} /></span>
                 </div>
               </article>
@@ -62,7 +62,7 @@ export default function Page() {
                     <h3 className="text-[1.1rem] leading-snug font-semibold md:col-span-5">
                       <Link href={`/case-studies/${study.slug}`} className="decoration-brand-bright decoration-2 underline-offset-4 after:absolute after:inset-0 group-hover:underline">{study.headline}</Link>
                     </h3>
-                    <p className="text-[0.95rem] text-fg-2 md:col-span-4">{study.format.slice(0, 2).join(' · ')}</p>
+                    <p className="text-[0.95rem] text-fg-2 md:col-span-4">{study.format.slice(0, 2).join(', ')}</p>
                   </li>
                 ))}
               </ul>

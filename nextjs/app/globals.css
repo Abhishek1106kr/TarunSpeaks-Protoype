@@ -1,3 +1,10 @@
+/* Hallmark · built: the project · redesign: polish · genre: editorial · surface: absolute */
+/* Hallmark · pre-emit critique: P5 H5 E5 S4 R5 V4 · weakest: S, the proof language can still feel broad; kept the sourced figures and documentary collage in the lead */
+/* Hallmark · waive 7b · surface: absolute · logo tiles are white because official client marks are designed for white */
+/* Hallmark · waive 26b · shared Button and link styles define :active · the page has no local controls */
+/* Hallmark · waive 49b · case-study titles, insight titles and proof lines, none of them a footer link, tab or breadcrumb · these are full sentences from approved copy, and some reach three lines on phones and tablets */
+/* Hallmark · waive 71 · program table rows and the homepage Delivery steps · program titles share a baseline with the cells beside them, and each Step line belongs to the heading below it */
+
 @import "tailwindcss";
 
 /*
@@ -14,6 +21,7 @@
   --color-canvas: #080b10;
   --color-canvas-2: #0d121b;
   --color-surface: #131b28;
+  --color-logo-tile: #ffffff;
   --color-brand: #1749d1;
   --color-brand-bright: #2864f0;
   --color-brand-deep: #102858;
@@ -157,8 +165,8 @@
   .t-lead { font-size: clamp(1.1rem, 1.4vw, 1.28rem); line-height: 1.55; color: var(--color-fg-2); }
   .t-body { font-size: 1.0625rem; line-height: 1.65; color: var(--color-fg-2); }
   .t-meta { font-size: 0.9rem; line-height: 1.45; color: var(--color-fg-3); }
-  /* Small caps-style label — reserved for table headers and figure captions, not section openers. */
-  .t-label { font: 600 0.74rem/1.2 var(--font-sans); letter-spacing: 0.12em; text-transform: uppercase; }
+  /* Sentence-case label — reserved for table headers and figure captions, not section openers. */
+  .t-label { font: 600 0.8rem/1.2 var(--font-sans); }
 
   /* Section kicker: sentence case, blue, with a short rule — replaces tiny uppercase eyebrows. */
   .kicker {
