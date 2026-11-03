@@ -25,7 +25,7 @@ function validate(values: EnquiryFields) {
 
 // Delivery channels, configured via server-only environment variables (see .env.example).
 // Returns false when no channel is configured; throws when a configured channel fails.
-async function deliver(values: EnquiryFields | LeadEmailFields): Promise<boolean> {
+async function deliver(values: EnquiryFields | LeadEmailFields, leadSource = 'Floating email-capture widget'): Promise<boolean> {
   const isEnquiry = 'organisation' in values
   const email = values.email
   const subject = isEnquiry ? `${values.request === 'consultation' ? 'Consultation request' : 'New enquiry'}: ${labelOf(interestOptions, values.interest)}, ${values.organisation}` : 'New email lead from floating email capture'
@@ -43,7 +43,7 @@ async function deliver(values: EnquiryFields | LeadEmailFields): Promise<boolean
         '',
         values.message,
       ].join('\n')
-    : [`Email: ${email}`, 'Source: Floating email-capture widget', `Submitted at: ${new Date().toISOString()}`].join('\n')
+    : [`Email: ${email}`, `Source: ${leadSource}`, `Submitted at: ${new Date().toISOString()}`].join('\n')
 
   const webhook = process.env.CONTACT_WEBHOOK_URL
   if (webhook) {
@@ -88,7 +88,8 @@ export async function submitLeadEmail(_previous: LeadEmailState, formData: FormD
   if (honeypot || (startedAt && Date.now() - startedAt < MIN_FILL_MS)) return { status: 'sent' }
 
   try {
-    const delivered = await deliver(values)
+    const source = formData.get('source') === 'footer' ? 'Footer email form' : 'Floating email-capture widget'
+    const delivered = await deliver(values, source)
     return delivered ? { status: 'sent' } : { status: 'not-sent', reason: 'unconfigured', values }
   } catch (error) {
     console.error('Lead email delivery failed', error)

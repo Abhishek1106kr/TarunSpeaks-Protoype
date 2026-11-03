@@ -47,7 +47,7 @@ export function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
                     aria-expanded={programsExpanded}
                     aria-controls={submenuId}
                     onClick={() => setProgramsExpanded((value) => !value)}
-                    className={`flex min-h-14 w-full items-center justify-between text-left font-display text-[1.45rem] font-semibold tracking-[-0.02em] ${programsActive ? 'text-brand-text' : 'text-fg'}`}
+                    className={`flex min-h-14 w-full items-center justify-between text-left font-secondary text-[1.45rem] font-semibold tracking-[-0.02em] ${programsActive ? 'text-brand-text' : 'text-fg'}`}
                   >
                     {link.label}
                     <ChevronDown aria-hidden="true" size={22} className={`mr-1 transition-transform duration-200 ease-editorial ${programsExpanded ? 'rotate-180' : ''}`} />
@@ -93,7 +93,7 @@ export function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
                   href={link.to}
                   onClick={onNavigate}
                   aria-current={active ? 'page' : undefined}
-                  className={`flex min-h-14 items-center font-display text-[1.45rem] font-semibold tracking-[-0.02em] ${active ? 'text-brand-text' : 'text-fg'}`}
+                  className={`flex min-h-14 items-center font-secondary text-[1.45rem] font-semibold tracking-[-0.02em] ${active ? 'text-brand-text' : 'text-fg'}`}
                 >
                   {link.label}
                 </Link>

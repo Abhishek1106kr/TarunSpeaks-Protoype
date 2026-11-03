@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
-import { Archivo, Newsreader } from 'next/font/google'
+import { DM_Sans, Poppins } from 'next/font/google'
 import { ConsultationPopup } from '../components/layout/ConsultationPopup'
-import { EmailCaptureWidget } from '../components/layout/EmailCaptureWidget'
+import { ContactDock } from '../components/layout/ContactDock'
 import { Footer } from '../components/layout/Footer'
 import { Navbar } from '../components/layout/Navbar'
 import { GridSpotlight } from '../components/home/GridSpotlight'
@@ -12,23 +12,19 @@ import { proofStats } from '../data/company'
 import { organizationJsonLd, personJsonLd, siteUrl, websiteJsonLd } from '../lib/seo'
 import './globals.css'
 
-// Headlines: Newsreader, a news serif with an optical-size axis (large sizes get the display cut automatically).
-const newsreader = Newsreader({
+// Poppins is the brand font from the company profile.
+const poppins = Poppins({
   subsets: ['latin'],
-  weight: 'variable',
-  style: ['normal', 'italic'],
-  axes: ['opsz'],
-  variable: '--font-newsreader',
+  weight: ['400', '500', '600'],
+  variable: '--font-poppins',
   display: 'swap',
 })
 
-// Text and UI: Archivo. Its width axis also carries the company profile's heavy italic signature line.
-const archivo = Archivo({
+const dmSans = DM_Sans({
   subsets: ['latin'],
   weight: 'variable',
-  style: ['normal', 'italic'],
-  axes: ['wdth'],
-  variable: '--font-archivo',
+  axes: ['opsz'],
+  variable: '--font-dm-sans',
   display: 'swap',
 })
 
@@ -53,7 +49,7 @@ const jsFlag = "document.documentElement.classList.add('js')"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${newsreader.variable} ${archivo.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${poppins.variable} ${dmSans.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: jsFlag }} />
       </head>
@@ -67,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main id="main" tabIndex={-1} className="outline-none">{children}</main>
         <Footer />
-        <EmailCaptureWidget />
+        <ContactDock />
         <ConsultationPopup />
         <GridSpotlight />
         <RevealObserver />

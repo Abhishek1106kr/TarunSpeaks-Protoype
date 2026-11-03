@@ -36,11 +36,11 @@ Client results, ROI, revenue or adoption percentages, testimonials, awards, spea
 ## Visual tokens (`app/globals.css` `@theme`)
 
 - Canvas `#080B10`, canvas-2 `#0D121B`, surface `#131B28`, line `#273246`.
-- Blue `#1749D1` is a **fill** (white text on it is 8:1). For blue *text* on black use `brand-text` `#86A6FF` (8:1). `#2864F0` (brand-bright) is for rules, dots and focus-adjacent accents only.
+- Blue `#1526B4` is a **fill** (white text on it is about 10:1). For blue *text* on black use `brand-text` `#86A6FF` (8:1). `#2864F0` (brand-bright) is for rules, dots and focus-adjacent accents only.
 - Text: fg `#F5F7FB`, fg-2 `#AAB5C7`, fg-3 `#8893A7` (6.1:1, the floor for small meta text).
-- Type: **Newsreader** (serif, optical-size axis) for h1/h2 and editorial figures; **Archivo** for text, UI and small headings. Sentence-case `.kicker` (blue rule + label) replaces tiny uppercase eyebrows; `.t-label` is reserved for table headers. `.t-signature` (heavy italic, the profile's cover line) at most once per page.
+- Type: **Poppins** is the brand font from the company profile for headings, large titles, figures, index numbers and quotes; **DM Sans** is the secondary font for body text, leads, captions, navigation, buttons, forms, kickers and labels. Use 600 for h1, h2, display and figures; 500 for card and section-item titles and index numbers; 400 for quotes and questions. Keep all type roman with no italics. Sentence-case `.kicker` (blue rule + label) replaces tiny uppercase eyebrows; `.t-label` is reserved for table headers.
 - Surfaces: canvas / canvas-2 alternate; `.on-paper` (#F2F1EC, ink #0B0F16, brand blue 6.3:1) for index-like sections; one flat `bg-brand` invitation band per page. No glows, gradients or chips.
-- Photography: documentary black and white (`.photo`), the founder portrait in colour. Captions say only what is known.
+- Photography is documentary and in colour by default; the `mono` tone remains available. Captions say only what is known.
 - Avoid: purple/pink gradients, glassmorphism, glowing outlines, floating blobs, 3D, stock photos presented as Tarun or clients.
 
 ## Logo

@@ -121,7 +121,7 @@ export default async function Page({ params }: PageProps<'/case-studies/[slug]'>
               <ol className="mt-6 border-t border-line">
                 {study.delivered.map((item, index) => (
                   <li key={item} className="flex gap-5 border-b border-line py-4 text-[1.05rem]">
-                    <span className="nums w-6 shrink-0 font-serif text-brand-text">{index + 1}</span>
+                    <span className="nums w-6 shrink-0 font-primary font-medium text-brand-text">{index + 1}</span>
                     {item}
                   </li>
                 ))}
@@ -155,13 +155,13 @@ export default async function Page({ params }: PageProps<'/case-studies/[slug]'>
           <aside className="flex flex-col gap-10 lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
             {programs.length > 0 && (
               <div>
-                <h2 className="font-sans text-[0.95rem] font-semibold tracking-normal">The service behind this work</h2>
+                <h2 className="font-secondary text-[0.95rem] font-semibold tracking-normal">The service behind this work</h2>
                 <ul className="mt-3 border-t border-line">
                   {programs.map((program) => (
                     <li key={program.slug} className="border-b border-line">
                       <Link href={`/programs#${program.slug}`} className="group flex min-h-14 items-center justify-between gap-4 py-3">
                         <span>
-                          <span className="block font-serif text-[1.2rem] leading-snug group-hover:text-brand-text">{program.title}</span>
+                          <span className="block font-primary text-[1rem] font-medium leading-snug group-hover:text-brand-text">{program.title}</span>
                           <span className="nums mt-0.5 block text-[0.88rem] text-fg-3">{program.duration}</span>
                         </span>
                         <ArrowRight aria-hidden="true" size={16} className="shrink-0 text-brand-text" />
@@ -172,7 +172,7 @@ export default async function Page({ params }: PageProps<'/case-studies/[slug]'>
               </div>
             )}
             <div className="border-t-2 border-brand-bright pt-6">
-              <p className="font-serif text-[1.5rem] leading-snug">Facing a similar challenge?</p>
+              <p className="font-primary text-[1.25rem] font-medium leading-snug">Facing a similar challenge?</p>
               <p className="t-body mt-2">Tell us about your teams and goals. We’ll share how we’d approach it for you.</p>
               <div className="mt-5"><Button to={`/contact?case=${study.slug}&interest=${study.track === 'AI training & consultation' ? 'ai' : 'training'}`} arrow track={`case-study:${study.slug}`}>Discuss a similar challenge</Button></div>
             </div>
@@ -190,7 +190,7 @@ export default async function Page({ params }: PageProps<'/case-studies/[slug]'>
             <ul className="mt-10 border-t border-line">
               {others.map((other) => (
                 <li key={other.slug} className="group relative grid gap-2 border-b border-line py-6 md:grid-cols-12 md:items-baseline md:gap-8">
-                  <p className="font-serif text-[1.3rem] md:col-span-3">{other.client}</p>
+                  <p className="font-primary text-[1.1rem] font-medium md:col-span-3">{other.client}</p>
                   <h3 className="text-[1.08rem] font-semibold md:col-span-5">
                     <Link href={`/case-studies/${other.slug}`} className="decoration-brand-bright decoration-2 underline-offset-4 after:absolute after:inset-0 group-hover:underline">{other.headline}</Link>
                   </h3>

@@ -11,7 +11,7 @@ export function InsightCard({ post }: { post: Insight }) {
         </div>
         <div className="flex flex-1 flex-col pt-5">
           <p className="text-[0.9rem] font-semibold text-brand-text">{post.category}</p>
-          <h3 className="mt-2 font-serif text-[1.45rem] leading-[1.15] font-normal tracking-[-0.012em] decoration-brand-bright decoration-2 underline-offset-4 group-hover:underline">{post.title}</h3>
+          <h3 className="mt-2 font-primary text-[1.25rem] leading-[1.2] font-medium tracking-[-0.012em] decoration-brand-bright decoration-2 underline-offset-4 group-hover:underline">{post.title}</h3>
           <p className="mt-3 line-clamp-2 text-[0.93rem] leading-relaxed text-fg-2">{post.excerpt}</p>
           <span className="mt-auto flex items-center gap-2 pt-5 text-[0.9rem] font-semibold text-fg-2">
             Read article

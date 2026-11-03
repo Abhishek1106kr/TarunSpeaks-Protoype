@@ -33,9 +33,9 @@ export default function Page() {
         aside={
           <figure>
             <div className="relative aspect-[4/3] overflow-hidden">
-              <Photo name="newtech-workshop" alt="Tarun Makhija in a working session with NewTech Insurance Brokers’ sales leaders" preload loading="eager" sizes="(min-width: 1024px) 38vw, 92vw" className="size-full object-cover" />
+              <Photo name="photo-consultation-table" alt="Tarun Makhija in a working session with two people at a table" preload loading="eager" sizes="(min-width: 1024px) 38vw, 92vw" className="size-full object-cover" />
             </div>
-            <figcaption className="t-meta mt-3">A working session from the NewTech Insurance Brokers engagement.</figcaption>
+            <figcaption className="t-meta mt-3">A working session around the table.</figcaption>
           </figure>
         }
       />
@@ -48,10 +48,10 @@ export default function Page() {
           <ol className="lg:col-span-8">
             {engagementModes.map((mode, index) => (
               <li key={mode.title} className="grid gap-5 border-t border-line py-10 first:border-t-0 first:pt-0 sm:grid-cols-[4rem_minmax(0,1fr)]">
-                <span className="font-serif text-[2.2rem] leading-none text-brand-text italic">{index + 1}.</span>
+                <span className="font-primary text-[1.9rem] font-medium leading-none text-brand-text">{index + 1}.</span>
                 <div>
-                  <h3 className="font-serif text-[clamp(1.8rem,2.8vw,2.4rem)] leading-[1.08] font-normal tracking-[-0.02em]">{mode.title}</h3>
-                  <p className="mt-2 font-serif text-[1.2rem] text-fg-2 italic">“{mode.question}”</p>
+                  <h3 className="font-primary text-[clamp(1.55rem,2.4vw,2.05rem)] font-medium leading-[1.2] tracking-[-0.02em]">{mode.title}</h3>
+                  <p className="mt-2 font-primary text-[1rem] font-normal text-fg-2">“{mode.question}”</p>
                   <p className="t-body mt-4 max-w-2xl">{mode.body}</p>
                   <p className="mt-5 text-[0.95rem] text-fg-3">In practice: <Link href={mode.example.href} className="text-fg underline decoration-line underline-offset-4 hover:decoration-brand-bright">{mode.example.label}</Link></p>
                   <Link href={mode.href} className="link-arrow mt-5">{mode.cta}<ArrowRight aria-hidden="true" size={16} /></Link>
@@ -68,7 +68,7 @@ export default function Page() {
           <div className="mt-14 grid gap-14 lg:grid-cols-2 lg:gap-12">
             {(['Growth & brand', 'AI'] as const).map((group) => (
               <div key={group}>
-                <h3 className={`font-serif text-[1.6rem] font-normal ${group === 'AI' ? 'text-brand-text' : ''}`}>{group}</h3>
+                <h3 className={`font-primary text-[1.35rem] font-medium ${group === 'AI' ? 'text-brand-text' : ''}`}>{group}</h3>
                 <ul className="mt-5 border-t border-line">
                   {consultingAreas.filter((area) => area.group === group).map((area) => (
                     <li key={area.slug} className="border-b border-line py-6">
@@ -92,9 +92,9 @@ export default function Page() {
           <ol className="lg:col-span-8">
             {consultationProcess.map((step) => (
               <li key={step.number} className="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-4 border-t border-line py-6 last:border-b">
-                <span className="nums font-serif text-[1.4rem] text-brand-text">{step.number}</span>
+                <span className="nums font-primary text-[1.2rem] font-medium text-brand-text">{step.number}</span>
                 <div>
-                  <h3 className="font-serif text-[1.6rem] leading-tight font-normal">{step.title}</h3>
+                  <h3 className="font-primary text-[1.35rem] leading-tight font-medium">{step.title}</h3>
                   <p className="t-body mt-1.5">{step.description}</p>
                 </div>
               </li>

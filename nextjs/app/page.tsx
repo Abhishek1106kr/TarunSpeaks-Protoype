@@ -62,7 +62,7 @@ export default function Page() {
           </div>
           <div className="mt-16 border-t border-line pt-8 lg:mt-20 lg:grid lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-4 lg:col-start-9">
-            <p className="font-serif text-[1.35rem] leading-snug">Planning a conference or offsite?</p>
+            <p className="font-primary text-[1.15rem] font-medium leading-snug">Planning a conference or offsite?</p>
             <p className="t-body mt-2">100+ keynote sessions on personal branding, digital growth, entrepreneurship and the future of work.</p>
             <Link href="/speaking" className="link-arrow mt-4">Explore Keynotes</Link>
             </div>

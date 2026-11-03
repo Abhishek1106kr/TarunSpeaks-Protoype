@@ -4,11 +4,11 @@ import { photos, type PhotoName } from '../../lib/images'
 type PhotoProps = Omit<ImageProps, 'src' | 'width' | 'height' | 'alt'> & {
   name: PhotoName
   alt: string
-  // 'mono' matches the company profile's grayscale photography; 'color' keeps the original.
+  // 'color' keeps the original photography; 'mono' applies the company profile's grayscale treatment.
   tone?: 'mono' | 'color'
 }
 
-export function Photo({ name, alt, tone = 'mono', sizes = '100vw', className = '', ...rest }: PhotoProps) {
+export function Photo({ name, alt, tone = 'color', sizes = '100vw', className = '', ...rest }: PhotoProps) {
   const photo = photos[name]
   return (
     <Image

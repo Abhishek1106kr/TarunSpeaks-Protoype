@@ -23,7 +23,7 @@ export function Objectives() {
           {objectives.map((objective) => (
             <li key={objective.goal} className="group relative grid gap-3 border-t border-line py-6 last:border-b sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-8">
               <div>
-                <Link href={objective.page} data-track="objective_selected" data-track-location={objective.interest} className="font-serif text-[clamp(1.45rem,2.3vw,1.95rem)] leading-[1.15] tracking-[-0.015em] decoration-brand-bright decoration-2 underline-offset-[0.2em] after:absolute after:inset-0 group-hover:underline">
+                <Link href={objective.page} data-track="objective_selected" data-track-location={objective.interest} className="font-primary text-[clamp(1.25rem,1.95vw,1.65rem)] font-medium leading-[1.2] tracking-[-0.015em] decoration-brand-bright decoration-2 underline-offset-[0.2em] after:absolute after:inset-0 group-hover:underline">
                   {objective.goal}
                 </Link>
                 <p className="t-meta mt-1.5">{objective.who}, {objective.pageLabel}</p>

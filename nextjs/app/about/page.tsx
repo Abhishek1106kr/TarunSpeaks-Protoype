@@ -45,7 +45,7 @@ export default function Page() {
         aside={
           <figure>
             <div className="relative mx-auto aspect-[4/5] max-w-sm overflow-hidden bg-black lg:max-w-none">
-              <Photo name="founder-portrait" alt="Portrait of Tarun Makhija" tone="color" preload loading="eager" sizes="(min-width: 1024px) 38vw, 80vw" className="size-full object-cover object-top" />
+              <Photo name="photo-founder-blue" alt="Portrait of Tarun Makhija" tone="color" preload loading="eager" sizes="(min-width: 1024px) 38vw, 80vw" className="size-full object-cover object-top" />
             </div>
           </figure>
         }
@@ -58,7 +58,7 @@ export default function Page() {
             {[{ label: 'Our mission', text: company.mission }, { label: 'Our vision', text: company.vision }].map((item) => (
               <div key={item.label} className="border-t-2 border-brand-bright pt-6">
                 <p className="text-[0.95rem] font-semibold text-brand-text">{item.label}</p>
-                <p className="mt-4 font-serif text-[clamp(1.9rem,3.4vw,3rem)] leading-[1.08] tracking-[-0.02em]">{item.text}.</p>
+                <p className="mt-4 font-primary text-[clamp(1.6rem,2.9vw,2.55rem)] font-medium leading-[1.2] tracking-[-0.02em]">{item.text}.</p>
               </div>
             ))}
           </div>
@@ -73,7 +73,7 @@ export default function Page() {
           <ol className="lg:col-span-6 lg:col-start-7">
             {principles.map((principle) => (
               <li key={principle.title} className="border-t border-line py-6 last:border-b">
-                <h3 className="font-serif text-[2rem] leading-none font-normal italic">{principle.title}</h3>
+                <h3 className="font-primary text-[1.7rem] leading-[1.2] font-medium">{principle.title}</h3>
                 <p className="t-body mt-3">{principle.body}</p>
               </li>
             ))}
@@ -96,7 +96,7 @@ export default function Page() {
             {recognitions.map((recognition) => (
               <li key={recognition.title} className="grid grid-cols-[minmax(0,1fr)_auto] gap-6 border-t border-line py-5 last:border-b">
                 <div>
-                  <p className="font-serif text-[1.35rem] leading-tight">{recognition.title}</p>
+                  <p className="font-primary text-[1.15rem] font-medium leading-tight">{recognition.title}</p>
                   <p className="mt-1 text-[0.95rem] text-fg-2">{recognition.detail}</p>
                 </div>
                 {recognition.year && <p className="nums text-fg-3">{recognition.year}</p>}

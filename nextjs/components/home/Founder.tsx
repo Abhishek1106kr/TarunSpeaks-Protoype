@@ -17,7 +17,7 @@ export function Founder() {
     <section aria-labelledby="founder-title" className="section-y bg-canvas-2">
       <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-10">
         <figure className="lg:col-span-5">
-          <div data-reveal="image" className="relative mx-auto aspect-[4/5] max-w-md overflow-hidden bg-black lg:max-w-none">
+          <div data-reveal="image" className="relative mx-auto aspect-[3/4] max-w-md overflow-hidden bg-black lg:max-w-none">
             <FounderMedia />
           </div>
           <figcaption className="t-meta mt-3">Tarun Makhija, Chief Educator &amp; Founder.</figcaption>
@@ -32,7 +32,7 @@ export function Founder() {
           <ol className="mt-9 border-t border-line">
             {milestones.map((milestone) => (
               <li key={milestone.when} className="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-4 border-b border-line py-3.5 text-[0.98rem]">
-                <span className="nums font-serif text-[1.1rem] text-brand-text">{milestone.when}</span>
+                <span className="nums font-primary text-[1rem] font-medium text-brand-text">{milestone.when}</span>
                 <span className="text-fg-2">{milestone.what}</span>
               </li>
             ))}

@@ -20,7 +20,7 @@ export function ClientSectors() {
         <div className="mt-16"><ClientEcosystem /></div>
 
         <div className="mt-20 grid gap-8 border-t border-line pt-12 lg:grid-cols-12 lg:items-center">
-          <p className="font-serif text-[clamp(1.7rem,3vw,2.6rem)] leading-[1.12] tracking-[-0.02em] lg:col-span-8">Your industry. Your people. Your next capability milestone.</p>
+          <p className="font-primary text-[clamp(1.45rem,2.55vw,2.2rem)] font-medium leading-[1.2] tracking-[-0.02em] lg:col-span-8">Your industry. Your people. Your next capability milestone.</p>
           <div className="lg:col-span-4 lg:justify-self-end">
             <Button to="/contact?interest=training" size="lg" arrow track="clients">Discuss a Corporate Engagement</Button>
           </div>

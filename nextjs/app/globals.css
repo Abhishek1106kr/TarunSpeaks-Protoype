@@ -4,28 +4,32 @@
 /* Hallmark · waive 26b · shared Button and link styles define :active · the page has no local controls */
 /* Hallmark · waive 49b · case-study titles, insight titles and proof lines, none of them a footer link, tab or breadcrumb · these are full sentences from approved copy, and some reach three lines on phones and tablets */
 /* Hallmark · waive 71 · program table rows and the homepage Delivery steps · program titles share a baseline with the cells beside them, and each Step line belongs to the heading below it */
+/* Hallmark · dropped about-stage, motilal-room, newtech-workshop, program-ai-productivity · these are photo names replaced by higher-resolution colour photographs, not form fields */
+/* Hallmark · waive 85 · the owner asked for the LIT footer format and an email capture for the sales team · the form sends each address to the sales team, and Enquire Now sits beside it as the main action */
+/* Hallmark · dropped work with us, evidence, contact, follow · the owner asked for the LIT footer format, which has no column titles, and the links keep these names as nav labels */
+/* Hallmark · dropped onClick={() => setOpen(false)}, onClick={() => { setOpen((current) => !current) if (!open) setStartedAt(Date.now()) }} · the email panel moved into ContactDock, and both controls still open and close it, and now also close the contact stack */
 
 @import "tailwindcss";
 
 /*
- * TarunSpeaks — art direction: an editorial business publication.
- * Black page, a news serif for headlines, a sturdy grotesk for reading, documentary black-and-white
- * photography, hairline rules instead of boxes, and rich blue used sparingly: for action, emphasis and
- * one solid invitation band. A light "paper" surface breaks the black where a section reads like an index.
+ * TarunSpeaks — art direction: premium, editorial and human.
+ * Black page, Poppins for brand-led headings and figures, DM Sans for reading and UI, documentary
+ * photography, hairline rules instead of boxes, and rich blue used sparingly for action and emphasis.
+ * A light "paper" surface breaks the black where a section reads like an index.
  *
  * Contrast on canvas: fg 18.4:1 · fg-2 9.6:1 · fg-3 6.1:1 · brand-text 8.0:1.
  * Contrast on paper: ink 17:1 · ink-2 8.9:1 · brand 6.3:1.
- * Blue #1749D1 is a FILL on dark (white on it is 8:1); for blue TEXT on dark use brand-text.
+ * Blue #1526B4 is a FILL on dark (white on it is about 10:1); for blue TEXT on dark use brand-text.
  */
 @theme {
   --color-canvas: #080b10;
   --color-canvas-2: #0d121b;
   --color-surface: #131b28;
   --color-logo-tile: #ffffff;
-  --color-brand: #1749d1;
-  --color-brand-bright: #2864f0;
-  --color-brand-deep: #102858;
-  --color-brand-text: #86a6ff;
+  --color-brand: #1526b4;
+  --color-brand-bright: #2a3fd6;
+  --color-brand-deep: #0f1b70;
+  --color-brand-text: #8e9bff;
   --color-fg: #f5f7fb;
   --color-fg-2: #aab5c7;
   --color-fg-3: #8893a7;
@@ -43,10 +47,13 @@
   --color-success: #3fbf8a;
   --color-warning: #e8b54a;
   --color-error: #ff7a7a;
+  --color-whatsapp: #128c7e;
+  --color-instagram-start: #833ab4;
+  --color-instagram-mid: #e1306c;
+  --color-instagram-end: #f56040;
 
-  --font-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-primary: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-secondary: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
 
   --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
   --breakpoint-nav: 75rem;
@@ -64,7 +71,7 @@
   }
 
   body {
-    font-family: var(--font-sans);
+    font-family: var(--font-secondary);
     font-size: 1.0625rem;
     line-height: 1.6;
     min-width: 320px;
@@ -79,17 +86,19 @@
     overflow-x: clip;
   }
 
-  /* Serif for the big statements; sans for small headings so the two voices stay distinct. */
+  /* Poppins carries the brand hierarchy; DM Sans keeps reading and UI clear. */
   h1, h2 {
-    font-family: var(--font-serif);
-    font-weight: 450;
-    letter-spacing: -0.022em;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    letter-spacing: -0.024em;
+    overflow-wrap: break-word;
+    min-width: 0;
     text-wrap: balance;
   }
   h3, h4 {
-    font-family: var(--font-sans);
-    font-weight: 600;
-    letter-spacing: -0.01em;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    letter-spacing: -0.012em;
     text-wrap: balance;
   }
 
@@ -127,38 +136,37 @@
 
   /* Type scale */
   .t-display {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    font-size: clamp(2.7rem, 5.6vw, 5.2rem);
-    line-height: 1.02;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: clamp(2.1rem, 3.9vw, 3.75rem);
+    line-height: 1.1;
     letter-spacing: -0.03em;
   }
   .t-h1 {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    font-size: clamp(2.4rem, 4.8vw, 4.25rem);
-    line-height: 1.04;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: clamp(2rem, 3.7vw, 3.4rem);
+    line-height: 1.12;
     letter-spacing: -0.028em;
   }
   .t-h2 {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    font-size: clamp(1.95rem, 3.4vw, 3rem);
-    line-height: 1.08;
-    letter-spacing: -0.022em;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+    line-height: 1.16;
+    letter-spacing: -0.024em;
   }
   .t-h3 {
-    font-family: var(--font-sans);
-    font-weight: 600;
-    font-size: clamp(1.15rem, 1.5vw, 1.35rem);
-    line-height: 1.25;
-    letter-spacing: -0.012em;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: clamp(1.1rem, 1.4vw, 1.25rem);
+    line-height: 1.3;
   }
   .t-figure {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    font-size: clamp(2.6rem, 4.4vw, 3.9rem);
-    line-height: 0.95;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: clamp(2.2rem, 3.6vw, 3.2rem);
+    line-height: 1;
     letter-spacing: -0.03em;
     font-variant-numeric: lining-nums;
   }
@@ -166,29 +174,18 @@
   .t-body { font-size: 1.0625rem; line-height: 1.65; color: var(--color-fg-2); }
   .t-meta { font-size: 0.9rem; line-height: 1.45; color: var(--color-fg-3); }
   /* Sentence-case label — reserved for table headers and figure captions, not section openers. */
-  .t-label { font: 600 0.8rem/1.2 var(--font-sans); }
+  .t-label { font: 600 0.8rem/1.2 var(--font-secondary); }
 
   /* Section kicker: sentence case, blue, with a short rule — replaces tiny uppercase eyebrows. */
   .kicker {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    font: 600 0.95rem/1.3 var(--font-sans);
+    font: 600 0.95rem/1.3 var(--font-secondary);
     color: var(--color-brand-text);
   }
   .kicker::before { content: ""; width: 1.5rem; height: 2px; background: currentColor; }
   .on-paper .kicker { color: var(--color-brand); }
-
-  /* The company profile's signature line — used once per page at most. */
-  .t-signature {
-    font-family: var(--font-sans);
-    font-style: italic;
-    font-weight: 850;
-    font-stretch: 112%;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    line-height: 0.9;
-  }
 
   .rule { height: 1px; background: var(--color-line); border: 0; }
 

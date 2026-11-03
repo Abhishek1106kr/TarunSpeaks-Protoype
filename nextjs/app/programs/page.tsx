@@ -59,9 +59,9 @@ export default function Page() {
             const studies = program.caseStudies.map((slug) => caseStudyBySlug(slug)!).filter(Boolean)
             return (
               <li key={program.slug} id={program.slug} className="scroll-mt-28 border-t border-line py-14 first:border-t-0 first:pt-0 lg:py-20">
-                <article aria-labelledby={`${program.slug}-title`} className="grid gap-10 xl:grid-cols-[minmax(0,1fr)_15rem] xl:gap-12">
+                <article aria-labelledby={`${program.slug}-title`} className="grid gap-8 xl:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)] xl:gap-12">
                   <div>
-                    <p className="t-meta"><span className="nums font-serif text-[1.05rem] text-brand-text">{String(index + 1).padStart(2, '0')}</span>, {program.category}</p>
+                    <p className="t-meta"><span className="nums font-primary text-[1rem] font-medium text-brand-text">{String(index + 1).padStart(2, '0')}</span>, {program.category}</p>
                     <h2 id={`${program.slug}-title`} className="t-h2 mt-3">{program.title}</h2>
                     <p className="t-lead mt-4 max-w-2xl">{program.summary}</p>
 
@@ -103,8 +103,8 @@ export default function Page() {
                       )}
                     </div>
                   </div>
-                  <div className="relative hidden aspect-[3/4] overflow-hidden xl:block">
-                    <Photo name={program.image} alt={program.imageAlt} sizes="15rem" className="size-full object-cover" />
+                  <div className="relative order-first aspect-[16/9] overflow-hidden rounded-[0.3rem] xl:order-last xl:aspect-[4/3]">
+                    <Photo name={program.image} alt={program.imageAlt} priority={index === 0} sizes="(min-width: 1280px) 22rem, (min-width: 1024px) calc(100vw - 20rem), calc(100vw - 2rem)" className="size-full object-cover" />
                   </div>
                 </article>
               </li>
@@ -124,7 +124,7 @@ export default function Page() {
             </ul>
           </div>
           <div className="self-start border-t-2 border-brand pt-6 lg:col-span-4 lg:col-start-9">
-            <h2 className="font-serif text-[1.9rem] leading-tight">Custom modules, on request</h2>
+            <h2 className="font-primary text-[1.6rem] font-semibold leading-tight">Custom modules, on request</h2>
             <p className="mt-3 text-ink-2">We also design role-specific training programs across:</p>
             <ul className="mt-5 space-y-2.5">
               {customModuleAreas.map((area) => (

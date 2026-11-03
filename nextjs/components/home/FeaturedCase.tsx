@@ -28,7 +28,7 @@ export function FeaturedCase() {
               {lead.figures.map((figure, index) => (
                 <div key={figure.label} className={`flex flex-col gap-2 py-5 ${index ? 'border-l border-line pl-4' : 'pr-4'}`}>
                   <dt className="order-2 text-[0.88rem] text-fg-2">{figure.label}</dt>
-                  <dd className="nums order-1 font-serif text-[clamp(1.7rem,2.6vw,2.4rem)] leading-none">{figure.value}</dd>
+                  <dd className="nums order-1 font-primary text-[clamp(1.45rem,2.2vw,2.05rem)] font-medium leading-none">{figure.value}</dd>
                 </div>
               ))}
             </dl>
@@ -44,7 +44,7 @@ export function FeaturedCase() {
           {more.map((study) => (
             <article key={study.slug} className="group relative">
               <p className="t-meta">{study.client}</p>
-              <h3 className="mt-2 font-serif text-[1.45rem] leading-[1.18] font-normal tracking-[-0.012em]">
+              <h3 className="mt-2 font-primary text-[1.25rem] leading-[1.2] font-medium tracking-[-0.012em]">
                 <Link href={`/case-studies/${study.slug}`} className="decoration-brand-bright decoration-2 underline-offset-4 after:absolute after:inset-0 group-hover:underline">{study.headline}</Link>
               </h3>
               <p className="mt-3 text-[0.95rem] text-fg-2">{study.format.join(', ')}</p>

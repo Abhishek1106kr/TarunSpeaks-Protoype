@@ -5,7 +5,7 @@ import { Photo } from '../ui/Photo'
 export function Quote({ testimonial, size = 'md' }: { testimonial: Testimonial; size?: 'md' | 'lg' }) {
   return (
     <figure className="flex h-full flex-col">
-      <blockquote className={`font-serif ${size === 'lg' ? 'text-[clamp(1.5rem,2.6vw,2.2rem)] leading-[1.25]' : 'text-[1.3rem] leading-[1.4]'} font-normal tracking-[-0.01em] text-fg`}>
+      <blockquote className={`font-primary ${size === 'lg' ? 'text-[clamp(1.25rem,2.2vw,1.85rem)] leading-[1.25]' : 'text-[1.1rem] leading-[1.4]'} font-normal tracking-[-0.01em] text-fg`}>
         <p>“{testimonial.quote}”</p>
       </blockquote>
       <figcaption className="mt-7 flex items-center gap-3 text-[0.95rem]">

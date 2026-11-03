@@ -18,6 +18,9 @@ export const company = {
   closing: 'Let’s build a digital-first, confident, high-performing workforce, together.',
   phone: { label: '+91 97702 23646', href: 'tel:+919770223646' },
   email: { label: 'teamtarunspeaks@gmail.com', href: 'mailto:teamtarunspeaks@gmail.com' },
+  // Uses the listed company number. Owner to confirm this number is on WhatsApp.
+  whatsapp: { href: 'https://wa.me/919770223646' },
+  instagram: { href: 'https://www.instagram.com/tarunmakhija01/' },
 }
 
 // profile p.5
@@ -45,7 +48,7 @@ export const keynoteStat: Stat = { value: 100, suffix: '+', label: 'Keynote sess
 
 export const socials = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tarunmakhija01/' },
-  { label: 'Instagram', href: 'https://www.instagram.com/tarunmakhija01/' },
+  { label: 'Instagram', href: company.instagram.href },
   { label: 'X (Twitter)', href: 'https://twitter.com/tarunmakhija01' },
   { label: 'YouTube', href: 'https://www.youtube.com/@tarunmakhija01' },
 ]

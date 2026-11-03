@@ -15,6 +15,7 @@ export function FounderMedia() {
     return <Photo name="founder-portrait" alt="Portrait of Tarun Makhija" tone="color" sizes="(min-width: 1024px) 36vw, 90vw" className="size-full object-cover object-top" />
   }
 
+  // The 3:4 box shows the lower 75% of this 9:16 video, trimming the empty wall at the top.
   return (
     <video
       src="/videos/founder-intro.mp4"
@@ -24,7 +25,7 @@ export function FounderMedia() {
       loop
       playsInline
       preload="metadata"
-      className="size-full object-cover object-top"
+      className="size-full object-cover object-bottom"
       aria-label="Tarun Makhija, Chief Educator and Founder, speaking"
     />
   )

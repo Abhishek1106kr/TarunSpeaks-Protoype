@@ -36,7 +36,7 @@ function ClientLogo({ client, duplicate = false, listItem = false, className }: 
       <span tabIndex={tabIndex} className={`flex h-32 items-center justify-center rounded-[0.3rem] border border-line bg-logo-tile p-4 ${prominent ? 'transition-colors duration-200 ease-editorial group-hover:border-brand-bright/60 group-focus-visible:border-brand-bright/60' : ''}`}>
         {logo && size
           ? <Image tabIndex={tabIndex} src={logo.src} alt={client.name} width={size.width} height={size.height} sizes={`${size.width}px`} className={monochrome ? 'brightness-0' : undefined} style={{ width: size.width, height: size.height }} />
-          : <span tabIndex={tabIndex} className="font-serif text-[1.15rem] text-fg">{client.name}<span className="sr-only"> (logo not available)</span></span>}
+          : <span tabIndex={tabIndex} className="font-primary text-[1rem] font-medium text-fg">{client.name}<span className="sr-only"> (logo not available)</span></span>}
       </span>
       <span tabIndex={tabIndex} aria-hidden="true" className="flex min-h-10 items-start justify-center text-center text-[0.8rem] leading-snug text-fg-2">
         <span tabIndex={tabIndex} className="opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">{client.name}</span>
@@ -134,7 +134,7 @@ export function ClientEcosystem() {
       </div>
 
       <div className="mt-10 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-        <h3 className="font-serif text-[1.6rem] font-normal tracking-[-0.015em]">{activeLabel}</h3>
+        <h3 className="font-primary text-[1.35rem] font-medium tracking-[-0.015em]">{activeLabel}</h3>
       </div>
 
       <AnimatePresence mode="wait" initial={false}>

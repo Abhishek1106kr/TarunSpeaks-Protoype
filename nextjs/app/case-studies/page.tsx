@@ -46,7 +46,7 @@ export default function Page() {
                 </div>
                 <div className="flex flex-col justify-end lg:col-span-5">
                   <p className="text-[0.9rem] leading-[1.45] text-fg-3">{feature.client}, {feature.industry}</p>
-                  <h3 className="mt-3 font-serif text-[clamp(1.8rem,2.8vw,2.5rem)] leading-[1.1] font-normal tracking-[-0.02em]">
+                  <h3 className="mt-3 font-primary text-[clamp(1.55rem,2.4vw,2.15rem)] leading-[1.2] font-medium tracking-[-0.02em]">
                     <Link href={`/case-studies/${feature.slug}`} className="decoration-brand-bright decoration-2 underline-offset-4 after:absolute after:inset-0 group-hover:underline">{feature.headline}</Link>
                   </h3>
                   <p className="t-body mt-4">{feature.objective}</p>
@@ -58,7 +58,7 @@ export default function Page() {
               <ul className="mt-20 border-t border-line">
                 {rest.map((study) => (
                   <li key={study.slug} className="group relative grid gap-2 border-b border-line py-7 md:grid-cols-12 md:items-baseline md:gap-8">
-                    <p className="font-serif text-[1.35rem] leading-tight md:col-span-3">{study.client}</p>
+                    <p className="font-primary text-[1.15rem] font-medium leading-tight md:col-span-3">{study.client}</p>
                     <h3 className="text-[1.1rem] leading-snug font-semibold md:col-span-5">
                       <Link href={`/case-studies/${study.slug}`} className="decoration-brand-bright decoration-2 underline-offset-4 after:absolute after:inset-0 group-hover:underline">{study.headline}</Link>
                     </h3>

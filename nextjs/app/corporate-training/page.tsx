@@ -48,7 +48,7 @@ export default function Page() {
         aside={
           <figure>
             <div className="relative aspect-[4/3] overflow-hidden">
-              <Photo name="motilal-room" alt="Tarun Makhija leading a session for entrepreneurs in the Motilal Oswal network" preload loading="eager" sizes="(min-width: 1024px) 38vw, 92vw" className="size-full object-cover" />
+              <Photo name="photo-workshop-tables" alt="Tarun Makhija working with participants at round tables during a Motilal Oswal session" preload loading="eager" sizes="(min-width: 1024px) 38vw, 92vw" className="size-full object-cover" />
             </div>
             <figcaption className="t-meta mt-3">A session from the 11-city Motilal Oswal tour.</figcaption>
           </figure>
@@ -61,8 +61,8 @@ export default function Page() {
           <ol className="grid gap-x-10 sm:grid-cols-2 lg:col-span-8">
             {trainingAreas.map((area, index) => (
               <li key={area} className="flex items-baseline gap-5 border-b border-line py-5">
-                <span className="nums font-serif text-[1.1rem] text-brand-text">{String(index + 1).padStart(2, '0')}</span>
-                <span className="font-serif text-[1.45rem] leading-tight tracking-[-0.01em]">{area}</span>
+                <span className="nums font-primary text-[1rem] font-medium text-brand-text">{String(index + 1).padStart(2, '0')}</span>
+                <span className="font-primary text-[1.25rem] font-medium leading-tight tracking-[-0.01em]">{area}</span>
               </li>
             ))}
           </ol>
@@ -75,7 +75,7 @@ export default function Page() {
           <ol className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
             {formats.map((format) => (
               <li key={format.title} className="border-t border-fg-3 pt-5">
-                <h3 className="font-serif text-[1.75rem] leading-tight font-normal tracking-[-0.015em]">{format.title}</h3>
+                <h3 className="font-primary text-[1.5rem] leading-tight font-medium tracking-[-0.015em]">{format.title}</h3>
                 <p className="t-body mt-3">{format.body}</p>
               </li>
             ))}
@@ -101,7 +101,7 @@ export default function Page() {
               <tbody>
                 {atScale.map((study) => (
                   <tr key={study.slug} className="border-b border-line align-top">
-                    <th scope="row" className="py-5 pr-6 font-serif text-[1.3rem] font-normal">
+                    <th scope="row" className="py-5 pr-6 font-primary text-[1.1rem] font-medium">
                       <Link href={`/case-studies/${study.slug}`} className="whitespace-nowrap underline decoration-line underline-offset-4 hover:decoration-brand-bright">{study.client}</Link>
                     </th>
                     <td className="py-5 pr-6 text-fg-2">{study.headline}</td>

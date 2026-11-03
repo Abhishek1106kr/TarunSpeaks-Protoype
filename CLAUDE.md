@@ -47,8 +47,8 @@ Starting colour tokens:
 - Black: #080B10
 - Deep surface: #0D121B
 - Elevated surface: #131B28
-- Rich blue: #1749D1
-- Blue accent: #2864F0
+- Rich blue: #1526B4
+- Blue accent: #2A3FD6
 - Primary text: #F5F7FB
 - Secondary text: #AAB5C7
 - Border: #273246

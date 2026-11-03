@@ -83,7 +83,7 @@ export function Journey({ headingLevel = 'h2' }: { headingLevel?: 'h2' | 'h3' })
                     <AnimatePresence mode="wait" initial={false}>
                       <motion.p
                         key={current.marker}
-                        className="font-serif text-[clamp(3.5rem,6vw,5.5rem)] leading-none tracking-[-0.03em] text-fg"
+                        className="font-primary text-[clamp(3rem,5.1vw,4.7rem)] font-semibold leading-none tracking-[-0.03em] text-fg"
                         initial={reduceMotion ? false : { y: '100%' }}
                         animate={{ y: 0 }}
                         exit={reduceMotion ? { opacity: 0 } : { y: '-100%' }}
@@ -93,7 +93,7 @@ export function Journey({ headingLevel = 'h2' }: { headingLevel?: 'h2' | 'h3' })
                       </motion.p>
                     </AnimatePresence>
                   </div>
-                  <p className="nums pb-2 font-display text-[1.1rem] font-semibold text-fg-2">
+                  <p className="nums pb-2 font-primary text-[1rem] font-medium text-fg-2">
                     {String(active + 1).padStart(2, '0')}<span className="text-fg-3"> / {String(journey.length).padStart(2, '0')}</span>
                   </p>
                 </div>
@@ -126,7 +126,7 @@ export function Journey({ headingLevel = 'h2' }: { headingLevel?: 'h2' | 'h3' })
                     <Photo name={step.image} alt={step.imageAlt} sizes="92vw" className="size-full object-cover" />
                   </div>
                   <p className="text-[0.95rem] font-semibold text-brand-text">{step.phase}, <span className="font-normal text-fg-3">{step.marker}</span></p>
-                  <StepHeading className="mt-4 max-w-xl font-serif text-[clamp(1.8rem,2.8vw,2.5rem)] leading-[1.08] font-normal tracking-[-0.02em]">{step.title}</StepHeading>
+                  <StepHeading className="mt-4 max-w-xl font-primary text-[clamp(1.55rem,2.4vw,2.15rem)] leading-[1.2] font-medium tracking-[-0.02em]">{step.title}</StepHeading>
                   <p className="t-body mt-5 max-w-xl">{step.body}</p>
                   <p className="mt-6 max-w-xl border-l-2 border-brand-bright pl-4 text-[1rem] leading-relaxed text-fg">{step.proof}</p>
                 </li>

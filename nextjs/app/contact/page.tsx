@@ -42,7 +42,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ [
             </div>
 
             <div className="order-3 mt-12 lg:order-none">
-              <h2 className="font-sans text-[0.95rem] font-semibold tracking-normal">Prefer to reach us directly?</h2>
+              <h2 className="font-secondary text-[0.95rem] font-semibold tracking-normal">Prefer to reach us directly?</h2>
               <dl className="mt-3 border-t border-line">
                 <div className="border-b border-line py-4">
                   <dt className="text-[0.9rem] text-fg-3">Email</dt>

@@ -46,8 +46,8 @@ export function Delivery() {
           {deliverySteps.map((step, index) => (
             <li key={step.title} className="relative">
               <span aria-hidden="true" className="relative z-10 block size-[0.95rem] rounded-full border-2 border-brand-bright bg-canvas" />
-              <p className="nums mt-6 font-serif text-[1.05rem] text-brand-text italic">Step {index + 1}</p>
-              <h3 className="mt-1 font-serif text-[2rem] leading-none font-normal tracking-[-0.02em]">{step.title}</h3>
+              <p className="nums mt-6 font-primary text-[1rem] font-medium text-brand-text">Step {index + 1}</p>
+              <h3 className="mt-1 font-primary text-[1.7rem] leading-[1.2] font-medium tracking-[-0.02em]">{step.title}</h3>
               <p className="t-body mt-4">{step.body}</p>
               <p className="mt-5 border-l-2 border-line pl-4 text-[0.92rem] leading-relaxed text-fg">
                 {step.href ? <Link href={step.href} className="hover:text-brand-text">{step.proof}</Link> : step.proof}

@@ -31,7 +31,7 @@ export default function Page() {
         aside={
           <figure>
             <div className="relative aspect-[4/3] overflow-hidden">
-              <Photo name="about-stage" alt="Tarun Makhija delivering a keynote to a large audience" preload loading="eager" sizes="(min-width: 1024px) 38vw, 92vw" className="size-full object-cover" />
+              <Photo name="photo-keynote-hall" alt="A speaking session on a large stage in front of a seated audience" preload loading="eager" sizes="(min-width: 1024px) 38vw, 92vw" className="size-full object-cover" />
             </div>
             <figcaption className="t-meta mt-3">Tarun Makhija on stage.</figcaption>
           </figure>
@@ -44,10 +44,10 @@ export default function Page() {
           <ol className="mt-14">
             {keynotes.map((keynote, index) => (
               <li key={keynote.slug} id={keynote.slug} className="grid scroll-mt-28 gap-6 border-t border-line py-10 last:border-b lg:grid-cols-12 lg:gap-10">
-                <p className="nums font-serif text-[1.3rem] text-brand-text lg:col-span-1">{String(index + 1).padStart(2, '0')}</p>
+                <p className="nums font-primary text-[1.1rem] font-medium text-brand-text lg:col-span-1">{String(index + 1).padStart(2, '0')}</p>
                 <div className="lg:col-span-6">
-                  <h3 className="font-serif text-[clamp(1.6rem,2.4vw,2.1rem)] leading-[1.12] font-normal tracking-[-0.015em]">{keynote.title}</h3>
-                  <p className="mt-3 font-serif text-[1.15rem] text-fg-2 italic">{keynote.question}</p>
+                  <h3 className="font-primary text-[clamp(1.35rem,2.05vw,1.8rem)] leading-[1.2] font-medium tracking-[-0.015em]">{keynote.title}</h3>
+                  <p className="mt-3 font-primary text-[1rem] font-normal text-fg-2">{keynote.question}</p>
                 </div>
                 <dl className="grid gap-4 text-[0.98rem] lg:col-span-5">
                   <div><dt className="text-fg-3">Audience</dt><dd className="mt-0.5">{keynote.audience}</dd></div>
@@ -69,7 +69,7 @@ export default function Page() {
             <ul className="mt-10">
               {speakingFormats.map((format) => (
                 <li key={format.title} className="border-t border-line py-5 last:border-b">
-                  <h3 className="font-serif text-[1.6rem] font-normal">{format.title}</h3>
+                  <h3 className="font-primary text-[1.35rem] font-medium">{format.title}</h3>
                   <p className="t-body mt-1">{format.body}</p>
                 </li>
               ))}
@@ -77,7 +77,7 @@ export default function Page() {
           </div>
           <figure className="self-start lg:col-span-6 lg:col-start-7">
             <div data-reveal="image" className="relative aspect-[3/4] overflow-hidden sm:aspect-[4/3] lg:aspect-[4/5]">
-              <Photo name="program-ai-productivity" alt="Tarun Makhija speaking from the floor of a tiered auditorium" sizes="(min-width: 1024px) 45vw, 92vw" className="size-full object-cover" />
+              <Photo name="photo-auditorium-floor" alt="Tarun Makhija speaking to an audience from the floor of an auditorium" sizes="(min-width: 1024px) 45vw, 92vw" className="size-full object-cover object-[18%_center]" />
             </div>
             <figcaption className="t-meta mt-3">Working the room in a tiered auditorium.</figcaption>
           </figure>
@@ -91,7 +91,7 @@ export default function Page() {
             <ul className="mt-10">
               {engagements.map((engagement) => (
                 <li key={engagement.organisation} className="grid gap-1 border-t border-line py-5 last:border-b sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] sm:gap-6">
-                  <p className="font-serif text-[1.3rem] leading-tight">{engagement.organisation}</p>
+                  <p className="font-primary text-[1.1rem] font-medium leading-tight">{engagement.organisation}</p>
                   <p className="text-fg-2">{engagement.detail}</p>
                 </li>
               ))}

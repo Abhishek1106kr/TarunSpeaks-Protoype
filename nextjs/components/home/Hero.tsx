@@ -7,7 +7,7 @@ import { HeroVideoTile } from './HeroVideoTile'
 
 const delay = (seconds: number) => ({ '--enter-delay': `${seconds}s` }) as React.CSSProperties
 
-const collageAlt = 'Collage of TarunSpeaks sessions: a packed auditorium, a Motilal Oswal training room, Tarun Makhija speaking with participants, an HDFC Bank session and a one-on-one consultation'
+const collageAlt = 'Collage of TarunSpeaks sessions: a packed auditorium, a Motilal Oswal training room and Tarun Makhija speaking with participants at an HDFC Bank session'
 
 // The proposition first, in the company's own words (profile p.66), then the evidence.
 // The full-bleed collage keeps the range of TarunSpeaks sessions visible behind the message.
@@ -15,7 +15,7 @@ export function Hero() {
   const common = { alt: collageAlt, sizes: '100vw', preload: true, fetchPriority: 'high' as const }
   const {
     props: { srcSet: desktopSrcSet, ...desktopProps },
-  } = getImageProps({ ...common, src: '/images/home/hero-collage-desktop.webp', width: 2400, height: 1350 })
+  } = getImageProps({ ...common, src: '/images/home/hero-collage-desktop-v2.webp', width: 2400, height: 1350 })
   const {
     props: { srcSet: mobileSrcSet },
   } = getImageProps({ ...common, src: '/images/home/hero-collage-mobile.webp', width: 1080, height: 1520 })
@@ -25,7 +25,7 @@ export function Hero() {
     <section aria-labelledby="hero-title">
       <div className="relative min-h-svh overflow-hidden bg-canvas">
         <link rel="preload" as="image" href="/images/home/hero-collage-mobile.webp" media="(max-width: 767px)" fetchPriority="high" />
-        <link rel="preload" as="image" href="/images/home/hero-collage-desktop.webp" media="(min-width: 768px)" fetchPriority="high" />
+        <link rel="preload" as="image" href="/images/home/hero-collage-desktop-v2.webp" media="(min-width: 768px)" fetchPriority="high" />
         <div className="absolute inset-0 [container-type:size]">
           <picture className="absolute inset-0 block md:hidden">
             <source media="(max-width: 767px)" srcSet={mobileSrcSet} />
@@ -52,7 +52,7 @@ export function Hero() {
         <div className="container-x relative z-10 flex min-h-svh items-end pb-12 pt-[calc(4.5rem+5rem)] sm:pb-16 lg:pb-20">
           <div>
           <Eyebrow className="enter mb-8">Corporate training, consulting and AI capability building</Eyebrow>
-          <h1 id="hero-title" className="t-display enter text-[clamp(2.6rem,4.6vw,4.4rem)]" style={delay(0.05)}>
+          <h1 id="hero-title" className="t-display enter" style={delay(0.05)}>
             We build digital-first, confident, <span className="text-brand-text">high-performing</span> teams.
           </h1>
           <p className="t-lead enter mt-8 max-w-[38rem]" style={delay(0.15)}>

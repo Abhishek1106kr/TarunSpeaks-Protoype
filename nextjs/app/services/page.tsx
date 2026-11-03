@@ -24,8 +24,8 @@ const services: { id: string; label: string; title: string; body: string; points
     points: ['3–30 hours, modular and customisable', 'Workshop, masterclass or full learning journey', 'Multi-city and multi-cohort delivery'],
     href: '/corporate-training',
     cta: 'Explore Corporate Programs',
-    image: 'motilal-room',
-    alt: 'A training session for entrepreneurs in the Motilal Oswal network',
+    image: 'photo-workshop-tables',
+    alt: 'Tarun Makhija working with participants at round tables during a workshop',
   },
   {
     id: 'consultation',
@@ -35,8 +35,8 @@ const services: { id: string; label: string; title: string; body: string; points
     points: ['Branding & digital marketing', 'AI tools / agent rollout', 'Gen AI & agentic AI planning'],
     href: '/consulting',
     cta: 'Request a Consultation',
-    image: 'nawany-team',
-    alt: 'Tarun Makhija with Nawany Group leaders',
+    image: 'photo-consultation-table',
+    alt: 'Tarun Makhija in a working session with two people at a table',
   },
   {
     id: 'speaking',
@@ -46,8 +46,8 @@ const services: { id: string; label: string; title: string; body: string; points
     points: ['Personal branding & LinkedIn growth', 'The future of work: AI & digital skills', 'Entrepreneurship & business growth'],
     href: '/speaking',
     cta: 'Explore Keynotes',
-    image: 'about-stage',
-    alt: 'Tarun Makhija on stage',
+    image: 'photo-keynote-hall',
+    alt: 'A speaking session on a large stage in front of a seated audience',
   },
   {
     id: 'career',
@@ -77,7 +77,7 @@ export default function Page() {
           {services.map((service, index) => (
             <li key={service.id} id={service.id} className="scroll-mt-24 border-b border-line py-12 lg:py-16">
               <article aria-labelledby={`${service.id}-title`} className="grid gap-8 lg:grid-cols-12 lg:gap-10">
-                <p className="font-serif text-[clamp(2rem,3.4vw,2.8rem)] leading-none text-brand-text italic lg:col-span-3">{service.label}</p>
+                <p className="font-primary text-[clamp(1.7rem,2.9vw,2.4rem)] font-medium leading-[1.2] text-brand-text lg:col-span-3">{service.label}</p>
                 <div className="lg:col-span-5">
                   <h2 id={`${service.id}-title`} className="t-h2">{service.title}</h2>
                   <p className="t-body mt-4">{service.body}</p>
