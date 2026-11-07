@@ -27,6 +27,24 @@ function getServerSnapshot() {
   return true
 }
 
+function subscribeToScroll(onStoreChange: () => void) {
+  window.addEventListener('scroll', onStoreChange, { passive: true })
+  window.addEventListener('resize', onStoreChange)
+
+  return () => {
+    window.removeEventListener('scroll', onStoreChange)
+    window.removeEventListener('resize', onStoreChange)
+  }
+}
+
+function getScrollSnapshot() {
+  return window.scrollY <= window.innerHeight * 0.5
+}
+
+function getScrollServerSnapshot() {
+  return false
+}
+
 function dismiss() {
   try {
     sessionStorage.setItem(DISMISSED_KEY, '1')
@@ -40,14 +58,19 @@ function dismiss() {
 
 export function PreviewNotice() {
   const dismissed = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+  const nearTop = useSyncExternalStore(
+    subscribeToScroll,
+    getScrollSnapshot,
+    getScrollServerSnapshot,
+  )
 
-  if (!previewNotice.show || dismissed) return null
+  if (!previewNotice.show || dismissed || !nearTop) return null
 
   return (
     <div
       role="status"
       aria-label="Site preview notice"
-      className="fixed bottom-4 left-3 z-30 flex max-w-[calc(100vw-5.5rem)] items-center gap-2 rounded-[var(--radius-card)] border border-line bg-surface px-3 py-1.5 font-secondary text-[0.85rem] leading-snug text-fg-2 shadow-panel sm:bottom-6 sm:left-4 sm:max-w-sm"
+      className="fixed left-1/2 top-[5rem] z-30 -translate-x-1/2 flex w-max max-w-[calc(100vw-2rem)] items-center gap-2 rounded-[var(--radius-card)] border border-line bg-surface px-3 py-1.5 font-secondary text-[0.85rem] leading-snug text-fg-2 shadow-panel"
     >
       <p>{previewNotice.message}</p>
       <button
