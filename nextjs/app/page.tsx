@@ -4,18 +4,17 @@ import { ClientSectors } from '../components/blocks/ClientSectors'
 import { EnquiryCta } from '../components/blocks/EnquiryCta'
 import { FaqList } from '../components/blocks/FaqList'
 import { ProgramTable } from '../components/blocks/ProgramTable'
-import { Quote } from '../components/blocks/Quote'
 import { Delivery } from '../components/home/Delivery'
 import { FeaturedCase } from '../components/home/FeaturedCase'
 import { Founder } from '../components/home/Founder'
 import { Hero } from '../components/home/Hero'
 import { Objectives } from '../components/home/Objectives'
 import { TrustStrip } from '../components/home/TrustStrip'
+import { Testimonials } from '../components/home/Testimonials'
 import { WhatWeDo } from '../components/home/WhatWeDo'
 import { SectionHeader } from '../components/ui/SectionHeader'
 import { faqs } from '../data/faq'
 import { deliveryTerms } from '../data/programs'
-import { testimonials } from '../data/testimonials'
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -27,8 +26,6 @@ const homeFaqs = ['Who are the programs designed for?', 'Can a program be design
   .map((question) => faqs.find((faq) => faq.question === question)!)
 
 export default function Page() {
-  const quotes = ['Shivani Sahay', 'Shailesh Benedict', 'Ram Raju']
-    .map((name) => testimonials.find((testimonial) => testimonial.name === name)!)
   return (
     <>
       <Hero />
@@ -56,10 +53,7 @@ export default function Page() {
 
       <section aria-labelledby="voice-title" className="section-y">
         <div className="container-x">
-          <h2 id="voice-title" className="sr-only">In participants’ words</h2>
-          <div className="grid gap-14 lg:grid-cols-3 lg:gap-10">
-            {quotes.map((testimonial) => <Quote key={testimonial.name} testimonial={testimonial} size="lg" />)}
-          </div>
+          <Testimonials />
           <div className="mt-16 border-t border-line pt-8 lg:mt-20 lg:grid lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-4 lg:col-start-9">
             <p className="font-primary text-[1.15rem] font-medium leading-snug">Planning a conference or offsite?</p>

@@ -1,0 +1,63 @@
+'use client'
+
+import { useSyncExternalStore } from 'react'
+import { X } from 'lucide-react'
+import { previewNotice } from '../../data/site'
+
+const DISMISSED_KEY = 'ts-preview-dismissed'
+const listeners = new Set<() => void>()
+let dismissedInMemory = false
+
+function subscribe(onStoreChange: () => void) {
+  listeners.add(onStoreChange)
+  return () => listeners.delete(onStoreChange)
+}
+
+function getSnapshot() {
+  if (dismissedInMemory) return true
+
+  try {
+    return sessionStorage.getItem(DISMISSED_KEY) === '1'
+  } catch {
+    return false
+  }
+}
+
+function getServerSnapshot() {
+  return true
+}
+
+function dismiss() {
+  try {
+    sessionStorage.setItem(DISMISSED_KEY, '1')
+  } catch {
+    // The notice still dismisses when session storage is unavailable.
+  }
+
+  dismissedInMemory = true
+  listeners.forEach((listener) => listener())
+}
+
+export function PreviewNotice() {
+  const dismissed = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+
+  if (!previewNotice.show || dismissed) return null
+
+  return (
+    <div
+      role="status"
+      aria-label="Site preview notice"
+      className="fixed bottom-4 left-3 z-30 flex max-w-[calc(100vw-5.5rem)] items-center gap-2 rounded-[var(--radius-card)] border border-line bg-surface px-3 py-1.5 font-secondary text-[0.85rem] leading-snug text-fg-2 shadow-panel sm:bottom-6 sm:left-4 sm:max-w-sm"
+    >
+      <p>{previewNotice.message}</p>
+      <button
+        type="button"
+        aria-label="Dismiss preview notice"
+        onClick={dismiss}
+        className="grid size-11 shrink-0 place-items-center rounded-full hover:bg-fg/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-bright"
+      >
+        <X size={18} aria-hidden="true" />
+      </button>
+    </div>
+  )
+}

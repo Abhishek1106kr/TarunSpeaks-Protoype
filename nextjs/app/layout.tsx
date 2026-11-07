@@ -4,6 +4,7 @@ import { ConsultationPopup } from '../components/layout/ConsultationPopup'
 import { ContactDock } from '../components/layout/ContactDock'
 import { Footer } from '../components/layout/Footer'
 import { Navbar } from '../components/layout/Navbar'
+import { PreviewNotice } from '../components/layout/PreviewNotice'
 import { GridSpotlight } from '../components/home/GridSpotlight'
 import { AnalyticsListener } from '../components/motion/AnalyticsListener'
 import { RevealObserver } from '../components/motion/RevealObserver'
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main" tabIndex={-1} className="outline-none">{children}</main>
         <Footer />
         <ContactDock />
+        <PreviewNotice />
         <ConsultationPopup />
         <GridSpotlight />
         <RevealObserver />
