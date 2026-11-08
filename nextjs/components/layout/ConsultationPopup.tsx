@@ -9,6 +9,7 @@ const SHOWN_KEY = 'consultation-popup-shown'
 
 export function ConsultationPopup() {
   const [open, setOpen] = useState(false)
+  const [sheet, setSheet] = useState(false)
   const [armed, setArmed] = useState(false)
   const panelRef = useRef<HTMLDivElement>(null)
   const returnFocusRef = useRef<HTMLElement | null>(null)
@@ -40,7 +41,9 @@ export function ConsultationPopup() {
         // The in-memory guard remains effective when session storage is blocked.
       }
       returnFocusRef.current = document.body
+      const sheet = window.matchMedia('(max-width: 639px)').matches
       setArmed(true)
+      setSheet(sheet)
       setOpen(true)
     }
 
@@ -68,8 +71,9 @@ export function ConsultationPopup() {
         if (desktop) {
           scrollReady = progress() > 0.25
           armDesktop()
-        } else if (progress() > 0.6) {
-          show()
+        } else {
+          scrollReady = progress() > 0.75
+          if (timeReady && scrollReady) show()
         }
       })
     }
@@ -85,6 +89,13 @@ export function ConsultationPopup() {
       }, 15000)
       scrollReady = progress() > 0.25
       armDesktop()
+    } else {
+      timer = window.setTimeout(() => {
+        timeReady = true
+        scrollReady = progress() > 0.75
+        if (scrollReady) show()
+      }, 30000)
+      scrollReady = progress() > 0.75
     }
 
     return () => {
@@ -117,7 +128,7 @@ export function ConsultationPopup() {
     <AnimatePresence>
       {armed && open && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+          className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-3 sm:items-center sm:bg-black/60 sm:p-4"
           initial={reduceMotion ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -132,15 +143,15 @@ export function ConsultationPopup() {
             aria-modal="true"
             aria-labelledby="consultation-popup-title"
             tabIndex={-1}
-            className="w-full max-w-md rounded-[var(--radius-card)] border border-line bg-surface p-7 shadow-panel outline-none sm:p-8"
-            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+            className="w-full max-w-md rounded-[var(--radius-card)] border border-line bg-surface p-5 shadow-panel outline-none sm:p-8"
+            initial={reduceMotion ? false : { opacity: 0, y: sheet ? 24 : 12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={reduceMotion ? { opacity: 0, transition: { duration: 0 } } : { opacity: 0, y: 12 }}
+            exit={reduceMotion ? { opacity: 0, transition: { duration: 0 } } : { opacity: 0, y: sheet ? 24 : 12 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="flex items-start justify-between gap-6">
               <div>
-                <h2 id="consultation-popup-title" className="t-h2 mt-3">Still deciding?</h2>
+                <h2 id="consultation-popup-title" className="t-h2 mt-3 max-sm:text-[1.45rem]">Still deciding?</h2>
               </div>
               <button type="button" aria-label="Close" onClick={close} className="grid size-11 shrink-0 place-items-center rounded-full hover:bg-fg/10">
                 <X size={18} aria-hidden="true" />

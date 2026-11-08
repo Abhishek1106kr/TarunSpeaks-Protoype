@@ -85,11 +85,11 @@ export function Footer() {
               </Link>
             </div>
             <div className="flex min-w-0 flex-wrap items-center gap-x-5 gap-y-0">
-              <a href={company.email.href} className="inline-flex min-w-0 max-w-full shrink items-center gap-2 whitespace-nowrap text-[0.9rem] text-fg-2 transition-colors hover:text-fg sm:text-base">
+              <a href={company.email.href} className="inline-flex min-h-11 min-w-0 max-w-full shrink items-center gap-2 whitespace-nowrap text-[0.9rem] text-fg-2 transition-colors hover:text-fg sm:text-base">
                 <Mail size={16} className="shrink-0" aria-hidden="true" />
                 <span>{company.email.label}</span>
               </a>
-              <a href={company.phone.href} className="inline-flex min-h-10 shrink-0 items-center gap-2 whitespace-nowrap text-fg-2 transition-colors hover:text-fg">
+              <a href={company.phone.href} className="inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap text-fg-2 transition-colors hover:text-fg">
                 <Phone size={16} aria-hidden="true" />
                 {company.phone.label}
               </a>

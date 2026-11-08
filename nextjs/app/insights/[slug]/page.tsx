@@ -69,17 +69,17 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
       <section className="pt-[4.5rem]">
         <div className="container-x pb-12 pt-12 sm:pb-16 sm:pt-16">
-          <nav aria-label="Breadcrumb" className="t-meta mb-10">
+          <nav aria-label="Breadcrumb" className="t-meta mb-7">
             <ol className="flex flex-wrap items-center gap-2">
-              <li><Link href="/" className="inline-flex min-h-8 items-center hover:text-fg">Home</Link></li>
+              <li><Link href="/" className="inline-flex min-h-11 items-center hover:text-fg">Home</Link></li>
               <li aria-hidden="true">/</li>
-              <li><Link href="/insights" className="inline-flex min-h-8 items-center hover:text-fg">Insights</Link></li>
+              <li><Link href="/insights" className="inline-flex min-h-11 items-center hover:text-fg">Insights</Link></li>
             </ol>
           </nav>
           <p className="text-[0.95rem] font-semibold text-brand-text">{insight.category}</p>
           <h1 className="t-h1 mt-5 max-w-[22ch]">{article.title}</h1>
           <div className="t-meta mt-6 flex flex-wrap gap-x-5 gap-y-2">
-            <span>By <Link href="/about" className="text-fg-2 underline underline-offset-4 hover:text-fg">Tarun Makhija</Link></span>
+            <span>By <Link href="/about" className="inline-flex min-h-11 items-center text-fg-2 underline underline-offset-4 hover:text-fg">Tarun Makhija</Link></span>
             <span>{formattedDate}</span>
             <span>{article.readingMinutes} min read</span>
           </div>

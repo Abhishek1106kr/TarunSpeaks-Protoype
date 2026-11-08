@@ -66,11 +66,11 @@ export default async function Page({ params }: PageProps<'/case-studies/[slug]'>
 
       <section className="pt-[4.5rem]">
         <div className="container-x pt-12 pb-12 sm:pt-16">
-          <nav aria-label="Breadcrumb" className="enter t-meta mb-10">
+          <nav aria-label="Breadcrumb" className="enter t-meta mb-7">
             <ol className="flex flex-wrap items-center gap-2">
-              <li><Link href="/" className="inline-flex min-h-8 items-center hover:text-fg">Home</Link></li>
+              <li><Link href="/" className="inline-flex min-h-11 items-center hover:text-fg">Home</Link></li>
               <li aria-hidden="true">/</li>
-              <li><Link href="/case-studies" className="inline-flex min-h-8 items-center hover:text-fg">Case Studies</Link></li>
+              <li><Link href="/case-studies" className="inline-flex min-h-11 items-center hover:text-fg">Case Studies</Link></li>
               <li aria-hidden="true">/</li>
               <li aria-current="page" className="text-fg-2">{study.client}</li>
             </ol>

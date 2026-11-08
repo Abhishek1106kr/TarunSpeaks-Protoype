@@ -25,11 +25,11 @@ export function EnquiryCta({
         <dl className="grid content-end gap-6 border-t border-fg/25 pt-8 text-fg lg:col-span-4 lg:col-start-9 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
           <div>
             <dt className="text-[0.9rem] text-fg/75">Email</dt>
-            <dd><a href={company.email.href} className="text-[1.15rem] font-semibold whitespace-nowrap underline decoration-fg/40 underline-offset-4 hover:decoration-fg">{company.email.label}</a></dd>
+            <dd><a href={company.email.href} className="inline-flex min-h-11 items-center text-[1.15rem] font-semibold whitespace-nowrap max-[359px]:whitespace-normal max-[359px]:break-all underline decoration-fg/40 underline-offset-4 hover:decoration-fg">{company.email.label}</a></dd>
           </div>
           <div>
             <dt className="text-[0.9rem] text-fg/75">Phone</dt>
-            <dd><a href={company.phone.href} className="text-[1.15rem] font-semibold underline decoration-fg/40 underline-offset-4 hover:decoration-fg">{company.phone.label}</a></dd>
+            <dd><a href={company.phone.href} className="inline-flex min-h-11 items-center text-[1.15rem] font-semibold underline decoration-fg/40 underline-offset-4 hover:decoration-fg">{company.phone.label}</a></dd>
           </div>
         </dl>
       </div>

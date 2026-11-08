@@ -104,8 +104,8 @@ export function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
         <div className="mt-auto grid gap-4 pt-10">
           <Link href="/contact" onClick={onNavigate} className="inline-flex min-h-13 items-center justify-center rounded-[0.3rem] bg-brand px-6 font-semibold">Enquire Now</Link>
           <div className="flex flex-col text-[0.95rem] text-fg-2">
-            <a href={company.email.href} className="py-2">{company.email.label}</a>
-            <a href={company.phone.href} className="py-2">{company.phone.label}</a>
+            <a href={company.email.href} className="inline-flex min-h-11 items-center">{company.email.label}</a>
+            <a href={company.phone.href} className="inline-flex min-h-11 items-center">{company.phone.label}</a>
           </div>
         </div>
       </nav>

@@ -96,7 +96,7 @@ export default function Page() {
                           {studies.map((study, studyIndex) => (
                             <span key={study.slug}>
                               {studyIndex > 0 && (studyIndex === studies.length - 1 ? ' and ' : ', ')}
-                              <Link href={`/case-studies/${study.slug}`} className="whitespace-nowrap text-fg underline decoration-line underline-offset-4 hover:decoration-brand-bright">{study.client}</Link>
+                              <Link href={`/case-studies/${study.slug}`} className="inline-flex min-h-11 items-center whitespace-nowrap text-fg underline decoration-line underline-offset-4 hover:decoration-brand-bright">{study.client}</Link>
                             </span>
                           ))}
                         </p>

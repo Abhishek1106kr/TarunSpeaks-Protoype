@@ -21,14 +21,14 @@ export function PageIntro({ eyebrow, title, lead, actions, aside, crumbs }: Page
       <div className={`container-x grid gap-12 pt-12 pb-16 sm:pt-16 lg:pb-20 ${aside ? 'lg:grid-cols-12 lg:items-end lg:gap-10' : ''}`}>
         <div className={aside ? 'lg:col-span-7' : 'max-w-4xl'}>
           {crumbs && (
-            <nav aria-label="Breadcrumb" className="enter t-meta mb-10">
+            <nav aria-label="Breadcrumb" className="enter t-meta mb-7">
               <ol className="flex flex-wrap items-center gap-2">
                 {crumbs.map((crumb, index) => (
                   <li key={crumb.path} className="flex items-center gap-2">
                     {index > 0 && <span aria-hidden="true">/</span>}
                     {index === crumbs.length - 1
                       ? <span aria-current="page" className="text-fg-2">{crumb.name}</span>
-                      : <Link href={crumb.path} className="inline-flex min-h-8 items-center hover:text-fg">{crumb.name}</Link>}
+                      : <Link href={crumb.path} className="inline-flex min-h-11 items-center hover:text-fg">{crumb.name}</Link>}
                   </li>
                 ))}
               </ol>
