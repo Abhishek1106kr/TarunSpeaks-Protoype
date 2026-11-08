@@ -23,7 +23,22 @@ const nextConfig: NextConfig = {
       source,
       destination,
       permanent: true,
+      missing: [{ type: 'host' as const, value: 'rmdm.tarunspeaks.in' }],
     }))
+  },
+  // Proxy the RMDM subdomain to Netlify before matching this app's pages or files.
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/:path*',
+          has: [{ type: 'host', value: 'rmdm.tarunspeaks.in' }],
+          destination: 'https://tarunspeaks-landing.netlify.app/:path*',
+        },
+      ],
+      afterFiles: [],
+      fallback: [],
+    }
   },
   async headers() {
     return [
