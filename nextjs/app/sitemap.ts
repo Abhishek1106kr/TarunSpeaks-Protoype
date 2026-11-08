@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next'
+import { articles } from '../data/articles'
 import { caseStudies } from '../data/caseStudies'
 import { absoluteUrl } from '../lib/seo'
 
@@ -18,5 +19,13 @@ const routes: { path: string; priority: number; changeFrequency: 'weekly' | 'mon
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
-  return routes.map(({ path, priority, changeFrequency }) => ({ url: absoluteUrl(path), lastModified, changeFrequency, priority }))
+  return [
+    ...routes.map(({ path, priority, changeFrequency }) => ({ url: absoluteUrl(path), lastModified, changeFrequency, priority })),
+    ...articles.map((article) => ({
+      url: absoluteUrl(`/insights/${article.slug}`),
+      lastModified: new Date(article.modifiedAt),
+      changeFrequency: 'yearly' as const,
+      priority: 0.6,
+    })),
+  ]
 }

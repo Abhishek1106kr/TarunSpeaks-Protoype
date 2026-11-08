@@ -9,6 +9,7 @@ export type Insight = {
   excerpt: string
   image: ImageName
   href: string
+  slug: string // matches data/articles.ts; the article lives at /insights/<slug>
 }
 
 export const insightTopics: InsightTopic[] = ['Social Media', 'Content Creation', 'Marketing Strategy', 'Journey']
@@ -22,6 +23,7 @@ export const insights: Insight[] = [
     excerpt: 'LinkedIn has evolved into a potent instrument for industry leadership, professional networking, and personal branding.',
     image: 'insight-linkedin',
     href: 'https://tarunmakhija.in/linkedin-strategies-to-build-authority/',
+    slug: 'linkedin-strategies-to-build-authority',
   },
   {
     category: 'Instagram',
@@ -30,6 +32,7 @@ export const insights: Insight[] = [
     excerpt: 'Instagram has developed into a powerful tool for companies, artists, and brands looking to reach a wider audience.',
     image: 'insight-instagram',
     href: 'https://tarunmakhija.in/7-proven-instagram-strategies-for-2025/',
+    slug: '7-proven-instagram-strategies-for-2025',
   },
   {
     category: 'Creator',
@@ -38,6 +41,7 @@ export const insights: Insight[] = [
     excerpt: 'Social media platforms, AI-powered tools, and changing consumer behavior are contributing to a new creator economy.',
     image: 'insight-creator',
     href: 'https://tarunmakhija.in/content-creator-2025-guide/',
+    slug: 'content-creator-2025-guide',
   },
   {
     category: 'WhatsApp Marketing',
@@ -46,6 +50,7 @@ export const insights: Insight[] = [
     excerpt: 'Brands cannot afford to undervalue WhatsApp marketing in this era of fast communication.',
     image: 'insight-whatsapp',
     href: 'https://tarunmakhija.in/why-whatsapp-marketing-is-the-ultimate-tool/',
+    slug: 'why-whatsapp-marketing-is-the-ultimate-tool',
   },
   {
     category: 'Podcast',
@@ -54,6 +59,7 @@ export const insights: Insight[] = [
     excerpt: 'Because the podcasting industry is evolving rapidly, now is a fantastic time to launch your own.',
     image: 'insight-podcast',
     href: 'https://tarunmakhija.in/a-strategic-guide-to-launching-a-podcast-in-2025/',
+    slug: 'a-strategic-guide-to-launching-a-podcast-in-2025',
   },
   {
     category: 'Digital Marketing',
@@ -62,6 +68,7 @@ export const insights: Insight[] = [
     excerpt: 'Tarun’s professional journey started in Information Technology after earning a degree in IT engineering.',
     image: 'insight-digital-marketing',
     href: 'https://tarunmakhija.in/journey-from-it-engineering-to-digital-marketing/',
+    slug: 'journey-from-it-engineering-to-digital-marketing',
   },
   {
     category: 'Campaigns',
@@ -70,6 +77,7 @@ export const insights: Insight[] = [
     excerpt: 'Indian brands used a mix of creativity, culture, and sharp strategy to make 2024 memorable.',
     image: 'insight-campaigns',
     href: 'https://tarunmakhija.in/campaigns-that-crashed-the-internet-in-2024/',
+    slug: 'campaigns-that-crashed-the-internet-in-2024',
   },
   {
     category: 'AI Tools',
@@ -78,6 +86,7 @@ export const insights: Insight[] = [
     excerpt: 'Artificial Intelligence is evolving at lightning speed, and India is emerging as a major player.',
     image: 'insight-ai-tools',
     href: 'https://tarunmakhija.in/ai-tools-shaping-indias-business-landscape-in-2025/',
+    slug: 'ai-tools-shaping-indias-business-landscape-in-2025',
   },
   {
     category: 'Marketing Trends',
@@ -86,5 +95,6 @@ export const insights: Insight[] = [
     excerpt: 'Digital marketing trends are redefining how FMCG and direct-to-consumer brands grow.',
     image: 'insight-marketing-trends',
     href: 'https://tarunmakhija.in/digital-marketing-trends-for-fmcg-dtc-for-growth/',
+    slug: 'digital-marketing-trends-for-fmcg-dtc-for-growth',
   },
 ]
