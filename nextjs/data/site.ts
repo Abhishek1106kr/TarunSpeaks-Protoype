@@ -10,5 +10,5 @@ export const festiveTheme = {
   name: 'diwali',
   startsAt: '2026-11-08T13:25:00+05:30',
   endsAt: '2026-11-09T21:25:00+05:30',
-  greeting: 'Happy Diwali from TarunSpeaks',
+  greeting: 'Happy Diwali from #TarunSpeaks',
 }
