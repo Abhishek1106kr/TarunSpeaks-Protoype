@@ -7,6 +7,7 @@ import Link from 'next/link'
 export function Logo({ className = '', tone = 'light' }: { className?: string; tone?: 'light' | 'brand' }) {
   return (
     <Link href="/" aria-label="TarunSpeaks home" className={`group inline-flex min-h-11 items-center ${className}`}>
+      <Image src="/images/festive/diwali-diya-v2.webp" alt="" width={420} height={360} loading="eager" className="festive-only mr-2 h-6 w-auto sm:h-7" aria-hidden="true" />
       <Image
         src="/images/brand/tarunspeaks-logo.webp"
         alt="TarunSpeaks"

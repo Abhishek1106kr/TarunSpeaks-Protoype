@@ -1,5 +1,6 @@
-import { getImageProps } from 'next/image'
+import Image, { getImageProps } from 'next/image'
 import { proofStats } from '../../data/company'
+import { festiveTheme } from '../../data/site'
 import { StatGrid } from '../blocks/StatGrid'
 import { Button } from '../ui/Button'
 import { Eyebrow } from '../ui/Eyebrow'
@@ -51,7 +52,11 @@ export function Hero() {
 
         <div className="container-x relative z-10 flex min-h-svh items-end pb-12 pt-[calc(4.5rem+5rem)] sm:pb-16 lg:pb-20">
           <div>
-          <Eyebrow className="enter mb-8">Corporate training, consulting and AI capability building</Eyebrow>
+          <div className="festive-only festive-only-flex enter mb-8 items-center gap-3">
+            <Image src="/images/festive/diwali-diya-v2.webp" alt="" width={420} height={360} className="h-9 w-auto" />
+            <p className="font-festive text-[clamp(1.35rem,2vw,1.75rem)] leading-tight text-fg">{festiveTheme.greeting}</p>
+          </div>
+          <Eyebrow className="festive-hide enter mb-8">Corporate training, consulting and AI capability building</Eyebrow>
           <h1 id="hero-title" className="t-display enter" style={delay(0.05)}>
             We build digital-first, confident, <span className="text-brand-text">high-performing</span> teams.
           </h1>

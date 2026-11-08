@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { DM_Sans, Poppins } from 'next/font/google'
+import { Cormorant_Garamond, DM_Sans, Poppins } from 'next/font/google'
 import { ConsultationPopup } from '../components/layout/ConsultationPopup'
 import { ContactDock } from '../components/layout/ContactDock'
 import { Footer } from '../components/layout/Footer'
@@ -10,6 +10,7 @@ import { AnalyticsListener } from '../components/motion/AnalyticsListener'
 import { RevealObserver } from '../components/motion/RevealObserver'
 import { JsonLd } from '../components/seo/JsonLd'
 import { proofStats } from '../data/company'
+import { festiveTheme } from '../data/site'
 import { organizationJsonLd, personJsonLd, siteUrl, websiteJsonLd } from '../lib/seo'
 import './globals.css'
 
@@ -27,6 +28,15 @@ const dmSans = DM_Sans({
   axes: ['opsz'],
   variable: '--font-dm-sans',
   display: 'swap',
+})
+
+const festiveFont = Cormorant_Garamond({
+  weight: ['500'],
+  style: ['italic'],
+  subsets: ['latin'],
+  variable: '--font-cormorant',
+  display: 'swap',
+  preload: false,
 })
 
 const title = 'TarunSpeaks: Corporate Training, Consulting & AI Capability Building'
@@ -47,12 +57,14 @@ export const viewport: Viewport = { themeColor: '#080B10', colorScheme: 'dark' }
 
 // Marks the document before first paint so scroll reveals only hide content when JS is running.
 const jsFlag = "document.documentElement.classList.add('js')"
+const festiveThemeScript = `var s=Date.parse(${JSON.stringify(festiveTheme.startsAt)}),e=Date.parse(${JSON.stringify(festiveTheme.endsAt)}),n=Date.now();if(n>=s&&n<e){document.documentElement.dataset.festive=${JSON.stringify(festiveTheme.name)};setTimeout(function(){delete document.documentElement.dataset.festive},Math.min(e-n,2147483647))}`
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${dmSans.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${poppins.variable} ${dmSans.variable} ${festiveFont.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: jsFlag }} />
+        <script dangerouslySetInnerHTML={{ __html: festiveThemeScript }} />
       </head>
       <body>
         <JsonLd data={organizationJsonLd} />

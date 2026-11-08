@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowUpRight, Mail, Phone } from 'lucide-react'
 import { company, proofStats, socials } from '../../data/company'
 import { Button } from '../ui/Button'
@@ -47,8 +48,8 @@ export function Footer() {
   const proof = proofStats[0]
 
   return (
-    <footer className="border-t border-line bg-canvas pb-24">
-      <div className="container-x grid gap-4 py-8 md:gap-6 md:py-12 xl:grid-cols-[minmax(0,1.08fr)_minmax(24rem,0.92fr)]">
+    <footer className="relative overflow-hidden border-t border-line bg-canvas pb-24">
+      <div className="container-x relative z-10 grid gap-4 py-8 md:gap-6 md:py-12 xl:grid-cols-[minmax(0,1.08fr)_minmax(24rem,0.92fr)]">
         <div className="relative min-h-[20rem] overflow-hidden rounded-[1.25rem] border border-line bg-brand-deep md:rounded-none md:border-0 md:bg-transparent">
           <svg aria-hidden="true" className="pointer-events-none absolute inset-0 hidden size-full md:block" preserveAspectRatio="none" viewBox="0 0 720 318">
             <defs>
@@ -119,6 +120,8 @@ export function Footer() {
           </ul>
         </div>
       </div>
+
+      <Image src="/images/festive/diwali-mandala-v2.webp" alt="" width={1080} height={345} sizes="100vw" aria-hidden="true" className="festive-only festive-only-block pointer-events-none absolute inset-x-0 bottom-0 mx-auto w-full max-w-6xl select-none opacity-60" />
     </footer>
   )
 }
